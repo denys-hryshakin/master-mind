@@ -1,0 +1,15 @@
+.portalPhoto{
+    height: 150px;
+    width: 150px;
+}
+.item{
+    padding: 30px;
+}
+
+.btnPortals{
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: black;
+    outline: none;
+}

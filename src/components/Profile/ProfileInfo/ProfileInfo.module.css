@@ -1,0 +1,26 @@
+.bc{
+  width: 100%; 
+  height: 260px;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  float: left;
+}
+
+.profileHeader {
+  position: absolute;
+  top: 150px;
+  left: 400px;
+  z-index: 100;
+}
+
+.profileInfo{
+  display: inline-block;
+  color: white;
+  padding: 5px;
+  margin: 0 0 15px 15px;
+  background-color: #0e1220da;
+}

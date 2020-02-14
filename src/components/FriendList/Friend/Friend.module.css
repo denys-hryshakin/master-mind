@@ -1,0 +1,29 @@
+.friend{
+    display: flex;
+    align-items: flex-start;
+    padding: 40px 30px 0px;
+    font-size: 25px;
+}
+
+.friendInfo{
+    padding: 10px;
+}
+
+.friendInfo p{
+    font-size: 18px;
+}
+
+.friend a{
+    text-decoration: none;
+    color: black;
+}
+
+.friend img{
+    width: 120px;
+    height: 120px;
+}
+
+.lastSeen{
+    font-size: 14px;
+    color: #007cf0;
+}

@@ -1,0 +1,20 @@
+.content{
+  grid-area: content;
+  background-color: blanchedalmond;
+}
+
+.postsBlock {
+  padding: 10px 20px 10px;
+}
+
+.posts {
+  margin-top: 10px;
+}
+
+.btnAddPost{
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  background-color: black;
+  outline: none;
+}

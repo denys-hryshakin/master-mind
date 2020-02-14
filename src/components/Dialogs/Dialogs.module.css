@@ -1,0 +1,49 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 4fr 10fr;
+    padding: 10px;
+}
+
+.dialogsItems {
+    padding: 10px;
+}
+
+.dialog{
+    display: flex;
+    align-items: flex-start; 
+}
+
+.lastSeen{
+    padding: 5px;
+    font-size: 14px;
+    color: #007cf0;
+}
+
+.dialog a{
+    padding: 5px;
+    text-decoration: none;
+    color: #000000;
+}
+
+.messages {
+    padding: 10px;
+}
+
+.messages .message {
+    color: #000000;
+    padding: 3px 0;
+}
+
+.dialog img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.btnSendMessage{
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: black;
+    outline: none;
+}

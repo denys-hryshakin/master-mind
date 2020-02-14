@@ -1,0 +1,16 @@
+.item{
+    padding: 30px;
+}
+
+.userPhoto {
+    height: 100px;
+    width: 100px;
+}
+
+.btnUsers{
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: black;
+    outline: none;
+}
