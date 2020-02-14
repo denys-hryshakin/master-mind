@@ -1,6 +1,6 @@
 import React from 'react';
-import avatar from './../../../images/avatar2.jpg'
-import bc from './../../../images/b-c.jpg'
+import avatar from './../../../assets/images/avatar2.jpg'
+import bc from './../../../assets/images/b-c.jpg'
 import styles from './ProfileInfo.module.css';
 
 const ProfileInfo = () => {
