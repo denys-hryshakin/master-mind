@@ -14,3 +14,11 @@
     background-color: black;
     outline: none;
 }
+
+.selectedPage{
+    font-weight: 700;
+}
+
+.spans span{
+    padding: 2px;
+}
