@@ -35,7 +35,7 @@ const portalsReducer = (state = initialState, action) => {
     }
 }
 
-export const followAC = (portalId) => ({ type: FOLLOW, portalId });
-export const unfollowAC = (portalId) => ({ type: UNFOLLOW, portalId });
-export const setPortalsAC = (portals) => ({ type: SET_PORTALS, portals });
+export const follow = (portalId) => ({ type: FOLLOW, portalId });
+export const unfollow = (portalId) => ({ type: UNFOLLOW, portalId });
+export const setPortals = (portals) => ({ type: SET_PORTALS, portals });
 export default portalsReducer;
