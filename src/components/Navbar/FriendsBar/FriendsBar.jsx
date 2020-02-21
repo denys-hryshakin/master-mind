@@ -5,12 +5,10 @@ import avatar from './../../../assets/images/avatar2.jpg'
 
 const FriendsBar = (props) => {
     return (
-        <div className={styles.friendBlock}>
             <div className={styles.friendItem}>
                 <NavLink to={"/friends/" + props.id}><img src={avatar} alt="navbarAvatar" /></NavLink>
                 <NavLink to={"/friends/" + props.id}>{props.name}</NavLink>
             </div>
-        </div>
     );
 }
 

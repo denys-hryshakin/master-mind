@@ -42,7 +42,7 @@ let Portals = (props) => {
         ])
     }
     return (
-        <div className={styles.item}>
+        <div className={styles.page}>
             {
                 props.portals.map(p => <div key={p.id}>
                     <div className={styles.mediaBlock}>

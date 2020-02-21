@@ -1,5 +1,6 @@
-.item{
+.page{
     padding: 30px;
+    
 }
 
 .userPhoto {
@@ -8,17 +9,33 @@
 }
 
 .btnUsers{
-    padding: 5px 10px;
+    padding: 10px 15px;
+    margin: 10px 10px;
     border-radius: 5px;
     color: white;
+    font-weight: bold;
     background-color: black;
     outline: none;
 }
 
+.btnUsers:hover{
+    color: black;
+    background-color: #007cf0;
+    transition: all .2s linear;
+    transform: scale(1.1);
+}
+
+.pagesCount {
+    cursor: pointer;
+    font-size: 17px;
+    padding: 10px 2px;
+}
+
 .selectedPage{
+    color: #007cf0;
     font-weight: 700;
 }
 
-.spans span{
-    padding: 2px;
+.userInfoBlock{
+    margin-bottom: 20px;
 }

@@ -2,14 +2,29 @@
     height: 150px;
     width: 150px;
 }
-.item{
+.page{
     padding: 30px;
 }
 
+
 .btnPortals{
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin: 10px 30px;
     color: white;
+    font-weight: bold;
     background-color: black;
     outline: none;
+    
+}
+
+.btnPortals:hover{
+    color: black;
+    background-color: #007cf0;
+    transition: all .2s linear;
+    transform: scale(1.1);
+}
+
+.portalInfoBlock{
+    margin-bottom: 20px;
 }
