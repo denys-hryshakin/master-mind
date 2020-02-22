@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Users.module.css'
 import avatar from './../../assets/images/avatar2.jpg'
+import { NavLink } from 'react-router-dom';
 
 let Users = props => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -21,8 +22,10 @@ let Users = props => {
                     <div className={styles.mediaBlock}>
                         <div>
                             <div className={styles.userImg}>
-                                <img className={styles.userPhoto}
-                                    src={u.photos.small != null ? u.photos.small : avatar} alt="" />
+                                <NavLink to={'/profile/' + u.id}>
+                                    <img className={styles.userPhoto}
+                                        src={u.photos.small != null ? u.photos.small : avatar} alt="" />
+                                </NavLink>
                             </div>
                         </div>
                         <div>
