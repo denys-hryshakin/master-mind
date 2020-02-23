@@ -3,17 +3,17 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import FriendListContainer from './components/FriendList/FriendListContainer';
-import Header from './components/Header/Header';
 import NavbarContainer from './components/Navbar/NavbarContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import PortalsContainer from './components/Portals/PortalsContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
+import HeaderContainer from './components/Header/HeaderContainer';
 
 const App = () => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
-        <Header />
+        <HeaderContainer />
         <NavbarContainer />
         <div className="app-wrapper-content">
           <Route path="/profile/:userId?"

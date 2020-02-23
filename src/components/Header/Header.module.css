@@ -1,15 +1,22 @@
 .header{
-    grid-area: header;
-    background-color: #0e1220da;
-  }
-  .header::after{
-    content: '';
-    display: block;
-    height: 1px;
-    background-color: rgba(173, 154, 210, 0.829);
-  }
-  .header img{
-    width: 215px;
-    padding: 10px;
-  }
-  
+  grid-area: header;
+  background-color: #0e1220da;
+}
+.header::after{
+  content: '';
+  display: block;
+  height: 1px;
+  background-color: rgba(173, 154, 210, 0.829);
+}
+.header img{
+  width: 215px;
+  padding: 10px;
+}
+.loginBlock{
+  float: right;
+  color: aliceblue;
+}
+.loginBlock a{
+  text-decoration: none;
+  color: aliceblue;
+}

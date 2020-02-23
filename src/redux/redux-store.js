@@ -1,10 +1,11 @@
-import { createStore, combineReducers } from "redux";
+import { combineReducers, createStore } from "redux";
+import authReducer from "./auth-reducer";
 import dialogsReducer from "./dialogs-reducer";
-import profileReducer from "./profile-reducer";
-import friendsbarReducer from "./friendsbar-reducer";
 import friendsReducer from "./friends-reducer";
-import usersReducer from "./users-reducer";
+import friendsbarReducer from "./friendsbar-reducer";
 import portalsReducer from "./portals-reducer";
+import profileReducer from "./profile-reducer";
+import usersReducer from "./users-reducer";
 
 let reducers = combineReducers({
     profilePage: profileReducer,
@@ -12,7 +13,8 @@ let reducers = combineReducers({
     friendsPage: friendsReducer,
     sidebar: friendsbarReducer,
     usersPage: usersReducer,
-    portalsPage: portalsReducer
+    portalsPage: portalsReducer,
+    auth: authReducer
 });
 
 let store = createStore(reducers);
