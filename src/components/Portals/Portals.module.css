@@ -6,12 +6,12 @@
     background-color: rgba(0, 0, 0, 0);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     padding: 30px;
 }
 
 
 .mediaBlock{
+    padding: 5px 10px;
     position: relative;
     border-radius: 5px;
     
