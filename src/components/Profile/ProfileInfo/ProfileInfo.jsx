@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line
 import avatar from './../../../assets/images/avatar2.jpg'
 import bc from './../../../assets/images/b-c.jpg'
 import styles from './ProfileInfo.module.css';
@@ -17,23 +18,22 @@ const ProfileInfo = (props) => {
         <div className={styles.avatarImage}>
           <img className={styles.avatar} src={props.profile.photos.large} alt="avatar"></img>
         </div>
-        <div className={styles.profileInfo}>
-          <div>{props.profile.fullName}</div>
-        </div>
-        <div className={styles.profileInfo}>
-          <div>{props.profile.aboutMe}</div>
-        </div>
-        <div className={styles.profileInfo}>
-          <div>{props.profile.contacts.github}</div>
+        <div className={styles.shortInfo}>
+          <div className={styles.profileInfo}>
+            <div>{props.profile.fullName}</div>
+          </div>
+          <div className={styles.profileInfo}>
+            <div>{props.profile.aboutMe}</div>
+          </div>
+          <div className={styles.profileInfo}>
+            <div>{props.profile.lookingForAJob
+              ? props.profile.lookingForAJobDescription
+              : props.profile.contacts.github}</div>
+          </div>
         </div>
       </div>
       <div className={styles.fullInfo}>
         <h2>Full Description</h2>
-        <div>
-          {props.profile.lookingForAJob
-            ? props.profile.lookingForAJobDescription
-            : null}
-        </div>
         <div>{props.profile.contacts.facebook}</div>
         <div>{props.profile.contacts.website}</div>
         <div>{props.profile.contacts.vk}</div>
