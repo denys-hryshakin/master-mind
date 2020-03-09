@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Users.module.css'
-import avatar from './../../assets/images/avatar2.jpg'
+import avatar from './../../assets/images/avatar.jpg'
 import { NavLink } from 'react-router-dom';
 
 let Users = props => {
