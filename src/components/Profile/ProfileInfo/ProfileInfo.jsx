@@ -1,10 +1,8 @@
 import React from 'react';
-// eslint-disable-next-line
-import avatar1 from './../../../assets/images/unknown_user1.png'
-import avatar from './../../../assets/images/avatar.jpg'
-import bc from './../../../assets/images/b-c.jpg'
-import styles from './ProfileInfo.module.css';
 import Preloader from '../../common/preloader/Preloader';
+import avatar from './../../../assets/images/avatar.jpg';
+import bc from './../../../assets/images/b-c.jpg';
+import styles from './ProfileInfo.module.css';
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
