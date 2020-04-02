@@ -24,7 +24,7 @@ let Users = props => {
                             <div className={styles.userImg}>
                                 <NavLink to={'/profile/' + u.id}>
                                     <img className={styles.userPhoto}
-                                        src={u.photos.small != null ? u.photos.small : avatar} alt="" />
+                                        src={u.image != null ? u.image : avatar} alt="" />
                                 </NavLink>
                             </div>
                         </div>
@@ -40,8 +40,8 @@ let Users = props => {
                             <div>{u.status}</div>
                         </div>
                         <div>
-                            <div>{"u.location.country"}</div>
-                            <div>{"u.location.city"}</div>
+                            <div>{u.country}</div>
+                            <div>{u.city}</div>
                         </div>
                     </div>
                 </div>)

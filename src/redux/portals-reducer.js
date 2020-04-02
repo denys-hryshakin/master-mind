@@ -29,7 +29,7 @@ const portalsReducer = (state = initialState, action) => {
                 })
             }
         case SET_PORTALS:
-            return { ...state, portals: [...state.portals, ...action.portals] }
+            return { ...state, portals: action.portals }
         default:
             return state;
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line
-import avatar from './../../../assets/images/avatar2.jpg'
+import avatar1 from './../../../assets/images/unknown_user1.png'
+import avatar from './../../../assets/images/avatar.jpg'
 import bc from './../../../assets/images/b-c.jpg'
 import styles from './ProfileInfo.module.css';
 import Preloader from '../../common/preloader/Preloader';
@@ -16,29 +17,25 @@ const ProfileInfo = (props) => {
       </div>
       <div className={styles.profileHeader}>
         <div className={styles.avatarImage}>
-          <img className={styles.avatar} src={props.profile.photos.large} alt="avatar"></img>
+          <img className={styles.avatar} src={avatar} alt="avatar"></img>
         </div>
         <div className={styles.shortInfo}>
           <div className={styles.profileInfo}>
-            <div>{props.profile.fullName}</div>
+            <div>{props.profile.name}</div>
           </div>
           <div className={styles.profileInfo}>
-            <div>{props.profile.aboutMe}</div>
+            <div>{props.profile.status}</div>
           </div>
           <div className={styles.profileInfo}>
-            <div>{props.profile.lookingForAJob
-              ? props.profile.lookingForAJobDescription
-              : props.profile.contacts.github}</div>
+            <div>{props.profile.country}</div>
           </div>
         </div>
       </div>
       <div className={styles.fullInfo}>
         <h2>Full Description</h2>
-        <div>{props.profile.contacts.facebook}</div>
-        <div>{props.profile.contacts.website}</div>
-        <div>{props.profile.contacts.vk}</div>
-        <div>{props.profile.contacts.instagram}</div>
-        <div>{props.profile.contacts.twitter}</div>
+        <div>{props.profile.city}</div>
+        <div>{props.profile.facebook}</div>
+        <div>{props.profile.instagram}</div>
       </div>
     </div>
   );
