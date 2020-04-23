@@ -9,8 +9,8 @@ class ProfileContainer extends React.Component {
   componentDidMount() {
     let userId = this.props.match.params.userId;
     if (!userId) {
-      userId = 2;
-    }
+      userId = 1;
+    } 
     axios.get(`http://localhost:4000/api/profile/` + userId)
       .then(response => {
         this.props.setUserProfile(response.data.profile);

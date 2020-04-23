@@ -19,7 +19,7 @@ const ProfileInfo = (props) => {
         </div>
         <div className={styles.shortInfo}>
           <div className={styles.profileInfo}>
-            <div>{props.profile.name}</div>
+            <div>{props.profile.first_name} {props.profile.last_name}</div>
           </div>
           <div className={styles.profileInfo}>
             <div>{props.profile.status}</div>
