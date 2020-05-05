@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { follow, setPortals, unfollow } from "../../redux/portals-reducer";
+import { follow, setPortals, unfollow } from "../../redux/reducers/portals-reducer";
 import Portals from "./Portals";
 import * as axios from 'axios';
 

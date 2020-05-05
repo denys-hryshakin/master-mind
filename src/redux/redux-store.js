@@ -1,23 +1,18 @@
-import { combineReducers, createStore } from "redux";
-import authReducer from "./auth-reducer";
-import dialogsReducer from "./dialogs-reducer";
-import friendsReducer from "./friends-reducer";
-import friendsbarReducer from "./friendsbar-reducer";
-import portalsReducer from "./portals-reducer";
-import profileReducer from "./profile-reducer";
-import usersReducer from "./users-reducer";
+import { createStore, applyMiddleware, compose } from "redux";
+import thunk from 'redux-thunk';
+import rootReducer from './root-reducer';
 
-let reducers = combineReducers({
-    profilePage: profileReducer,
-    dialogsPage: dialogsReducer,
-    friendsPage: friendsReducer,
-    sidebar: friendsbarReducer,
-    usersPage: usersReducer,
-    portalsPage: portalsReducer,
-    auth: authReducer
-});
+const initialState = {};
+const middleware = [thunk];
 
-let store = createStore(reducers);
+let store = createStore(
+    rootReducer,
+    initialState,
+    compose(
+        applyMiddleware(...middleware),
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    )
+);
 
 window.store = store;
 

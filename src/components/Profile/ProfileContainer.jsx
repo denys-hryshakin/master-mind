@@ -2,16 +2,16 @@ import React from 'react';
 import * as axios from 'axios';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { setUserProfile } from '../../redux/profile-reducer';
+import { setUserProfile } from '../../redux/reducers/profile-reducer';
 import { withRouter } from 'react-router-dom';
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
     let userId = this.props.match.params.userId;
     if (!userId) {
-      userId = 1;
+      userId = '5eb035aa09deb215b836e192';
     } 
-    axios.get(`http://localhost:4000/api/profile/` + userId)
+    axios.get(`http://localhost:4000/api/users/profile/` + userId)
       .then(response => {
         this.props.setUserProfile(response.data.profile);
       });

@@ -1,7 +1,7 @@
-import dialogsReducer from "./dialogs-reducer";
-import profileReducer from "./profile-reducer";
-import friendsbarReducer from "./friendsbar-reducer";
-import friendsReducer from "./friends-reducer";
+import dialogsReducer from "./reducers/dialogs-reducer";
+import profileReducer from "./reducers/profile-reducer";
+import friendsbarReducer from "./reducers/friendsbar-reducer";
+import friendsReducer from "./reducers/friends-reducer";
 
 let store = {
     _state: {

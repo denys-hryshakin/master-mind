@@ -18,11 +18,11 @@ let Users = props => {
                 })}
             </div>
             {
-                props.users.map(u => <div key={u.id}>
+                props.users.map(u => <div key={u._id}>
                     <div className={styles.mediaBlock}>
                         <div>
                             <div className={styles.userImg}>
-                                <NavLink to={'/profile/' + u.id}>
+                                <NavLink to={'/profile/' + u._id}>
                                     <img className={styles.userPhoto}
                                         src={u.image != null ? u.image : avatar1} alt="" />
                                 </NavLink>
@@ -30,18 +30,18 @@ let Users = props => {
                         </div>
                         <div>
                             {u.followed
-                                ? <button className={styles.btnUsers} onClick={() => { props.unfollow(u.id) }}>Unfollow</button>
-                                : <button className={styles.btnUsers} onClick={() => { props.follow(u.id) }}>Follow</button>}
+                                ? <button className={styles.btnUsers} onClick={() => { props.unfollow(u._id) }}>Unfollow</button>
+                                : <button className={styles.btnUsers} onClick={() => { props.follow(u._id) }}>Follow</button>}
                         </div>
                     </div>
                     <div className={styles.userInfoBlock}>
                         <div>
-                            <div>{u.first_name} {u.last_name}</div>
+                            <div>{u.first_name} {u.second_name}</div>
                             <div>{u.status}</div>
                         </div>
                         <div>
-                            <div>{u.country}</div>
-                            <div>{u.city}</div>
+                            <div>u.country</div>
+                            <div>u.city</div>
                         </div>
                     </div>
                 </div>)
