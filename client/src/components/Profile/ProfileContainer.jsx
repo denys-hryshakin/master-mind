@@ -9,9 +9,9 @@ class ProfileContainer extends React.Component {
   componentDidMount() {
     let userId = this.props.match.params.userId;
     if (!userId) {
-      userId = '5eb035aa09deb215b836e192';
-    } 
-    axios.get(`http://localhost:4000/api/users/profile/` + userId)
+      userId = this.props.login.user.id;
+    }
+    axios.get(`/api/users/profile/` + userId)
       .then(response => {
         this.props.setUserProfile(response.data.profile);
       });
@@ -26,7 +26,8 @@ class ProfileContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => ({
-  profile: state.profilePage.profile
+  profile: state.profilePage.profile,
+  login: state.login
 })
 
 let withUrlDataContainerComponent = withRouter(ProfileContainer);

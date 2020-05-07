@@ -11,7 +11,7 @@ class Register extends Component {
         super();
         this.state = {
             first_name: "",
-            second_name: "",
+            surname: "",
             email: "",
             login: "",
             password: "",
@@ -39,7 +39,7 @@ class Register extends Component {
         e.preventDefault();
         const newUser = {
             first_name: this.state.first_name,
-            second_name: this.state.second_name,
+            surname: this.state.surname,
             email: this.state.email,
             login: this.state.login,
             password: this.state.password,
@@ -50,86 +50,104 @@ class Register extends Component {
     render() {
         const { errors } = this.state;
         return (
-            <div>
+            <div className={styles.registerMain}>
                 <div>
-                    <h4>
-                        <b>Register</b> below
-                    </h4>
-                    <p>
-                        Already have an account? <NavLink to="/login">Sign in</NavLink>
-                    </p>
+                    <h1><b>Create a new account</b></h1>
+                    <p>Already have an account? <NavLink to="/login">Sign in</NavLink></p>
                 </div>
-                <form noValidate onSubmit={this.onSubmit}>
+                <form className={styles.registerForm} noValidate onSubmit={this.onSubmit}>
                     <div>
                         <input
                             onChange={this.onChange}
                             value={this.state.first_name}
                             error={errors.first_name}
+                            placeholder="First name"
                             id="first_name"
                             type="text"
                             className={classnames("", {
                                 invalid: errors.first_name
                             })}
                         />
-                        <label htmlFor="first_name">First Name</label>
-                        <span className={styles.red_text}>{errors.first_name}</span>
+                        <label htmlFor="first_name"></label>
+                        <span className={styles.errorMessage}>{errors.first_name}</span>
                     </div>
                     <div>
                         <input
                             onChange={this.onChange}
-                            value={this.state.second_name}
-                            error={errors.second_name}
-                            id="second_name"
+                            value={this.state.surname}
+                            error={errors.surname}
+                            placeholder="Surname"
+                            id="surname"
                             type="text"
+                            className={classnames("", {
+                                invalid: errors.surname
+                            })}
                         />
-                        <label htmlFor="second_name">Second Name</label>
+                        <label htmlFor="surname"></label>
+                        <span className={styles.errorMessage}>{errors.surname}</span>
                     </div>
                     <div>
                         <input
                             onChange={this.onChange}
                             value={this.state.email}
                             error={errors.email}
+                            placeholder="Email"
                             id="email"
                             type="email"
+                            className={classnames("", {
+                                invalid: errors.email
+                            })}
                         />
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="email"></label>
+                        <span className={styles.errorMessage}>{errors.email}</span>
                     </div>
                     <div>
                         <input
                             onChange={this.onChange}
                             value={this.state.login}
                             error={errors.login}
+                            placeholder="Login"
                             id="login"
                             type="text"
+                            className={classnames("", {
+                                invalid: errors.login
+                            })}
                         />
-                        <label htmlFor="login">Login</label>
+                        <label htmlFor="login"></label>
+                        <span className={styles.errorMessage}>{errors.login}</span>
                     </div>
                     <div>
                         <input
                             onChange={this.onChange}
                             value={this.state.password}
                             error={errors.password}
+                            placeholder="Password"
                             id="password"
                             type="password"
+                            className={classnames("", {
+                                invalid: errors.password
+                            })}
                         />
-                        <label htmlFor="password">Password</label>
+                        <label htmlFor="password"></label>
+                        <span className={styles.errorMessage}>{errors.password}</span>
                     </div>
                     <div>
                         <input
                             onChange={this.onChange}
                             value={this.state.password2}
                             error={errors.password2}
+                            placeholder="Confirm password"
                             id="password2"
                             type="password"
+                            className={classnames("", {
+                                invalid: errors.password2
+                            })}
                         />
-                        <label htmlFor="password2">Confirm Password</label>
+                        <label htmlFor="password2"></label>
+                        <span className={styles.errorMessage}>{errors.password2}</span>
                     </div>
                     <div>
-                        <button
-                            type="submit"
-                        >
-                            Sign up
-                </button>
+                        <button type="submit">Sign up</button>
                     </div>
                 </form>
             </div>

@@ -3,6 +3,8 @@ import { NavLink, withRouter } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { loginUser } from "../../../redux/actions/actions";
+import styles from './Login.module.css';
+import classnames from 'classnames';
 
 class Login extends Component {
     constructor() {
@@ -13,21 +15,23 @@ class Login extends Component {
             errors: {}
         };
     }
-    componentDidUpdate(prevProps){
-        if(prevProps.login.isAuthenticated !== this.props.login.isAuthenticated){
-           this.props.history.push("/dashboard");
+    componentDidUpdate(prevProps) {
+        if (prevProps.login.isAuthenticated !== this.props.login.isAuthenticated) {
+            let userId = this.props.login.user.id
+            this.props.history.push(`/profile/` + userId);
         }
-     
+
         if (prevProps.errors !== this.props.errors) {
-           this.setState({
-             errors: this.props.errors
-           });
-         }
-     }
+            this.setState({
+                errors: this.props.errors
+            });
+        }
+    }
     componentDidMount() {
         // If logged in and user navigates to Login page, should redirect them to dashboard
         if (this.props.login.isAuthenticated) {
-            this.props.history.push("/dashboard");
+            let userId = this.props.login.user.id
+            this.props.history.push(`/profile/` + userId);
         }
     }
     onChange = e => {
@@ -44,35 +48,47 @@ class Login extends Component {
     render() {
         const { errors } = this.state;
         return (
-            <div>
+            <div className={styles.loginMain}>
                 <div>
-                    <h4>
-                        <b>Login</b> below
-                    </h4>
-                    <p>
-                        Don't have an account? <NavLink to="/register">Register</NavLink>
-                    </p>
+                    <h1><b>Sign in</b></h1>
+                    <p>Don't have an account? <NavLink to="/register">Register</NavLink></p>
                 </div>
-                <form noValidate onSubmit={this.onSubmit}>
+                <form className={styles.loginForm} noValidate onSubmit={this.onSubmit}>
                     <div>
                         <input
                             onChange={this.onChange}
                             value={this.state.email}
                             error={errors.email}
+                            className={classnames("", {
+                                invalid: errors.email || errors.emailnotfound
+                            })}
                             id="email"
                             type="email"
+                            placeholder="Email"
                         />
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="email"></label>
+                        <span className={styles.errorMessage}>
+                            {errors.email}
+                            {errors.emailnotfound}
+                        </span>
                     </div>
                     <div>
                         <input
                             onChange={this.onChange}
                             value={this.state.password}
                             error={errors.password}
+                            className={classnames("", {
+                                invalid: errors.password || errors.passwordincorrect
+                            })}
                             id="password"
                             type="password"
+                            placeholder="Password"
                         />
-                        <label htmlFor="password">Password</label>
+                        <label htmlFor="password"></label>
+                        <span className={styles.errorMessage}>
+                            {errors.password}
+                            {errors.passwordincorrect}
+                        </span>
                     </div>
                     <div>
                         <button

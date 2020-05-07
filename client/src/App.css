@@ -6,7 +6,7 @@ body{
 }
 .app-wrapper {
   display: grid;
-  max-width: 1140px;
+  max-width: 1240px;
   padding-left: 10px;
   padding-right: 10px;
   margin: 0 auto;

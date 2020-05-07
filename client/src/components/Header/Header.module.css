@@ -1,3 +1,4 @@
+/* HEADER */
 .header{
   grid-area: header;
   background-color: #0e1220da;
@@ -8,15 +9,66 @@
   height: 1px;
   background-color: rgba(173, 154, 210, 0.829);
 }
-.header img{
+
+
+/* IMAGES */
+.logo{
   width: 215px;
   padding: 10px;
 }
+.miniAvatar{
+  height: 50px;
+  width: 50px;
+  padding: 20px 10px;
+  border-radius: 50%;
+}
+
+
+/* LOGIN */
 .loginBlock{
   float: right;
   color: aliceblue;
 }
+.loginBlock span{
+  color: #007cf0;
+}
 .loginBlock a{
   text-decoration: none;
   color: aliceblue;
+  cursor: pointer;
+  padding: 10px;
 }
+.loginBlock a:hover{
+  color: #007cf0;
+  transition: all .2s ease-in-out;
+}
+.loginBlock .login{
+  padding: 10px 10px 10px 0;
+}
+.loginBlock .sign{
+  padding: 33px 10px;
+}
+
+.loginBlock button{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  color: aliceblue;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.loginBlock button:focus{
+  outline: none;
+}
+
+.loginBlock button:hover{
+  color: #007cf0;
+  transition: all .2s ease-in-out;
+}
+
+/* LOGIN INFO */
+.loginInfo{
+  display: flex;
+  align-items: center;
+}
+

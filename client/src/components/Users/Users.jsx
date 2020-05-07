@@ -36,12 +36,12 @@ let Users = props => {
                     </div>
                     <div className={styles.userInfoBlock}>
                         <div>
-                            <div>{u.first_name} {u.second_name}</div>
+                            <div>{u.first_name} {u.surname}</div>
                             <div>{u.status}</div>
                         </div>
                         <div>
-                            <div>u.country</div>
-                            <div>u.city</div>
+                            <div>{u.country}</div>
+                            <div>{u.city}</div>
                         </div>
                     </div>
                 </div>)

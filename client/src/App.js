@@ -50,9 +50,8 @@ const App = () => {
             <Route path="/login" render={() => <Login />} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute path="/profile/:userId?" component={ProfileContainer} />
             </Switch>
-            <Route path="/profile/:userId?"
-              render={() => <ProfileContainer />} />
             <Route path="/dialogs"
               render={() => <DialogsContainer />} />
             <Route path="/news"

@@ -27,7 +27,7 @@ router.post("/register", (req, res) => {
     } else {
       const newUser = new User({
         first_name: req.body.first_name,
-        second_name: req.body.second_name,
+        surname: req.body.surname,
         email: req.body.email,
         login: req.body.login,
         password: req.body.password
@@ -73,7 +73,8 @@ router.post("/login", (req, res) => {
         const payload = {
           id: user.id,
           first_name: user.first_name,
-          second_name: user.second_name
+          surname: user.surname,
+          login: user.login
         };
         // Sign token
         jwt.sign(
@@ -116,7 +117,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   const user = new User({
     first_name: req.body.first_name,
-    second_name: req.body.second_name,
+    surname: req.body.surname,
     login: req.body.login,
     email: req.body.email,
     status: req.body.status

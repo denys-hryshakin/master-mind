@@ -19,7 +19,7 @@ const ProfileInfo = (props) => {
         </div>
         <div className={styles.shortInfo}>
           <div className={styles.profileInfo}>
-            <div>{props.profile.first_name} {props.profile.last_name}</div>
+            <div>{props.profile.first_name} {props.profile.surname}</div>
           </div>
           <div className={styles.profileInfo}>
             <div>{props.profile.status}</div>
@@ -31,9 +31,9 @@ const ProfileInfo = (props) => {
       </div>
       <div className={styles.fullInfo}>
         <h2>Full Description</h2>
-        <div>{props.profile.city}</div>
-        <div>{props.profile.facebook}</div>
-        <div>{props.profile.instagram}</div>
+        { !props.profile.city
+          ? <span>User hasn't set information yet.</span>
+          : <div><div>{props.profile.city}</div><div>{props.profile.facebook}</div><div>{props.profile.instagram}</div></div> }
       </div>
     </div>
   );
