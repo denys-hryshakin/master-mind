@@ -1,8 +1,10 @@
-import React, { Component } from "react";
-import { NavLink, withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import { registerUser } from '../../../redux/actions/actions'
 import PropTypes from "prop-types";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { NavLink, withRouter } from "react-router-dom";
+import { registerUser } from '../../../redux/actions/actions';
+import classnames from 'classnames';
+import styles from './Register.module.css'
 
 class Register extends Component {
     constructor() {
@@ -19,17 +21,17 @@ class Register extends Component {
     }
     componentDidMount() {
         // If logged in and user navigates to Register page, should redirect them to dashboard
-        if (this.props.auth.isAuthenticated) {
-          this.props.history.push("/dashboard");
+        if (this.props.login.isAuthenticated) {
+            this.props.history.push("/dashboard");
         }
-      }
-    componentWillReceiveProps(nextProps) {
+    }
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if (nextProps.errors) {
-          this.setState({
-            errors: nextProps.errors
-          });
+            this.setState({
+                errors: nextProps.errors
+            });
         }
-      }
+    }
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value });
     };
@@ -43,7 +45,7 @@ class Register extends Component {
             password: this.state.password,
             password2: this.state.password2
         };
-        this.props.registerUser(newUser, this.props.history); 
+        this.props.registerUser(newUser, this.props.history);
     };
     render() {
         const { errors } = this.state;
@@ -65,8 +67,12 @@ class Register extends Component {
                             error={errors.first_name}
                             id="first_name"
                             type="text"
+                            className={classnames("", {
+                                invalid: errors.first_name
+                            })}
                         />
                         <label htmlFor="first_name">First Name</label>
+                        <span className={styles.red_text}>{errors.first_name}</span>
                     </div>
                     <div>
                         <input
@@ -120,12 +126,6 @@ class Register extends Component {
                     </div>
                     <div>
                         <button
-                            style={{
-                                width: "150px",
-                                borderRadius: "3px",
-                                letterSpacing: "1.5px",
-                                marginTop: "1rem"
-                            }}
                             type="submit"
                         >
                             Sign up
@@ -136,13 +136,14 @@ class Register extends Component {
         );
     }
 }
+
 Register.propTypes = {
     registerUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
+    login: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
-  };
+};
 const mapStateToProps = state => ({
-    auth: state.auth,
+    login: state.login,
     errors: state.errors
 });
 

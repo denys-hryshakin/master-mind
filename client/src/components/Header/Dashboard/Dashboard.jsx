@@ -2,30 +2,25 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../../redux/actions/actions";
+
 class Dashboard extends Component {
     onLogoutClick = e => {
         e.preventDefault();
         this.props.logoutUser();
     };
     render() {
-        const { user } = this.props.auth;
+        const { user } = this.props.login;
         return (
             <div>
                 <div>
                     <h4>
-                        <b>Hey there,</b> {user.name.split(" ")[0]}
+                        <b>Hey there,</b> {user.first_name}
                         <p>
                             You are logged into a full-stack{" "}
-                            <span>MERN</span> app 👏
+                            <span>MERN</span> app
               </p>
                     </h4>
                     <button
-                        style={{
-                            width: "150px",
-                            borderRadius: "3px",
-                            letterSpacing: "1.5px",
-                            marginTop: "1rem"
-                        }}
                         onClick={this.onLogoutClick}
                     >
                         Logout
@@ -37,10 +32,10 @@ class Dashboard extends Component {
 }
 Dashboard.propTypes = {
     logoutUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+    login: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
-    auth: state.auth
+    login: state.login
 });
 export default connect(
     mapStateToProps,

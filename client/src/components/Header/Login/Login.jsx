@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { loginUser } from "../../../redux/actions/actions";
@@ -13,22 +13,23 @@ class Login extends Component {
             errors: {}
         };
     }
+    componentDidUpdate(prevProps){
+        if(prevProps.login.isAuthenticated !== this.props.login.isAuthenticated){
+           this.props.history.push("/dashboard");
+        }
+     
+        if (prevProps.errors !== this.props.errors) {
+           this.setState({
+             errors: this.props.errors
+           });
+         }
+     }
     componentDidMount() {
         // If logged in and user navigates to Login page, should redirect them to dashboard
-        if (this.props.auth.isAuthenticated) {
-          this.props.history.push("/dashboard");
+        if (this.props.login.isAuthenticated) {
+            this.props.history.push("/dashboard");
         }
-      }
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.auth.isAuthenticated) {
-          this.props.history.push("/dashboard"); // push user to dashboard when they login
-        }
-    if (nextProps.errors) {
-          this.setState({
-            errors: nextProps.errors
-          });
-        }
-      }
+    }
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value });
     };
@@ -75,14 +76,7 @@ class Login extends Component {
                     </div>
                     <div>
                         <button
-                            style={{
-                                width: "150px",
-                                borderRadius: "3px",
-                                letterSpacing: "1.5px",
-                                marginTop: "1rem"
-                            }}
                             type="submit"
-                            className="btn btn-large waves-effect waves-light hoverable blue accent-3"
                         >
                             Login
                 </button>
@@ -95,14 +89,14 @@ class Login extends Component {
 
 Login.propTypes = {
     loginUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
+    login: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
-  };
-  const mapStateToProps = state => ({
-    auth: state.auth,
+};
+const mapStateToProps = state => ({
+    login: state.login,
     errors: state.errors
-  });
-  export default connect(
+});
+export default withRouter(connect(
     mapStateToProps,
     { loginUser }
-  )(Login);
+)(Login));
