@@ -36,7 +36,7 @@
   text-decoration: none;
   color: aliceblue;
   cursor: pointer;
-  padding: 10px;
+  /* padding: 10px; */
 }
 .loginBlock a:hover{
   color: #007cf0;

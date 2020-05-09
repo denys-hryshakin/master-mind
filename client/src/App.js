@@ -1,22 +1,22 @@
+import jwt_decode from "jwt-decode";
 import React from 'react';
+import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import FriendListContainer from './components/FriendList/FriendListContainer';
-import NavbarContainer from './components/Navbar/NavbarContainer';
-import UsersContainer from './components/Users/UsersContainer';
-import PortalsContainer from './components/Portals/PortalsContainer';
-import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
-import Register from './components/Header/Register/Register';
 import Login from './components/Header/Login/Login';
+import Register from './components/Header/Register/Register';
+import Landing from "./components/Landing/Landing";
+import NavbarContainer from './components/Navbar/NavbarContainer';
+import PortalsContainer from './components/Portals/PortalsContainer';
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import Dashboard from "./components/Header/Dashboard/Dashboard";
-import { Provider } from 'react-redux';
+import ProfileContainer from './components/Profile/ProfileContainer';
+import UsersContainer from './components/Users/UsersContainer';
+import { logoutUser, setCurrentUser } from "./redux/actions/actions";
 import store from './redux/redux-store';
-import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
-import { setCurrentUser, logoutUser } from "./redux/actions/actions";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -44,26 +44,20 @@ const App = () => {
       <Provider store={store}>
         <div className="app-wrapper">
           <HeaderContainer />
-          <NavbarContainer />
+          <PrivateRoute component={NavbarContainer} />
           <div className="app-wrapper-content">
             <Route path="/register" render={() => <Register />} />
             <Route path="/login" render={() => <Login />} />
             <Switch>
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute path="/profile/:userId?" component={ProfileContainer} />
+              <PrivateRoute path="/dialogs" component={DialogsContainer} />
+              <PrivateRoute path="/portals" component={PortalsContainer} />
+              <PrivateRoute path="/users" component={UsersContainer} />
+              <PrivateRoute path="/friends" component={FriendListContainer} />
             </Switch>
-            <Route path="/dialogs"
-              render={() => <DialogsContainer />} />
-            <Route path="/news"
-              render={() => <div />} />
-            <Route path="/music"
-              render={() => <div />} />
-            <Route path="/portals"
-              render={() => <PortalsContainer />} />
-            <Route path="/users"
-              render={() => <UsersContainer />} />
-            <Route path="/friends"
-              render={() => <FriendListContainer />} />
+            <Route exact path="/" render={()=> <Landing /> } />
+            <Route path="/news" render={()=> <div /> } />
+            <Route path="/music" render={()=> <div /> } />
           </div>
         </div>
       </Provider>

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
 import { registerUser } from '../../../redux/actions/actions';
 import classnames from 'classnames';
-import styles from './Register.module.css'
+import './Register.css'
 
 class Register extends Component {
     constructor() {
@@ -22,7 +22,9 @@ class Register extends Component {
     componentDidMount() {
         // If logged in and user navigates to Register page, should redirect them to dashboard
         if (this.props.login.isAuthenticated) {
-            this.props.history.push("/dashboard");
+            let userId = this.props.login.user.id;
+            this.props.history.push(`/profile/` + userId);
+            alert("You already have an account!")
         }
     }
     UNSAFE_componentWillReceiveProps(nextProps) {
@@ -50,12 +52,12 @@ class Register extends Component {
     render() {
         const { errors } = this.state;
         return (
-            <div className={styles.registerMain}>
+            <div className={`registerMain ${this.props.login.isAuthenticated ? "" : "width"}`}>
                 <div>
                     <h1><b>Create a new account</b></h1>
                     <p>Already have an account? <NavLink to="/login">Sign in</NavLink></p>
                 </div>
-                <form className={styles.registerForm} noValidate onSubmit={this.onSubmit}>
+                <form className='registerForm' noValidate onSubmit={this.onSubmit}>
                     <div>
                         <input
                             onChange={this.onChange}
@@ -69,7 +71,7 @@ class Register extends Component {
                             })}
                         />
                         <label htmlFor="first_name"></label>
-                        <span className={styles.errorMessage}>{errors.first_name}</span>
+                        <span className='errorMessage'>{errors.first_name}</span>
                     </div>
                     <div>
                         <input
@@ -84,7 +86,7 @@ class Register extends Component {
                             })}
                         />
                         <label htmlFor="surname"></label>
-                        <span className={styles.errorMessage}>{errors.surname}</span>
+                        <span className='errorMessage'>{errors.surname}</span>
                     </div>
                     <div>
                         <input
@@ -99,7 +101,7 @@ class Register extends Component {
                             })}
                         />
                         <label htmlFor="email"></label>
-                        <span className={styles.errorMessage}>{errors.email}</span>
+                        <span className='errorMessage'>{errors.email}</span>
                     </div>
                     <div>
                         <input
@@ -114,7 +116,7 @@ class Register extends Component {
                             })}
                         />
                         <label htmlFor="login"></label>
-                        <span className={styles.errorMessage}>{errors.login}</span>
+                        <span className='errorMessage'>{errors.login}</span>
                     </div>
                     <div>
                         <input
@@ -129,7 +131,7 @@ class Register extends Component {
                             })}
                         />
                         <label htmlFor="password"></label>
-                        <span className={styles.errorMessage}>{errors.password}</span>
+                        <span className='errorMessage'>{errors.password}</span>
                     </div>
                     <div>
                         <input
@@ -144,7 +146,7 @@ class Register extends Component {
                             })}
                         />
                         <label htmlFor="password2"></label>
-                        <span className={styles.errorMessage}>{errors.password2}</span>
+                        <span className='errorMessage'>{errors.password2}</span>
                     </div>
                     <div>
                         <button type="submit">Sign up</button>

@@ -17,7 +17,7 @@ const Header = (props) => {
             <div className={styles.loginBlock}>
                 {props.login.isAuthenticated
                     ? <div className={styles.loginInfo}>
-                        <img className={styles.miniAvatar} src={avatar} alt="avatar"/>
+                        <NavLink to={`/profile/` + props.login.user.id}><img className={styles.miniAvatar} src={avatar} alt="avatar"/></NavLink>
                         <NavLink to={`/profile/` + props.login.user.id} className={styles.login}>{props.login.user.login}</NavLink>
                         <span>|</span>
                         <button onClick={onLogoutClick}>Logout</button>

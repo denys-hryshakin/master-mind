@@ -1,0 +1,21 @@
+.main{
+    text-align: center;
+    padding: 10px;
+}
+.width{
+    width: 1120px;
+}
+
+.main a{
+    text-decoration: none;
+    color: #007cf0;
+}
+
+.main a:hover{
+    text-decoration: underline;
+}
+
+.info{
+    padding: 10px;
+    font-size: large;
+}

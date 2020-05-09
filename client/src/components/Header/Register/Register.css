@@ -1,41 +1,56 @@
 /* REGISTER */
-.loginMain{
-    padding: 20px 40px;
-    
+.registerMain{
+    padding: 10px;
+    text-align: center;
 }
-.loginMain a{
+.width{
+    width: 1140px;
+}
+
+.registerMain a{
     text-decoration: none;
     color: #007cf0;
 }
-.loginMain a:hover{
+.registerMain a:hover{
     text-decoration: underline;
 }
 
 
 /* ERROR */
 .errorMessage {
+    position: absolute;
     font-size: 14px;
-    color: red;
+    color: #ad0000;
     text-decoration: underline;
     font-weight: bold;
-    padding: 0 20px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.errorInput{
+    border: 2px solid #ad0000;
 }
 
 
 /* REGISTER FORM */
 .registerForm{
-   
+    display: inline-block;
+    margin: 0 auto;
+    text-align: left ;
 }
-.loginMain input{
+.registerMain input{
     margin: 5px;
     padding: 10px;
     border: 1px solid #007cf0;
     border-radius: 5px;
+    
 }
-.loginMain input:focus{
+.registerMain input:focus{
     outline: none;
+    border-top: 2px solid #007cf0;
 }
-.loginMain button{
+
+.registerForm button{
     color: aliceblue;
     background-color: #007cf0;
     border: 1px solid #007cf0;
@@ -44,10 +59,10 @@
     width: 70px;
     margin: 5px;
 }
-.loginMain button:hover{
+.registerMain button:hover{
     background-color: #0e1220da;
     transition: all .2s ease-in-out;
 }
-.loginMain button:focus{
+.registerMain button:focus{
     outline: none;
 }

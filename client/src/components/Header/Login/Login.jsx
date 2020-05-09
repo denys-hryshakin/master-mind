@@ -3,7 +3,7 @@ import { NavLink, withRouter } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { loginUser } from "../../../redux/actions/actions";
-import styles from './Login.module.css';
+import './Login.css';
 import classnames from 'classnames';
 
 class Login extends Component {
@@ -20,7 +20,6 @@ class Login extends Component {
             let userId = this.props.login.user.id
             this.props.history.push(`/profile/` + userId);
         }
-
         if (prevProps.errors !== this.props.errors) {
             this.setState({
                 errors: this.props.errors
@@ -28,10 +27,11 @@ class Login extends Component {
         }
     }
     componentDidMount() {
-        // If logged in and user navigates to Login page, should redirect them to dashboard
+        // If logged in and user navigates to Login page, should redirect them to profile
         if (this.props.login.isAuthenticated) {
             let userId = this.props.login.user.id
             this.props.history.push(`/profile/` + userId);
+            alert("You already have an account!")
         }
     }
     onChange = e => {
@@ -45,15 +45,15 @@ class Login extends Component {
         };
         this.props.loginUser(userData);
     };
-    render() {
+    render() {  
         const { errors } = this.state;
         return (
-            <div className={styles.loginMain}>
+            <div className={`loginMain ${this.props.login.isAuthenticated ? "" : "width"}`}>
                 <div>
                     <h1><b>Sign in</b></h1>
                     <p>Don't have an account? <NavLink to="/register">Register</NavLink></p>
                 </div>
-                <form className={styles.loginForm} noValidate onSubmit={this.onSubmit}>
+                <form className='loginForm' noValidate onSubmit={this.onSubmit}>
                     <div>
                         <input
                             onChange={this.onChange}
@@ -67,7 +67,7 @@ class Login extends Component {
                             placeholder="Email"
                         />
                         <label htmlFor="email"></label>
-                        <span className={styles.errorMessage}>
+                        <span className='errorMessage'>
                             {errors.email}
                             {errors.emailnotfound}
                         </span>
@@ -85,17 +85,13 @@ class Login extends Component {
                             placeholder="Password"
                         />
                         <label htmlFor="password"></label>
-                        <span className={styles.errorMessage}>
+                        <span className='errorMessage'>
                             {errors.password}
                             {errors.passwordincorrect}
                         </span>
                     </div>
                     <div>
-                        <button
-                            type="submit"
-                        >
-                            Login
-                </button>
+                        <button type="submit">Login</button>
                     </div>
                 </form>
             </div>

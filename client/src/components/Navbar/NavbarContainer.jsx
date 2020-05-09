@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 let mapStateToProps = (state) => {
     return {
-        sidebar: state.sidebar
+        sidebar: state.sidebar,
+        login: state.login
     }
 }
 let mapDispatchToProps = () => {

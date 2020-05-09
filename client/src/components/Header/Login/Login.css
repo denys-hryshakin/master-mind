@@ -1,41 +1,32 @@
-/* REGISTER */
-.registerMain{
-    padding: 20px 40px;
-    
+/* LOGIN */
+.loginMain{
+    padding: 10px;
+    text-align: center;
 }
-.registerMain a{
+.width{
+    width: 1140px;
+}
+.loginMain a{
     text-decoration: none;
     color: #007cf0;
 }
-.registerMain a:hover{
+.loginMain a:hover{
     text-decoration: underline;
 }
 
 
-/* ERROR */
-.errorMessage {
-    font-size: 14px;
-    color: red;
-    text-decoration: underline;
-    font-weight: bold;
-    padding: 0 20px;
-}
-
-
-/* REGISTER FORM */
-.registerForm{
-   
-}
-.registerMain input{
+/* LOGIN FORM */
+.loginMain input{
     margin: 5px;
     padding: 10px;
     border: 1px solid #007cf0;
     border-radius: 5px;
 }
-.registerMain input:focus{
+.loginMain input:focus{
     outline: none;
+    border-top: 2px solid #007cf0;
 }
-.registerMain button{
+.loginMain button{
     color: aliceblue;
     background-color: #007cf0;
     border: 1px solid #007cf0;
@@ -44,10 +35,10 @@
     width: 70px;
     margin: 5px;
 }
-.registerMain button:hover{
+.loginMain button:hover{
     background-color: #0e1220da;
     transition: all .2s ease-in-out;
 }
-.registerMain button:focus{
+.loginMain button:focus{
     outline: none;
 }

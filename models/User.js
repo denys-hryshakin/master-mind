@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Schema = mongoose.Schema;
 
 const UserSchema = mongoose.Schema({
     first_name: {
@@ -9,9 +10,13 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    login: {
+    login: {    
         type: String,
-        required: true
+        unique: true,
+        lowercase: true,
+        trim: true,
+        required: true,
+        minlength: 3
     },
     password: {
         type: String,
@@ -21,11 +26,22 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    followed: {
-        type: Boolean,
-        required: true,
-        default: false
-    },
+    following: [
+        {
+            user: {
+                type: Schema.ObjectId,
+                ref: 'User'
+            }
+        }
+    ],
+    followers: [
+        {
+            user: {
+                type: Schema.ObjectId,
+                ref: 'User'
+            }
+        }
+    ],
     status: {
         type: String,
         required: true,

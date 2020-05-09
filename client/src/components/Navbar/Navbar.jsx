@@ -7,11 +7,12 @@ const Navbar = (props) => {
 
     let state = props.sidebar;
     let friendsBarElements = state.friendsbar.map(f => <FriendsBar name={f.name} key={f.id} id={f.id} />);
+    let userId = props.login.user.id;
 
     return (
         <nav className={styles.nav}>
             <div className={styles.item}>
-                <NavLink to="/profile" activeClassName={styles.active}>Profile</NavLink>
+                <NavLink to={`/profile/`+ userId } activeClassName={styles.active}>Profile</NavLink>
             </div>
             <div className={`${styles.item} ${styles.active}`}>
                 <NavLink to="/dialogs" activeClassName={styles.active}>Messages</NavLink>
