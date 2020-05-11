@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import "./Landing.css"
 import { NavLink } from "react-router-dom";
 import { setCurrentUser } from '../../redux/actions/actions'
 
-class Landing extends Component {
+class Landing extends React.Component {
 
     render() {
         return (

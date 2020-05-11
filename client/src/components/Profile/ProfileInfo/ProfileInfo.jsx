@@ -3,6 +3,7 @@ import Preloader from '../../common/preloader/Preloader';
 import avatar from './../../../assets/images/avatar.jpg';
 import bc from './../../../assets/images/b-c.jpg';
 import styles from './ProfileInfo.module.css';
+import { NavLink } from 'react-router-dom';
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -10,11 +11,17 @@ const ProfileInfo = (props) => {
   }
   return (
     <div>
+      <div className={styles.editProfile}>
+        <NavLink to={`/edit/` + props.profile._id}>Edit Profile</NavLink>
+      </div>
       <div className={styles.backgroundImage}>
         <img className={styles.bc} src={bc} alt="bc"></img>
       </div>
       <div className={styles.profileHeader}>
         <div className={styles.avatarImage}>
+          <div className={styles.updateImage}>
+            <NavLink to={`/edit/` + props.profile._id}>Update Image</NavLink>
+          </div>
           <img className={styles.avatar} src={avatar} alt="avatar"></img>
         </div>
         <div className={styles.shortInfo}>
@@ -31,9 +38,9 @@ const ProfileInfo = (props) => {
       </div>
       <div className={styles.fullInfo}>
         <h2>Full Description</h2>
-        { !props.profile.city
+        {!props.profile.city
           ? <span>User hasn't set information yet.</span>
-          : <div><div>{props.profile.city}</div><div>{props.profile.facebook}</div><div>{props.profile.instagram}</div></div> }
+          : <div><div>{props.profile.city}</div><div>{props.profile.facebook}</div><div>{props.profile.instagram}</div></div>}
       </div>
     </div>
   );

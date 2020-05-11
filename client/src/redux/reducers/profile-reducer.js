@@ -1,6 +1,7 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
+const EDIT_USER_PROFILE = 'EDIT-USER-PROFILE';
 
 let initialState = {
     posts: [
@@ -31,7 +32,9 @@ const profileReducer = (state = initialState, action) => {
                 newPostText: action.newText
             };
         case SET_USER_PROFILE:
-            return { ...state, profile: action.profile }
+            return { ...state, profile: action.profile };
+        case EDIT_USER_PROFILE:
+            return { ...state}
         default:
             return state;
     }

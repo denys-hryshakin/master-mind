@@ -17,6 +17,8 @@
   background-color: aliceblue;
   /* float: left; */
 }
+
+
 .shortInfo{
   display: inline-block;
 }
@@ -28,4 +30,61 @@
 }
 .fullInfo{
   padding: 5px 20px;
+}
+
+.editProfile{
+  position: absolute;
+  top: 120px;
+  right: 220px;
+}
+.editProfile a{
+  font-weight: 500;
+  padding: 7px 7px;
+  border-radius: 5px;
+  color: black;
+  background-color: aliceblue;
+  text-decoration: none;
+}
+
+.editProfile a:hover{
+  background-color: black;
+  color: aliceblue;
+  transition: all .2s ease-in-out;
+}
+
+.avatarImage{
+  transition: opacity .2s ease-in-out;
+}
+
+.updateImage{
+  position: absolute;
+  bottom: 10px;
+  opacity: 0;
+  z-index: 9999;
+  transition: opacity .2s ease-in-out;
+}
+.updateImage a{
+  background-image: url('../../../assets/images/white-photo-camera.svg');
+  background-repeat: no-repeat;
+  background-size: 23px;
+  
+  background-position: 15px 5px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 7px 15px 7px 45px;
+  border-radius: 5px;
+  color: black;
+  background-color: aliceblue;
+  text-decoration: none;
+}
+.updateImage a:hover{
+  background-image: url('../../../assets/images/black-photo-camera.svg');
+  background-repeat: no-repeat;
+  background-color: black;
+  color: aliceblue;
+  transition: all .2s ease-in-out;
+}
+
+.avatarImage:hover .updateImage{
+  opacity: 1;
 }

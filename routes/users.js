@@ -123,45 +123,54 @@ router.get('/profile/:id', async (req, res) => {
   }
 })
 
-router.post("/user/:user_id/follow-user", (req, res) => {
-
-  // check if the requested user and :user_id is same if same then 
-
-  if (req.user.id === req.params.user_id) {
-    return res.status(400).json({ alreadyfollow: "You cannot follow yourself" })
+router.put('/profile/edit/:id', async (req, res) => {
+  try {
+    const profile = await User.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    res.json({profile: profile})
+  } catch (error) {
+    res.json({ message: error })
   }
-
-  User.findById(req.params.user_id)
-    .then(user => {
-
-      // check if the requested user is already in follower list of other user then 
-
-      if (user.followers.filter(follower =>
-        follower.user.toString() === req.user.id).length > 0) {
-        return res.status(400).json({ alreadyfollow: "You already followed the user" })
-      }
-
-      user.followers.unshift({ user: req.user.id });
-      user.save()
-      User.findOne({ email: req.user.email })
-        .then(user => {
-          user.following.unshift({ user: req.params.user_id });
-          user.save().then(user => res.json(user))
-        })
-        .catch(err => res.status(404).json({ alradyfollow: "you already followed the user" }))
-    })
 })
 
-router.get('/api/portals', (req, res) => {
-  connection.query(SELECT_ALL_PORTALS, (err, portals) => {
-    if (err) {
-      return res.send(err);
-    } else {
-      return res.json({
-        portals: portals
-      });
-    }
-  })
-})
+// router.post("/user/:user_id/follow-user", (req, res) => {
+
+//   // check if the requested user and :user_id is same if same then 
+
+//   if (req.user.id === req.params.user_id) {
+//     return res.status(400).json({ alreadyfollow: "You cannot follow yourself" })
+//   }
+
+//   User.findById(req.params.user_id)
+//     .then(user => {
+
+//       // check if the requested user is already in follower list of other user then 
+
+//       if (user.followers.filter(follower =>
+//         follower.user.toString() === req.user.id).length > 0) {
+//         return res.status(400).json({ alreadyfollow: "You already followed the user" })
+//       }
+
+//       user.followers.unshift({ user: req.user.id });
+//       user.save()
+//       User.findOne({ email: req.user.email })
+//         .then(user => {
+//           user.following.unshift({ user: req.params.user_id });
+//           user.save().then(user => res.json(user))
+//         })
+//         .catch(err => res.status(404).json({ alradyfollow: "you already followed the user" }))
+//     })
+// })
+
+// router.get('/api/portals', (req, res) => {
+//   connection.query(SELECT_ALL_PORTALS, (err, portals) => {
+//     if (err) {
+//       return res.send(err);
+//     } else {
+//       return res.json({
+//         portals: portals
+//       });
+//     }
+//   })
+// })
 
 module.exports = router;

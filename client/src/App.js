@@ -17,6 +17,7 @@ import UsersContainer from './components/Users/UsersContainer';
 import { logoutUser, setCurrentUser } from "./redux/actions/actions";
 import store from './redux/redux-store';
 import setAuthToken from "./utils/setAuthToken";
+import ProfileSettings from "./components/Profile/ProfileSettings/ProfileSettings";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -49,6 +50,7 @@ const App = () => {
             <Route path="/register" render={() => <Register />} />
             <Route path="/login" render={() => <Login />} />
             <Switch>
+              <PrivateRoute path="/profile/edit/:userId?" component={ProfileSettings} />
               <PrivateRoute path="/profile/:userId?" component={ProfileContainer} />
               <PrivateRoute path="/dialogs" component={DialogsContainer} />
               <PrivateRoute path="/portals" component={PortalsContainer} />
