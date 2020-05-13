@@ -1,64 +1,69 @@
-.bc{
-  width: 100%; 
-  height: 260px;
+.container{
+  max-width: 1240px;
+  margin: 0 auto;
+  border: 1px solid rgba(29, 17, 17, 0.603);
+  box-shadow: 0 0 5px rgba(29, 17, 17, 0.603);
 }
 .profileHeader {
+  padding: 50px 50px 30px 50px;
   display: flex;
+  position: relative; 
+  z-index: 2;
+}
+
+
+/* BACKGROUND IMAGE */
+.bc{
   position: absolute;
-  top: 150px;
-  left: 420px;
-  z-index: 100;
+  width: 1240px; 
+  height: 260px;
+  z-index: 1;
 }
-.avatar {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin-right: 30px;
-  background-color: aliceblue;
-  /* float: left; */
-}
-
-
-.shortInfo{
-  display: inline-block;
-}
-.profileInfo{
-  color: white;
-  padding: 5px;
-  margin: 0 0 15px 15px;
-  background-color: #0e1220da;
-}
-.fullInfo{
-  padding: 5px 20px;
-}
-
-.editProfile{
+.editBackgroundImage{
   position: absolute;
-  top: 120px;
-  right: 220px;
+  top: 160px;
+  right: 170px;
+  z-index: 9999;
+  transition: opacity .2s ease-in-out;
 }
-.editProfile a{
+.editBackgroundImage a{
+  background-image: url('../../../assets/images/white-photo-camera.svg');
+  background-repeat: no-repeat;
+  background-size: 23px;
+  background-position: 15px 6px;
   font-weight: 500;
-  padding: 7px 7px;
+  padding: 7px 15px 7px 45px;
   border-radius: 5px;
   color: black;
-  background-color: aliceblue;
+  background-color: rgba(240, 248, 255, 0.6);
   text-decoration: none;
 }
 
-.editProfile a:hover{
-  background-color: black;
+.editBackgroundImage a:hover{
+  background-image: url('../../../assets/images/black-photo-camera.svg');
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.6);
   color: aliceblue;
   transition: all .2s ease-in-out;
 }
 
+
+
+
+/* AVATAR */
+.avatar {
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+  margin-right: 30px;
+  background-color: aliceblue;
+}
 .avatarImage{
   transition: opacity .2s ease-in-out;
 }
-
 .updateImage{
   position: absolute;
-  bottom: 10px;
+  bottom: 60px;
   opacity: 0;
   z-index: 9999;
   transition: opacity .2s ease-in-out;
@@ -67,24 +72,47 @@
   background-image: url('../../../assets/images/white-photo-camera.svg');
   background-repeat: no-repeat;
   background-size: 23px;
-  
   background-position: 15px 5px;
   font-size: 14px;
   font-weight: 500;
-  padding: 7px 15px 7px 45px;
+  padding: 7px 30px 7px 55px;
   border-radius: 5px;
   color: black;
-  background-color: aliceblue;
+  background-color: rgba(240, 248, 255, 0.9);
   text-decoration: none;
 }
 .updateImage a:hover{
   background-image: url('../../../assets/images/black-photo-camera.svg');
   background-repeat: no-repeat;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.7);
   color: aliceblue;
   transition: all .2s ease-in-out;
 }
-
 .avatarImage:hover .updateImage{
   opacity: 1;
+}
+
+
+
+
+/* PROFILE INFO */
+.shortInfo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.profileInfo{
+  color: white;
+  padding: 5px;
+  margin: 0 0 15px 15px;
+  background-color: #0e1220da;
+}
+.fullInfo{
+  position: absolute;
+  right: 200px;
+  padding: 5px 50px;
+}
+.fullInfo h2{
+  margin: 10px 0;
 }

@@ -10,12 +10,12 @@ const ProfileInfo = (props) => {
     return <Preloader />
   }
   return (
-    <div>
-      <div className={styles.editProfile}>
-        <NavLink to={`/edit/` + props.profile._id}>Edit Profile</NavLink>
-      </div>
+    <div className={styles.container}>
       <div className={styles.backgroundImage}>
         <img className={styles.bc} src={bc} alt="bc"></img>
+        <div className={styles.editBackgroundImage}>
+          <NavLink to={`/edit/` + props.profile._id}>Update Background Image</NavLink>
+        </div>
       </div>
       <div className={styles.profileHeader}>
         <div className={styles.avatarImage}>

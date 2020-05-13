@@ -45,55 +45,69 @@ class Login extends Component {
         };
         this.props.loginUser(userData);
     };
-    render() {  
+    render() {
         const { errors } = this.state;
         return (
-            <div className={`loginMain ${this.props.login.isAuthenticated ? "" : "width"}`}>
-                <div>
-                    <h1><b>Sign in</b></h1>
-                    <p>Don't have an account? <NavLink to="/register">Register</NavLink></p>
+            <div className="container">
+                <div className="loginMain">
+                    <div className="loginBlock">
+                        <h1><b>Sign in</b></h1>
+                        <form className='loginForm' noValidate onSubmit={this.onSubmit}>
+                            <div>
+                                <input
+                                    onChange={this.onChange}
+                                    value={this.state.email}
+                                    error={errors.email}
+                                    className={classnames("", {
+                                        invalid: errors.email || errors.emailnotfound
+                                    })}
+                                    id="email"
+                                    type="email"
+                                    placeholder="Email"
+                                    autoFocus
+                                />
+                                <label htmlFor="email"></label>
+                                <div className='errorMessage'>
+                                    {errors.email}
+                                    {errors.emailnotfound}
+                                </div>
+                            </div>
+                            <div>
+                                <input
+                                    onChange={this.onChange}
+                                    value={this.state.password}
+                                    error={errors.password}
+                                    className={classnames("", {
+                                        invalid: errors.password || errors.passwordincorrect
+                                    })}
+                                    id="password"
+                                    type="password"
+                                    placeholder="Password"
+                                />
+                                <label htmlFor="password"></label>
+                                <div className='errorMessage'>
+                                    {errors.password}
+                                    {errors.passwordincorrect}
+                                </div>
+                            </div>
+                            <div>
+                                <button type="submit">Login</button>
+                            </div>
+                        </form>
+                        <p>Don't have an account? <NavLink to="/register">Sign up</NavLink></p>
+                    </div>
+                    <div className="benefitsBlock">
+                        <h1>Benefits of using MasterMind</h1>
+                        <h3>Personalized Recommendations</h3>
+                        <p>Discover shows you'll love.</p>
+                        <h3>Your Watchlist</h3>
+                        <p>Track everything you want to watch and receive e-mail when movies open in theaters.</p>
+                        <h3>Your Ratings</h3>
+                        <p>Rate and remember everything you've seen.</p>
+                        <h3>Contribute to IMDb</h3>
+                        <p>Add data that will be seen by millions of people and get cool badges.</p>
+                    </div>
                 </div>
-                <form className='loginForm' noValidate onSubmit={this.onSubmit}>
-                    <div>
-                        <input
-                            onChange={this.onChange}
-                            value={this.state.email}
-                            error={errors.email}
-                            className={classnames("", {
-                                invalid: errors.email || errors.emailnotfound
-                            })}
-                            id="email"
-                            type="email"
-                            placeholder="Email"
-                        />
-                        <label htmlFor="email"></label>
-                        <span className='errorMessage'>
-                            {errors.email}
-                            {errors.emailnotfound}
-                        </span>
-                    </div>
-                    <div>
-                        <input
-                            onChange={this.onChange}
-                            value={this.state.password}
-                            error={errors.password}
-                            className={classnames("", {
-                                invalid: errors.password || errors.passwordincorrect
-                            })}
-                            id="password"
-                            type="password"
-                            placeholder="Password"
-                        />
-                        <label htmlFor="password"></label>
-                        <span className='errorMessage'>
-                            {errors.password}
-                            {errors.passwordincorrect}
-                        </span>
-                    </div>
-                    <div>
-                        <button type="submit">Login</button>
-                    </div>
-                </form>
             </div>
         );
     }

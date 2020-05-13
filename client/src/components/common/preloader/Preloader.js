@@ -4,9 +4,11 @@ import styles from './Preloader.module.css'
 
 let Preloader = props => {
     return (
-        <div className={styles.preloader}>
-            <img src={preloader} alt="" />
-            <h1>Information is loading!</h1>
+        <div className={styles.container}>
+            <div className={styles.preloader}>
+                <img src={preloader} alt="" />
+                <h1>Information is loading!</h1>
+            </div>
         </div>
 
     );

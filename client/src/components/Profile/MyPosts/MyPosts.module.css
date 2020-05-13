@@ -2,29 +2,74 @@
   grid-area: content;
   background-color: blanchedalmond;
 }
+.container{
+  max-width: 1240px;
+  margin: 0 auto;
+  border: 1px solid rgba(29, 17, 17, 0.603);
+  box-shadow: 0 0 5px rgba(29, 17, 17, 0.603);
+}
+
 
 .postsBlock {
-  padding: 10px 20px 10px;
+  width: 750px;
+  padding: 10px 50px 10px;
+}
+
+.newPostBlock h2{
+  margin: 10px 5px;
+}
+
+.newPostForm input{
+  width: 600px;
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid #007cf0;
+  border-radius: 5px;
+}
+.newPostForm input:focus{
+  outline: none;
+  border:#007cf0 1px solid;
+  box-shadow: 0 0 8px #007cf0;
+}
+.newPostForm textarea{
+  width: 600px;
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid #007cf0;
+  border-radius: 5px;
+}
+.newPostForm textarea:focus{
+  outline: none;
+  border:#007cf0 1px solid;
+  box-shadow: 0 0 8px #007cf0;
 }
 
 .posts {
   margin-top: 10px;
 }
+.posts h2{
+  margin: 10px 5px;
+}
+
 
 .btnAddPost{
-  padding: 5px 10px;
-  border-radius: 10px;
-  color: white;
-  font-weight: bold;
-  background-color: black;
-  outline: none;
-  
+  color: aliceblue;
+  background-color: #056dce;
+  border: 1px solid #007cf0;
+  box-shadow: 0 0 8px #056dce;
+  border-radius: 5px;
+  font-weight: 600;
+  height: 35px;
+  width: 600px;
+  margin: 12px 12px;
 }
 
 .btnAddPost:hover{
-  color: black;
-  background-color: #007cf0;
-  transition: all .2s linear;
-  transform: scale(1.07);
+  background-color: #002c8a;
+  transition: all .2s ease-in-out;
+  box-shadow: 0 0 5px #002c8a;
+}
+.btnAddPost:focus{
+  outline: none;
 }
 

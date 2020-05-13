@@ -1,44 +1,86 @@
-/* LOGIN */
 .loginMain{
+    border: 1px solid rgba(29, 17, 17, 0.603);
+    box-shadow: 0 0 5px rgba(29, 17, 17, 0.603);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+/* LOGIN */
+.loginBlock{
+    width: auto;
+    margin: 0;
     padding: 10px;
     text-align: center;
+    position: relative;
 }
-.width{
-    width: 1140px;
+.loginBlock::after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 300px;
+    top: 3px;
+    right: -50px;
+    margin-left: 30px;
+    background-color: rgba(0, 0, 0, 0.829);
 }
-.loginMain a{
+.loginBlock h1{
+    margin: 15px 0 15px 0;
+}
+.loginBlock a{
     text-decoration: none;
     color: #007cf0;
 }
-.loginMain a:hover{
+.loginBlock a:hover{
     text-decoration: underline;
 }
 
+.loginForm{
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+}
 
 /* LOGIN FORM */
-.loginMain input{
+.loginBlock input{
+    width: 300px;
     margin: 5px;
     padding: 10px;
     border: 1px solid #007cf0;
     border-radius: 5px;
 }
-.loginMain input:focus{
+.loginBlock input:focus{
     outline: none;
-    border-top: 2px solid #007cf0;
+    border:#007cf0 1px solid;
+    box-shadow: 0 0 8px #007cf0;
 }
-.loginMain button{
+.loginBlock button{
     color: aliceblue;
-    background-color: #007cf0;
+    background-color: #056dce;
     border: 1px solid #007cf0;
+    box-shadow: 0 0 8px #056dce;
     border-radius: 5px;
+    font-weight: 600;
     height: 35px;
-    width: 70px;
-    margin: 5px;
+    width: 300px;
+    margin: 15px 5px;
 }
-.loginMain button:hover{
-    background-color: #0e1220da;
+.loginBlock button:hover{
+    background-color: #002c8a;
     transition: all .2s ease-in-out;
+    box-shadow: 0 0 5px #002c8a;
 }
-.loginMain button:focus{
+.loginBlock button:focus{
     outline: none;
+}
+
+.benefitsBlock{
+    text-align: start;
+    padding-left: 10px;
+}
+.benefitsBlock h3{
+    margin: 0;
+}
+.benefitsBlock p{
+    margin: 0 0 15px 0;
 }

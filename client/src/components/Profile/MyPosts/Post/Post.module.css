@@ -1,10 +1,27 @@
 .item{
+  width: 600px;
   color: #000000;
   padding: 10px;
+  position: relative;
+  display: flex;
+}
+.item::after{
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  height: 0.9px;
+  width: 100%;
+  margin-top: 5px;
+  background-color: #00000065;
 }
 
 .avatar {
   width: 50px;
   height: 50px;
-  border-radius: 50%;
+  border-radius: 50%; 
+}
+.postInfo{
+  padding-left: 20px;
+  display: inline-block;
 }

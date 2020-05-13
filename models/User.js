@@ -12,11 +12,7 @@ const UserSchema = mongoose.Schema({
     },
     login: {    
         type: String,
-        unique: true,
-        lowercase: true,
-        trim: true,
         required: true,
-        minlength: 3
     },
     password: {
         type: String,
@@ -26,22 +22,22 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    following: [
-        {
-            user: {
-                type: Schema.ObjectId,
-                ref: 'User'
-            }
-        }
-    ],
-    followers: [
-        {
-            user: {
-                type: Schema.ObjectId,
-                ref: 'User'
-            }
-        }
-    ],
+    // following: [
+    //     {
+    //         user: {
+    //             type: Schema.ObjectId,
+    //             ref: 'User'
+    //         }
+    //     }
+    // ],
+    // followers: [
+    //     {
+    //         user: {
+    //             type: Schema.ObjectId,
+    //             ref: 'User'
+    //         }
+    //     }
+    // ],
     status: {
         type: String,
         required: true,
@@ -51,6 +47,19 @@ const UserSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    userImg: {
+        type: String,
+        default: null
+    },
+    country: {
+        type: String,
+        default: null
+    },
+    city: {
+        type: String,
+        default: null
+    },
 })
+
 
 module.exports = mongoose.model('User', UserSchema)

@@ -18,6 +18,8 @@ import { logoutUser, setCurrentUser } from "./redux/actions/actions";
 import store from './redux/redux-store';
 import setAuthToken from "./utils/setAuthToken";
 import ProfileSettings from "./components/Profile/ProfileSettings/ProfileSettings";
+import ScrollToTop from './components/common/ScrollToTop/ScrollToTop';
+
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -42,12 +44,14 @@ if (localStorage.jwtToken) {
 const App = () => {
   return (
     <BrowserRouter>
+    <ScrollToTop />
       <Provider store={store}>
         <div className="app-wrapper">
           <HeaderContainer />
           <PrivateRoute component={NavbarContainer} />
           <div className="app-wrapper-content">
-            <Route path="/register" render={() => <Register />} />
+            <Route exact path="/" render={() => <Landing />} />
+            <Route exact path="/register" render={() => <Register />} />
             <Route path="/login" render={() => <Login />} />
             <Switch>
               <PrivateRoute path="/profile/edit/:userId?" component={ProfileSettings} />
@@ -57,9 +61,8 @@ const App = () => {
               <PrivateRoute path="/users" component={UsersContainer} />
               <PrivateRoute path="/friends" component={FriendListContainer} />
             </Switch>
-            <Route exact path="/" render={()=> <Landing /> } />
-            <Route path="/news" render={()=> <div /> } />
-            <Route path="/music" render={()=> <div /> } />
+            <Route path="/news" render={() => <div />} />
+            <Route path="/music" render={() => <div />} />
           </div>
         </div>
       </Provider>

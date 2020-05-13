@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express()
 const User = require('../models/User')
+const Photo = require('../models/Photo')
 const cors = require('cors')
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -21,8 +22,8 @@ router.post("/register", (req, res) => {
   if (!isValid) {
     return res.status(400).json(errors);
   }
-  User.findOne({ email: req.body.email }).then(user => {
-    if (user) {
+  User.find().then(user => {
+    if (user.email) {
       return res.status(400).json({ email: "Email already exists" });
     } else {
       const newUser = new User({
@@ -81,7 +82,7 @@ router.post("/login", (req, res) => {
           payload,
           keys.secretOrKey,
           {
-            expiresIn: 31556926 // 1 year in seconds
+            expiresIn: 86400 // 24 hours  //31556926 - 1 year in seconds
           },
           (err, token) => {
             res.json({
@@ -93,7 +94,7 @@ router.post("/login", (req, res) => {
       } else {
         return res
           .status(400)
-          .json({ passwordincorrect: "Password incorrect" });
+          .json({ passwordincorrect: "• Password is incorrect" });
       }
     });
   });
@@ -126,7 +127,7 @@ router.get('/profile/:id', async (req, res) => {
 router.put('/profile/edit/:id', async (req, res) => {
   try {
     const profile = await User.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    res.json({profile: profile})
+    res.json({ profile: profile })
   } catch (error) {
     res.json({ message: error })
   }

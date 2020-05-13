@@ -1,47 +1,76 @@
+.container{
+    max-width: 1240px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+}
 .nav{
     grid-area: nav;
-    background-color: #0e1220da;    
+    background-color: #0e1220ec;    
 }
-
-.item{
-    padding: 5px 10px;
-}
-
-.item:last-child::before{
+.nav::after{
     content: '';
     display: block;
     height: 1px;
     background-color: rgba(173, 154, 210, 0.829);
+  }
+
+.item{
+    padding: 7px 10px;
 }
 
-.item:last-child::after{
+/* .item:last-child::before{
+    content: '';
+    display: block;
+    height: 1px;
+    background-color: rgba(173, 154, 210, 0.829);
+} */
+
+/* .item:last-child::after{
     content: "";
     display: block;
     height: .9px;
     background-color: rgba(173, 154, 210, 0.829);
-}
+} */
 
-.item:last-child{
+/* .item:last-child{
     padding: 14px 0px 5px;
     font-size: 25px;  
-}
+} */
 
 .item a{
-    display: flex;
-    justify-content: center;
+    position: relative;
     color: aliceblue;
     text-decoration: none;
+    font-size: 18px;
 }
 
 .item a.active{
     color: #007cf0;
 }
-
 .item a:hover{
     color: #007cf0;
     transition: all .2s ease-out;
+    transform: scaleX(1)
 }
-
+.item a::after{
+    content: "";
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    top: 25px;
+    right: 0;
+    z-index: 1;
+    background-color: #007cf0;
+    transition: all .3s ease-out;
+    transform: scaleX(0);
+    opacity: 0;
+}
+.item a:hover::after{
+    opacity: 1;
+    transform: scaleX(1);
+}
 /******************************* FRIEND BAR */
 
 .friendItem{
