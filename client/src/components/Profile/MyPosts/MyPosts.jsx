@@ -8,7 +8,8 @@ const MyPosts = (props) => {
 
   let newPostElement = React.createRef();
   let newTitleElement = React.createRef();
-
+  
+  // let userName = props.posts.userId.first_name;
   let onAddPost = () => {
     props.addPost();
   }
@@ -21,7 +22,6 @@ const MyPosts = (props) => {
     let titleText = newTitleElement.current.value;
     props.updateNewPostTitle(titleText);
   }
-
   return (
     <div className={styles.container}>
       <div className={styles.postsBlock}>
