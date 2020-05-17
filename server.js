@@ -22,7 +22,7 @@ app.get('/api', (req, res) => {
     res.send('Welcome to the API of the project "MasterMind"!');
 })
 app.use('/api/users', usersRoutes)
-app.use('/api/posts/', postsRoutes)
+app.use('/api/posts', postsRoutes)
 // DB Config
 const db = require("./config/keys").mongoURI;
 

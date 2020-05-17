@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addPost, setPosts } from '../../../redux/reducers/profile-reducer';
+import { addPost, setPosts, updatePostText, updatePostTitle } from '../../../redux/reducers/profile-reducer';
 import MyPosts from './MyPosts';
 import React from 'react';
 import * as axios from 'axios'
@@ -10,18 +10,34 @@ class MyPostsContainer extends React.Component {
       .then(response => {
         this.props.setPosts(response.data.posts);
       });
-    axios.post(`http://localhost:4000/api/posts/newPost/` + this.props.userId)
-      .then(response => {
-        this.props.addPost(response.data);
-      });
   }
+  // onSubmit = e => {
+  //   e.preventDefault();
+  //   axios.post(`http://localhost:4000/api/posts/newPost/` + this.props.userId)
+  //     .then(res => {
+  //       this.props.addPost(res.data);
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     })
+      
+  // }
+
+  // onTitleChange = e => {
+  //   let postTitle = e.target.value;
+  //   this.props.updatePostTitle(postTitle);
+  // };
+  // onTextChange = e => {
+  //   let postText = e.target.value;
+  //   this.props.updatePostText(postText);
+  // };
 
   render() {
     return (
       <div>
         <MyPosts {...this.props}
-          posts={this.props.posts}
-          profile={this.props.profile} />
+          profile={this.props.profile}
+          login={this.props.login} />
       </div>
     );
   }
@@ -29,10 +45,10 @@ class MyPostsContainer extends React.Component {
 
 let mapStateToProps = (state) => {
   return {
-    posts: state.profilePage.posts,
+    profile: state.profilePage,
     login: state.login,
 
   }
 }
 
-export default connect(mapStateToProps, { addPost, setPosts })(MyPostsContainer);
+export default connect(mapStateToProps, { addPost, setPosts, updatePostTitle, updatePostText })(MyPostsContainer);

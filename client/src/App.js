@@ -19,6 +19,7 @@ import store from './redux/redux-store';
 import setAuthToken from "./utils/setAuthToken";
 import ProfileSettings from "./components/Profile/ProfileSettings/ProfileSettings";
 import ScrollToTop from './components/common/ScrollToTop/ScrollToTop';
+import NewPost from "./components/Profile/MyPosts/NewPost";
 
 
 // Check for token to keep user logged in
@@ -51,11 +52,12 @@ const App = () => {
           <PrivateRoute component={NavbarContainer} />
           <div className="app-wrapper-content">
             <Route exact path="/" render={() => <Landing />} />
-            <Route exact path="/register" render={() => <Register />} />
+            <Route path="/register" render={() => <Register />} />
             <Route path="/login" render={() => <Login />} />
             <Switch>
               <PrivateRoute path="/profile/edit/:userId?" component={ProfileSettings} />
               <PrivateRoute path="/profile/:userId?" component={ProfileContainer} />
+              <PrivateRoute path="/new-post" component={NewPost} />
               <PrivateRoute path="/dialogs" component={DialogsContainer} />
               <PrivateRoute path="/portals" component={PortalsContainer} />
               <PrivateRoute path="/users" component={UsersContainer} />

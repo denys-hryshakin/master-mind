@@ -9,7 +9,7 @@ const GET_ERRORS = "GET_ERRORS";
 // Register User
 export const registerUser = (userData, history) => dispatch => {
   axios
-    .post("api/users/register", userData)
+    .post("/api/users/register", userData)
     .then(res => history.push("/login")) // re-direct to login on successful register
     .catch(err =>
       dispatch({
@@ -18,10 +18,23 @@ export const registerUser = (userData, history) => dispatch => {
       })
     );
 };
+
+export const addPost = (postData) => dispatch => {
+  axios
+    .post("/api/posts/new", postData)
+    .then(res => console.log(res.data))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+}
+
 // Login - get user token
 export const loginUser = userData => dispatch => {
   axios
-    .post("api/users/login", userData)
+    .post("/api/users/login", userData)
     .then(res => {
       // Save to localStorage
       // Set token to localStorage

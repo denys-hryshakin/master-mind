@@ -5,7 +5,8 @@ module.exports = function validatePostInput(data) {
     // Convert empty fields to an empty string so we can use validator functions
     data.title = !isEmpty(data.title) ? data.title : "";
     data.text = !isEmpty(data.text) ? data.text : "";
-    
+    data.userId = !isEmpty(data.userId) ? data.userId : "";
+
     // Name checks
     if (Validator.isEmpty(data.title)) {
         errors.title = "• Title is required!";
@@ -16,6 +17,9 @@ module.exports = function validatePostInput(data) {
         errors.text = "• Text is required!";
     } else if (!Validator.isLength(data.text, { min: 50, max: 1500 })) {
         errors.text = "• The text must contain from 50 to 1500 characters";
+    }
+    if (Validator.isEmpty(data.userId)) {
+        errors.userId = "• UserId is required!";
     }
     return {
         errors,

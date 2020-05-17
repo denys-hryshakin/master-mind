@@ -7,8 +7,6 @@ let mapStateToProps = (state) => {
         dialogsPage: state.dialogsPage
     }
 }
-
-
-const DialogsContainer = connect(mapStateToProps, {sendMessage, updateNewMessageBody} )(Dialogs);
+const DialogsContainer = connect(mapStateToProps, { sendMessage, updateNewMessageBody })(Dialogs);
 
 export default DialogsContainer;
