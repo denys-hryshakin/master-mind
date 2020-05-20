@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express()
 const User = require('../models/User')
-const Photo = require('../models/Photo')
+const Avatar = require('../models/Image')
 const cors = require('cors')
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -75,7 +75,8 @@ router.post("/login", (req, res) => {
           id: user.id,
           first_name: user.first_name,
           surname: user.surname,
-          login: user.login
+          login: user.login,
+          email: user.email
         };
         // Sign token
         jwt.sign(
@@ -124,10 +125,29 @@ router.get('/profile/:id', async (req, res) => {
   }
 })
 
-router.put('/profile/edit/:id', async (req, res) => {
+router.post('/edit/:id', async (req, res) => {
   try {
-    const profile = await User.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    res.json({ profile: profile })
+    await User.findByIdAndRemove(req.params.id)
+    .then(user => {
+      const updateUser = new User({
+        first_name: req.body.first_name,
+        surname: req.body.surname,
+        email: req.body.email,
+        login: req.body.login
+      });
+      updateUser
+          .save()
+          .then(user => {
+              console.log(user);
+              res.status(201).json(user);
+          })
+          .catch(err => {
+              console.log(err);
+              res.status(500).json({
+                  error: err
+              });
+          });
+});
   } catch (error) {
     res.json({ message: error })
   }

@@ -1,0 +1,49 @@
+.content{
+  grid-area: content;
+  background-color: blanchedalmond;
+}
+.container-block{
+  max-width: 1240px;
+  margin: 0 auto;
+  border: 1px solid rgba(29, 17, 17, 0.603);
+  box-shadow: 0 0 5px rgba(29, 17, 17, 0.603);
+}
+
+.postsBlock {
+  width: 750px;
+  padding: 10px 50px 10px;
+}
+.NavLink{
+  margin: 10px 0 20px 0;
+}
+.NavLink a{
+  text-decoration: none;
+  padding: 10px 40px;
+  font-size: 15px;
+  color: aliceblue;
+  background-color: #056dce;
+  border: 1px solid #007cf0;
+  box-shadow: 0 0 8px #056dce;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.NavLink a:hover{
+  background-color: #002c8a;
+  transition: all .2s ease-in-out;
+  box-shadow: 0 0 5px #002c8a;
+}
+.NavLink a:focus{
+  outline: none;
+}
+
+.posts {
+  margin-top: 10px;
+}
+.posts h2{
+  margin: 10px 5px;
+}
+
+.display{
+  display: none;
+}

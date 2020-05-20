@@ -1,0 +1,76 @@
+.container{
+    height: calc(100vh - 193px);
+}
+
+/* REGISTER */
+.registerMain{
+    width: 400px;
+    margin: 0 auto;
+    border: 1px solid rgba(29, 17, 17, 0.603);
+    box-shadow: 0 0 5px rgba(29, 17, 17, 0.603);
+    border-radius: 1%;
+    padding: 10px;
+    text-align: center;
+}
+
+.registerMain h1{
+    margin: 15px 0 15px 0;
+}
+.registerMain a{
+    text-decoration: none;
+    color: #007cf0;
+}
+.registerMain a:hover{
+    text-decoration: underline;
+}
+
+
+/* ERROR */
+.errorMessage {
+    font-size: 13px;
+    font-weight: 500;
+    color: #f00000;
+    margin: 0 10px;
+    text-align: start;
+}
+
+
+/* REGISTER FORM */
+.registerForm{
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center ;
+}
+.registerMain input{
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #3870a3;
+    border-radius: 5px;
+    width: 300px;
+    
+}
+.registerMain input:focus{
+    outline: none;
+    border:#007cf0 1px solid;
+    box-shadow: 0 0 8px #007cf0;
+}
+
+.registerForm button{
+    color: aliceblue;
+    background-color: #056dce;
+    border: 1px solid #007cf0;
+    border-radius: 5px;
+    font-weight: 600;
+    height: 35px;
+    width: 300px;
+    margin: 15px 5px;
+    box-shadow: 0 0 8px #056dce;
+}
+.registerMain button:hover{
+    background-color: #002c8a;
+    transition: all .2s ease-in-out;
+    box-shadow: 0 0 8px #002c8a;
+}
+.registerMain button:focus{
+    outline: none;
+}

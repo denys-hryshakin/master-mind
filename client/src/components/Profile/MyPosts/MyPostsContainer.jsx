@@ -1,43 +1,34 @@
-import { connect } from 'react-redux';
-import { addPost, setPosts, updatePostText, updatePostTitle } from '../../../redux/reducers/profile-reducer';
-import MyPosts from './MyPosts';
+import * as axios from 'axios';
 import React from 'react';
-import * as axios from 'axios'
+import { connect } from 'react-redux';
+import { setPosts } from '../../../redux/reducers/profile-reducer';
+import { deletePostReq } from '../../../redux/actions/actions';
+import MyPosts from './MyPosts';
 
 class MyPostsContainer extends React.Component {
   componentDidMount() {
-    axios.get(`http://localhost:4000/api/posts/userPosts/` + this.props.userId)
+    let userId = this.props.userId;
+    if (!userId) {
+      userId = this.props.login.user.id;
+    }
+    axios.get(`http://localhost:4000/api/posts/` + userId)
       .then(response => {
         this.props.setPosts(response.data.posts);
       });
   }
-  // onSubmit = e => {
-  //   e.preventDefault();
-  //   axios.post(`http://localhost:4000/api/posts/newPost/` + this.props.userId)
-  //     .then(res => {
-  //       this.props.addPost(res.data);
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     })
-      
-  // }
-
-  // onTitleChange = e => {
-  //   let postTitle = e.target.value;
-  //   this.props.updatePostTitle(postTitle);
-  // };
-  // onTextChange = e => {
-  //   let postText = e.target.value;
-  //   this.props.updatePostText(postText);
-  // };
+  onClick = (e, id) => {
+    e.preventDefault();
+    this.props.deletePostReq(id)
+    window.location.reload();
+  }
 
   render() {
     return (
       <div>
         <MyPosts {...this.props}
           profile={this.props.profile}
-          login={this.props.login} />
+          login={this.props.login}
+          onClick={this.onClick} />
       </div>
     );
   }
@@ -51,4 +42,4 @@ let mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { addPost, setPosts, updatePostTitle, updatePostText })(MyPostsContainer);
+export default connect(mapStateToProps, { setPosts, deletePostReq })(MyPostsContainer);

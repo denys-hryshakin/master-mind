@@ -1,7 +1,8 @@
+/* ITEM */
 .item{
-  width: 600px;
+  width: 750px;
   color: #000000;
-  padding: 10px;
+  padding: 10px 10px 4px 10px;
   position: relative;
   display: flex;
 }
@@ -16,12 +17,129 @@
   background-color: #00000065;
 }
 
+
+
+
+/* DISPLAY: NONE */
+.display{
+  display: none;
+}
+
+
+
+
+/* AVATAR */
 .avatar {
   width: 50px;
   height: 50px;
   border-radius: 50%; 
 }
+
+
+
+
+/* POST INFO */
 .postInfo{
   padding-left: 20px;
   display: inline-block;
+}
+.postInfo div:last-child{
+  padding-bottom: 0;
+}
+
+.title{
+  padding: 3px;
+  font-size: 19px;
+  font-weight: bold;
+}
+.text{
+  padding: 3px;
+  width: 650px;
+  line-height: 1.5em;
+}
+.date{
+  padding: 3px;
+  font-size: 13px;
+  font-style: italic;
+  margin: 20px 15px 0 0;
+}
+
+
+
+
+
+/* BUTTONS */
+.btnBlock{
+  display: flex;
+}
+
+.btnDeletePost{
+  color: aliceblue;
+  background-color: #911600;
+  border: 1px solid #911600;
+  box-shadow: 0 0 8px #911600;
+  border-radius: 5px;
+  font-weight: 600;
+  height: 30px;
+  width: 180px;
+  font-size: 12px;
+  margin: 10px 10px;
+}
+.btnDeletePost:hover{
+  background-color: #882614;
+  transition: all .2s ease-in-out;
+  box-shadow: 0 0 5px #882614;
+}
+.btnDeletePost:focus{
+  outline: none;
+}
+
+
+.NavLink{
+  margin-top: 13px;
+}
+.NavLink a{
+  font-size: 12px;
+  text-decoration: none;
+  color: aliceblue;
+  background-color: #056dce;
+  border: 1px solid #007cf0;
+  box-shadow: 0 0 8px #056dce;
+  border-radius: 5px;
+  font-weight: 600;
+  padding: 6px 55.8px;
+  margin-top: 15px;
+}
+.NavLink a:hover{
+  background-color: #002c8a;
+  transition: all .2s ease-in-out;
+  box-shadow: 0 0 5px #002c8a;
+}
+.NavLink a:focus{
+  outline: none;
+}
+
+
+
+
+
+/* USER INFO */
+.userInfo{
+  padding: 3px;
+  display: flex;
+}
+.name{
+  color: #056dce;
+  font-weight: 500;
+  font-size: 17px;
+  margin-right: 4px;
+}
+.surname{
+  color: #056dce;
+  font-weight: 500;
+  font-size: 17px;
+}
+.login{
+  color: rebeccapurple;
+  font-size: 17px;
 }

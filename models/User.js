@@ -48,7 +48,8 @@ const UserSchema = mongoose.Schema({
         default: Date.now
     },
     userImg: {
-        type: String,
+        type: Buffer,
+        contentType: String,
         default: null
     },
     country: {

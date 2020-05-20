@@ -1,4 +1,4 @@
-.container{
+.container-block{
   max-width: 1240px;
   margin: 0 auto;
   border: 1px solid rgba(29, 17, 17, 0.603);
@@ -10,7 +10,10 @@
   position: relative; 
   z-index: 2;
 }
-
+ 
+.display{
+  display: none;
+}
 
 /* BACKGROUND IMAGE */
 .bc{

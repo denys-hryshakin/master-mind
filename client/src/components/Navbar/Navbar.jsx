@@ -19,10 +19,10 @@ const Navbar = (props) => {
                     <NavLink to="/dialogs" activeClassName={styles.active}>Messages</NavLink>
                 </div>
                 <div className={styles.item}>
-                    <NavLink to="/news" activeClassName={styles.active}>News</NavLink>
+                    <NavLink to="/news/local" activeClassName={styles.active}>Local News</NavLink>
                 </div>
                 <div className={styles.item}>
-                    <NavLink to="/music" activeClassName={styles.active}>Music</NavLink>
+                    <NavLink to="/categories" activeClassName={styles.active}>Categories</NavLink>
                 </div>
                 <div className={styles.item}>
                     <NavLink to="/portals" activeClassName={styles.active}>Portals</NavLink>
@@ -31,7 +31,7 @@ const Navbar = (props) => {
                     <NavLink to="/users" activeClassName={styles.active}>Find Users</NavLink>
                 </div>
                 <div className={styles.item}>
-                    <NavLink to={`/edit/` + userId}  activeClassName={styles.active}>Settings</NavLink>
+                    <NavLink to={`/settings/` + userId} activeClassName={styles.active}>Settings</NavLink>
                 </div>
                 { /*<div className={styles.item}>
                 <NavLink to="/friends" activeClassName={styles.active}>Friends</NavLink>

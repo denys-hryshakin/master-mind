@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Route Imports
 const usersRoutes = require('./routes/users')
 const postsRoutes = require('./routes/posts')
+const avatarsRoutes = require('./routes/images')
 
 // Passport middleware
 app.use(passport.initialize());
@@ -23,6 +24,8 @@ app.get('/api', (req, res) => {
 })
 app.use('/api/users', usersRoutes)
 app.use('/api/posts', postsRoutes)
+// app.use('/uploads', express.static('uploads'))
+app.use('/api/avatar', avatarsRoutes)
 // DB Config
 const db = require("./config/keys").mongoURI;
 
@@ -30,7 +33,8 @@ const db = require("./config/keys").mongoURI;
 mongoose.connect(db, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    useFindAndModify: false
 })
     .then(() => {
         console.log("MongoDB successfully connected")

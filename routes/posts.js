@@ -9,7 +9,7 @@ router.use(cors())
 // Load input validation
 const validatePostInput = require("../validation/post");
 
-router.post("/new", (req, res) => {
+router.post("/new/:userId", (req, res) => {
     // Form validation
     const { errors, isValid } = validatePostInput(req.body);
     // Check validation
@@ -20,7 +20,7 @@ router.post("/new", (req, res) => {
         .then(post => {
                 const newPost = new Post({
                     title: req.body.title,
-                    userId: req.body.userId,
+                    userId: req.params.userId,
                     text: req.body.text,
                 });
                 newPost
@@ -38,10 +38,11 @@ router.post("/new", (req, res) => {
         });
 });
 
-router.get('/userPosts/:userId', async (req, res) => {
+router.get('/:userId', async (req, res) => {
     try {
         let posts = await Post.find({ userId: req.params.userId })
-            .populate('userId', '_id first_name email')
+            .populate('userId', '_id first_name email login surname')
+            .sort('-date')
         res.json({
             posts: posts,
             totalCount: posts.length
@@ -50,6 +51,42 @@ router.get('/userPosts/:userId', async (req, res) => {
         return res.json({
             error: error
         })
+    }
+})
+router.post("/update/:userId/:id", (req, res) => {
+     // Form validation
+     const { errors, isValid } = validatePostInput(req.body);
+     // Check validation
+     if (!isValid) {
+         return res.status(400).json(errors);
+     }
+    Post.findByIdAndRemove(req.params.id)
+        .then(post => {
+                const updatePost = new Post({
+                    title: req.body.title,
+                    userId: req.params.userId,
+                    text: req.body.text,
+                });
+                updatePost
+                    .save()
+                    .then(post => {
+                        console.log(post);
+                        res.status(201).json(post);
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        res.status(500).json({
+                            error: err
+                        });
+                    });
+        });
+});
+router.delete('/:id', async(req, res) => {
+    try {
+        await Post.findByIdAndDelete(req.params.id)
+        res.json({message: "Post deleted!"})
+    } catch (error) {
+        res.status(500).json(error)
     }
 })
 

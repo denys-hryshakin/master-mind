@@ -1,12 +1,13 @@
-const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_POSTS = 'SET-POSTS';
 const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
 const UPDATE_POST_TITLE = 'UPDATE-POST-TITLE';
+const DELETE_POST = 'DELETE-POST';
+const SET_AVATAR = 'SET-AVATAR';
 
 let initialState = {
+    avatar: [],
     posts: [],
-    post: {},
     title: "",
     text: "",
     userId: "",
@@ -15,11 +16,6 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_POST:
-            return {
-                ...state,
-                posts: [...state.posts]
-            };
         case UPDATE_POST_TITLE:
             return {
                 ...state,
@@ -30,20 +26,29 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 text: action.text
             };
+        case SET_AVATAR:
+            return {
+                ...state,
+                avatar: action.avatar
+            };
         case SET_USER_PROFILE:
             return { ...state, profile: action.profile };
         case SET_POSTS:
             return { ...state, posts: action.posts }
+        case DELETE_POST:
+            return {
+                posts: state.posts.filter(i => i !== action.id)
+            }
         default:
             return state;
     }
 }
 
-export const addPost = () => ({ type: ADD_POST });
+
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
 export const setPosts = (posts) => ({ type: SET_POSTS, posts });
 export const updatePostTitle = (title) => ({ type: UPDATE_POST_TITLE, title: title });
 export const updatePostText = (text) => ({ type: UPDATE_POST_TEXT, text: text });
-
+export const setAvatar = (avatar) => ({ type: SET_AVATAR, avatar: avatar})
 
 export default profileReducer;

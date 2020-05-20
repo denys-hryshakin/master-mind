@@ -19,8 +19,9 @@ import store from './redux/redux-store';
 import setAuthToken from "./utils/setAuthToken";
 import ProfileSettings from "./components/Profile/ProfileSettings/ProfileSettings";
 import ScrollToTop from './components/common/ScrollToTop/ScrollToTop';
-import NewPost from "./components/Profile/MyPosts/NewPost";
-
+import NewPost from "./components/Profile/MyPosts/NewPost/NewPost";
+import UpdatePost from "./components/Profile/MyPosts/UpdatePost/UpdatePost";
+import AvatarUpload from "./components/Profile/AvatarUpload/AvatarUpload";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -55,9 +56,11 @@ const App = () => {
             <Route path="/register" render={() => <Register />} />
             <Route path="/login" render={() => <Login />} />
             <Switch>
-              <PrivateRoute path="/profile/edit/:userId?" component={ProfileSettings} />
+              <PrivateRoute path="/settings/:userId" component={ProfileSettings} />
               <PrivateRoute path="/profile/:userId?" component={ProfileContainer} />
+              <PrivateRoute path="/edit/avatar/:userId" component={AvatarUpload} />
               <PrivateRoute path="/new-post" component={NewPost} />
+              <PrivateRoute path="/update-post/:userId/:postId" component={UpdatePost} />
               <PrivateRoute path="/dialogs" component={DialogsContainer} />
               <PrivateRoute path="/portals" component={PortalsContainer} />
               <PrivateRoute path="/users" component={UsersContainer} />
