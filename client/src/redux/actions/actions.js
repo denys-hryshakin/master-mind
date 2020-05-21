@@ -23,7 +23,7 @@ export const registerUser = (userData, history) => dispatch => {
 export const updateUser = (userData, history) => dispatch => {
   axios
     .post(`/api/users/edit/${userData.id}`, userData)
-    .then(res => history.push("/profile/"+ res.data._id)) // re-direct to login on successful register
+    .then(res => history.push("/profile/" + res.data._id)) // re-direct to login on successful register
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
@@ -34,9 +34,9 @@ export const updateUser = (userData, history) => dispatch => {
 
 export const addPost = (postData, history) => dispatch => {
   axios
-    .post("/api/posts/new/"+postData.userId, postData)
+    .post("/api/posts/new/" + postData.userId, postData)
     .then(res => {
-      history.push("/profile/"+res.data.userId)
+      history.push("/profile/" + res.data.userId)
       window.location.reload();
     })
     .catch(err =>
@@ -46,11 +46,12 @@ export const addPost = (postData, history) => dispatch => {
       })
     );
 }
+
 export const updatePost = (updateData, history) => dispatch => {
   axios
     .post(`/api/posts/update/${updateData.userId}/${updateData.postId}`, updateData)
     .then(res => {
-      history.push("/profile/"+res.data.userId)
+      history.push("/profile/" + res.data.userId)
       window.location.reload();
     })
     .catch(err =>
@@ -75,17 +76,6 @@ export const deletePost = (id) => {
     id: id
   })
 }
-// export const updatePost = (updatePostData, history) => dispatch => {
-//   axios
-//     .post("/api/posts/update/", updatePostData)
-//     .then(res => history.push("/profile"))
-//     .catch(err =>
-//       dispatch({
-//         type: GET_ERRORS,
-//         payload: err.response.data
-//       })
-//     );
-// }
 
 // Login - get user token
 export const loginUser = userData => dispatch => {
@@ -134,3 +124,21 @@ export const logoutUser = () => dispatch => {
   // Set current user to empty object {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
 };
+
+export const getUsers = (currentPage, pageSize) => {
+  return (
+    axios.get(`/api/users?page=${currentPage}&count=${pageSize}`)
+      .then(response => {
+        return response.data
+      })
+  );
+}
+
+export const getProfile = (userId) => {
+  return (
+    axios.get(`/api/users/profile/` + userId)
+      .then(response => {
+        return response.data
+      })
+  );
+}

@@ -3,6 +3,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
+import ScrollToTop from './components/common/ScrollToTop/ScrollToTop';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import FriendListContainer from './components/FriendList/FriendListContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
@@ -12,16 +13,14 @@ import Landing from "./components/Landing/Landing";
 import NavbarContainer from './components/Navbar/NavbarContainer';
 import PortalsContainer from './components/Portals/PortalsContainer';
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import NewPost from "./components/Profile/MyPosts/NewPost/NewPost";
+import UpdatePost from "./components/Profile/MyPosts/UpdatePost/UpdatePost";
 import ProfileContainer from './components/Profile/ProfileContainer';
+import ProfileSettings from "./components/Profile/ProfileSettings/ProfileSettings";
 import UsersContainer from './components/Users/UsersContainer';
 import { logoutUser, setCurrentUser } from "./redux/actions/actions";
 import store from './redux/redux-store';
 import setAuthToken from "./utils/setAuthToken";
-import ProfileSettings from "./components/Profile/ProfileSettings/ProfileSettings";
-import ScrollToTop from './components/common/ScrollToTop/ScrollToTop';
-import NewPost from "./components/Profile/MyPosts/NewPost/NewPost";
-import UpdatePost from "./components/Profile/MyPosts/UpdatePost/UpdatePost";
-import AvatarUpload from "./components/Profile/AvatarUpload/AvatarUpload";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -58,7 +57,6 @@ const App = () => {
             <Switch>
               <PrivateRoute path="/settings/:userId" component={ProfileSettings} />
               <PrivateRoute path="/profile/:userId?" component={ProfileContainer} />
-              <PrivateRoute path="/edit/avatar/:userId" component={AvatarUpload} />
               <PrivateRoute path="/new-post" component={NewPost} />
               <PrivateRoute path="/update-post/:userId/:postId" component={UpdatePost} />
               <PrivateRoute path="/dialogs" component={DialogsContainer} />
