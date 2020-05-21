@@ -1,8 +1,7 @@
-import * as axios from 'axios';
 import React from 'react';
 import { connect } from 'react-redux';
+import { deletePostReq, getPosts } from '../../../redux/actions/actions';
 import { setPosts } from '../../../redux/reducers/profile-reducer';
-import { deletePostReq } from '../../../redux/actions/actions';
 import MyPosts from './MyPosts';
 
 class MyPostsContainer extends React.Component {
@@ -11,9 +10,9 @@ class MyPostsContainer extends React.Component {
     if (!userId) {
       userId = this.props.login.user.id;
     }
-    axios.get(`http://localhost:4000/api/posts/` + userId)
-      .then(response => {
-        this.props.setPosts(response.data.posts);
+    getPosts(userId)
+      .then(data => {
+        this.props.setPosts(data.posts);
       });
   }
   onClick = (e, id) => {

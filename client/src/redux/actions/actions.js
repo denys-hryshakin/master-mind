@@ -32,6 +32,15 @@ export const updateUser = (userData, history) => dispatch => {
     );
 };
 
+export const getPosts = (userId) => {
+  return (
+    axios.get(`http://localhost:4000/api/posts/` + userId)
+      .then(response => {
+        return response.data
+      })
+  )
+}
+
 export const addPost = (postData, history) => dispatch => {
   axios
     .post("/api/posts/new/" + postData.userId, postData)
@@ -125,20 +134,26 @@ export const logoutUser = () => dispatch => {
   dispatch(setCurrentUser({}));
 };
 
-export const getUsers = (currentPage, pageSize) => {
-  return (
-    axios.get(`/api/users?page=${currentPage}&count=${pageSize}`)
-      .then(response => {
-        return response.data
-      })
-  );
+
+export const usersAPI = {
+  getUsers(currentPage, pageSize) {
+    return (
+      axios.get(`/api/users?page=${currentPage}&count=${pageSize}`)
+        .then(response => {
+          return response.data
+        })
+    );
+  }
 }
 
-export const getProfile = (userId) => {
-  return (
-    axios.get(`/api/users/profile/` + userId)
-      .then(response => {
-        return response.data
-      })
-  );
+
+export const profileAPI = {
+  getProfile(userId) {
+    return (
+      axios.get(`/api/users/profile/` + userId)
+        .then(response => {
+          return response.data
+        })
+    );
+  }
 }

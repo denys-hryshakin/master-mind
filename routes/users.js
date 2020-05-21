@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express()
 const User = require('../models/User')
-const Avatar = require('../models/Image')
 const cors = require('cors')
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
