@@ -155,5 +155,60 @@ export const profileAPI = {
           return response.data
         })
     );
-  }
+  },
+  updateStatus(userId, status) {
+    return (
+      axios.put('/api/users/profile/status/' + userId, status)
+        .then(response => {
+          console.log(response.data)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    )
+  },
+  updateName(userId, name) {
+    return (
+      axios.put('/api/users/profile/name/' + userId, name)
+        .then(response => {
+          console.log(response.data)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    )
+  },
+  updateSurname(userId, surname) {
+    return (
+      axios.put('/api/users/profile/surname/' + userId, surname)
+        .then(response => {
+          console.log(response.data)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    )
+  },
+  updateCountry(userId, country) {
+    return (
+      axios.put('/api/users/profile/country/' + userId, country)
+        .then(response => {
+          console.log(response.data)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    )
+  },
+  updateCity(userId, city) {
+    return (
+      axios.put('/api/users/profile/city/' + userId, city)
+        .then(response => {
+          console.log(response.data)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    )
+  },
 }

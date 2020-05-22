@@ -26,7 +26,7 @@ router.post("/register", (req, res) => {
       return res.status(400).json({ email: "Email already exists" });
     } else {
       const newUser = new User({
-        first_name: req.body.first_name,
+        name: req.body.name,
         surname: req.body.surname,
         email: req.body.email,
         login: req.body.login,
@@ -72,7 +72,7 @@ router.post("/login", (req, res) => {
         // Create JWT Payload
         const payload = {
           id: user.id,
-          first_name: user.first_name,
+          name: user.name,
           surname: user.surname,
           login: user.login,
           email: user.email
@@ -124,33 +124,73 @@ router.get('/profile/:id', async (req, res) => {
   }
 })
 
-router.post('/edit/:id', async (req, res) => {
+router.put('/profile/:userId/image', async (req, res) => {
   try {
-    await User.findByIdAndRemove(req.params.id)
-    .then(user => {
-      const updateUser = new User({
-        first_name: req.body.first_name,
-        surname: req.body.surname,
-        email: req.body.email,
-        login: req.body.login
-      });
-      updateUser
+    let image = await User.findByIdAndUpdate(req.params.userId, { userImg: req.body.userImg }, { new: true })
+      .then(res => {
+        const updateImage = new User({
+          userImg: req.body.userImg
+        });
+        updateImage
           .save()
-          .then(user => {
-              console.log(user);
-              res.status(201).json(user);
-          })
-          .catch(err => {
-              console.log(err);
-              res.status(500).json({
-                  error: err
-              });
-          });
-});
+      })
   } catch (error) {
-    res.json({ message: error })
+    res.status(500).json(error);
   }
 })
+
+// Profile settings
+router.put('/profile/status/:userId', async (req, res) => {
+  try {
+    let status = await User.findByIdAndUpdate({ _id: req.params.userId }, { status: req.body.status }, { new: true })
+    res.status(200).json({
+      status: status.status
+    })  
+  } catch (error) {
+    res.status(500).json(error)
+  }
+})
+router.put('/profile/name/:userId', async (req, res) => {
+  try {
+    let name = await User.findByIdAndUpdate({ _id: req.params.userId }, { name: req.body.name }, { new: true })
+    res.status(200).json({
+      name: name.name
+    })  
+  } catch (error) {
+    res.status(500).json(error)
+  }
+})
+router.put('/profile/surname/:userId', async (req, res) => {
+  try {
+    let surname = await User.findByIdAndUpdate({ _id: req.params.userId }, { surname: req.body.surname }, { new: true })
+    res.status(200).json({
+      surname: surname.surname
+    })  
+  } catch (error) {
+    res.status(500).json(error)
+  }
+})
+router.put('/profile/city/:userId', async (req, res) => {
+  try {
+    let city = await User.findByIdAndUpdate({ _id: req.params.userId }, { city: req.body.city }, { new: true })
+    res.status(200).json({
+      city: city.city
+    })  
+  } catch (error) {
+    res.status(500).json(error)
+  }
+})
+router.put('/profile/country/:userId', async (req, res) => {
+  try {
+    let country = await User.findByIdAndUpdate({ _id: req.params.userId }, { country: req.body.country }, { new: true })
+    res.status(200).json({
+      country: country.country
+    })  
+  } catch (error) {
+    res.status(500).json(error)
+  }
+})
+
 
 // router.post("/user/:user_id/follow-user", (req, res) => {
 

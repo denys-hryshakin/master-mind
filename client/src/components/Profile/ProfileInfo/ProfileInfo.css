@@ -107,15 +107,20 @@
 }
 .profileInfo{
   color: white;
-  padding: 5px;
+  padding: 10px;
   margin: 0 0 15px 15px;
   background-color: #0e1220da;
+  border-radius: 5px;
 }
 .fullInfo{
   position: absolute;
-  right: 200px;
-  padding: 5px 50px;
+  right: 155px;
+  width: 350px;
+  padding: 5px 10px;
 }
 .fullInfo h2{
   margin: 10px 0;
+}
+.infoBlock{
+  display: flex;
 }

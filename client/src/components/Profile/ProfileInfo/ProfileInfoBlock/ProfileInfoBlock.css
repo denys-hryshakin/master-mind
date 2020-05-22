@@ -1,0 +1,18 @@
+.profileInfoForm{
+    margin-left: 5px;
+    
+}
+.profileInfoForm input{
+    border: 1px solid #007cf0;
+    border-radius: 5px;
+    padding: 2px;
+}
+.profileInfoForm input:focus{
+    outline: none;
+    border:#007cf0 1px solid;
+    box-shadow: 0 0 5px #007cf0;
+}
+
+.infoLabel{
+    margin-left: 5px;
+}

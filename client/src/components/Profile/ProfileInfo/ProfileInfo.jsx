@@ -4,6 +4,11 @@ import avatar from './../../../assets/images/avatar.jpg';
 import bc from './../../../assets/images/b-c.jpg';
 import './ProfileInfo.css';
 import { NavLink } from 'react-router-dom';
+import ProfileStatus from './ProfileInfoBlock/ProfileStatus'
+import ProfileName from './ProfileInfoBlock/ProfileName';
+import ProfileSurname from './ProfileInfoBlock/ProfileSurname';
+import ProfileCity from './ProfileInfoBlock/ProfileСity';
+import ProfileCountry from './ProfileInfoBlock/ProfileCountry';
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -26,13 +31,19 @@ const ProfileInfo = (props) => {
         </div>
         <div className="shortInfo">
           <div className="profileInfo">
-            <div>{props.profile.first_name} {props.profile.surname}</div>
+            <div className="infoBlock">
+              <ProfileName name={props.profile.name} login={props.login} userId={props.userId} />
+              <ProfileSurname surname={props.profile.surname} login={props.login} userId={props.userId} />
+            </div>
           </div>
           <div className="profileInfo">
-            <div>{props.profile.status}</div>
+            <ProfileStatus status={props.profile.status} login={props.login} userId={props.userId} />
           </div>
           <div className="profileInfo">
-            <div>{props.profile.country}</div>
+            <div className="infoBlock">
+              <ProfileCity city={props.profile.city} login={props.login} userId={props.userId} />
+              <ProfileCountry country={props.profile.country} login={props.login} userId={props.userId} />
+            </div>
           </div>
         </div>
       </div>
@@ -40,7 +51,11 @@ const ProfileInfo = (props) => {
         <h2>Full Description</h2>
         {!props.profile.city
           ? <span>User hasn't set information yet.</span>
-          : <div><div>{props.profile.city}</div><div>{props.profile.facebook}</div><div>{props.profile.instagram}</div></div>}
+          : <div>
+            <div>{props.profile.city}</div>
+            <div>{props.profile.facebook}</div>
+            <div>{props.profile.instagram}</div>
+          </div>}
       </div>
     </div>
   );

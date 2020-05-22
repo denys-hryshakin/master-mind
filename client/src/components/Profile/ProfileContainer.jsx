@@ -8,9 +8,6 @@ import { profileAPI } from '../../redux/actions/actions';
 class ProfileContainer extends React.Component {
   refreshProfile() {
     let userId = this.props.match.params.userId;
-    if (!userId) {
-      userId = this.props.login.user.id;
-    }
     profileAPI.getProfile(userId)
       .then(data => {
         this.props.setUserProfile(data.profile);
@@ -19,12 +16,16 @@ class ProfileContainer extends React.Component {
   componentDidMount() {
     this.refreshProfile()
   }
+  componentWillUpdate(prevProps) {
+    if (this.props.match.params.userId !== prevProps) {
+      this.refreshProfile()
+    }
+  }
 
   render() {
     return (
       <div>
         <Profile
-          owner={!!this.props.match.params.userId}
           {...this.props}
           profile={this.props.profile}
           login={this.props.login} />

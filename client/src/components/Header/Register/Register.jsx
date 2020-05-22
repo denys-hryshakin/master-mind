@@ -10,7 +10,7 @@ class Register extends React.Component {
     constructor() {
         super();
         this.state = {
-            first_name: "",
+            name: "",
             surname: "",
             email: "",
             login: "",
@@ -40,7 +40,7 @@ class Register extends React.Component {
     onSubmit = e => {
         e.preventDefault();
         const newUser = {
-            first_name: this.state.first_name,
+            name: this.state.name,
             surname: this.state.surname,
             email: this.state.email,
             login: this.state.login,
@@ -61,18 +61,18 @@ class Register extends React.Component {
                         <div>
                             <input
                                 onChange={this.onChange}
-                                value={this.state.first_name}
-                                error={errors.first_name}
+                                value={this.state.name}
+                                error={errors.name}
                                 placeholder="First name"
-                                id="first_name"
+                                id="name"
                                 type="text"
                                 className={classnames("", {
-                                    invalid: errors.first_name
+                                    invalid: errors.name
                                 })}
                                 autoFocus
                             />
-                            <label htmlFor="first_name"></label>
-                            <div className='errorMessage'>{errors.first_name}</div>
+                            <label htmlFor="name"></label>
+                            <div className='errorMessage'>{errors.name}</div>
                         </div>
                         <div>
                             <input

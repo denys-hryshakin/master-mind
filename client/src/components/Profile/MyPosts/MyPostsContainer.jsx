@@ -5,16 +5,18 @@ import { setPosts } from '../../../redux/reducers/profile-reducer';
 import MyPosts from './MyPosts';
 
 class MyPostsContainer extends React.Component {
-  componentDidMount() {
+  refreshPosts() {
     let userId = this.props.userId;
-    if (!userId) {
-      userId = this.props.login.user.id;
-    }
     getPosts(userId)
       .then(data => {
         this.props.setPosts(data.posts);
       });
   }
+  componentDidMount() {
+    this.refreshPosts()
+  }
+  
+
   onClick = (e, id) => {
     e.preventDefault();
     this.props.deletePostReq(id)

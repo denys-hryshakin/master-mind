@@ -7,7 +7,6 @@ import { withRouter } from 'react-router-dom';
 import styles from './UpdatePost.module.css';
 
 class UpdatePost extends React.Component {
-    debugger;
     constructor() {
         super();
         this.state = {

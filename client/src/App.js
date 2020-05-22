@@ -16,7 +16,6 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import NewPost from "./components/Profile/MyPosts/NewPost/NewPost";
 import UpdatePost from "./components/Profile/MyPosts/UpdatePost/UpdatePost";
 import ProfileContainer from './components/Profile/ProfileContainer';
-import ProfileSettings from "./components/Profile/ProfileSettings/ProfileSettings";
 import UsersContainer from './components/Users/UsersContainer';
 import { logoutUser, setCurrentUser } from "./redux/actions/actions";
 import store from './redux/redux-store';
@@ -55,7 +54,6 @@ const App = () => {
             <Route path="/register" render={() => <Register />} />
             <Route path="/login" render={() => <Login />} />
             <Switch>
-              <PrivateRoute path="/settings/:userId" component={ProfileSettings} />
               <PrivateRoute path="/profile/:userId?" component={ProfileContainer} />
               <PrivateRoute path="/new-post" component={NewPost} />
               <PrivateRoute path="/update-post/:userId/:postId" component={UpdatePost} />

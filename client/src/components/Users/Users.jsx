@@ -28,7 +28,7 @@ let Users = props => {
                                 </NavLink>
                             </div>
                             <div className={styles.userInfoBlock}>
-                                <NavLink to={'/profile/'+u._id}>{u.first_name} {u.surname}</NavLink>
+                                <NavLink to={'/profile/'+u._id}>{u.name} {u.surname}</NavLink>
                                 <div>{u.status}</div>
                                 <div>{u.country} {u.city}</div>
                             </div>

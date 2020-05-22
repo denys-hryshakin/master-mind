@@ -9,7 +9,7 @@ const Post = (props) => {
       <div><img className={styles.avatar} src={avatar} alt="user" /></div>
       <div className={styles.postInfo}>
         <div className={styles.userInfo}>
-          <div className={styles.name}>{props.user.first_name} {props.user.surname}</div>
+          <div className={styles.name}>{props.user.name} {props.user.surname}</div>
           <div className={styles.login}>( @{props.user.login} )</div>
         </div>
         <div className={styles.title}>{props.post.title}</div>

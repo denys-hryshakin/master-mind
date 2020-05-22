@@ -41,7 +41,7 @@ router.post("/new/:userId", (req, res) => {
 router.get('/:userId', async (req, res) => {
     try {
         let posts = await Post.find({ userId: req.params.userId })
-            .populate('userId', '_id first_name email login surname')
+            .populate('userId', '_id name email login surname')
             .sort('-date')
         res.json({
             posts: posts,
