@@ -74,6 +74,7 @@
 }
 
 .btnDeletePost{
+  cursor: pointer;
   color: aliceblue;
   background-color: #911600;
   border: 1px solid #911600;

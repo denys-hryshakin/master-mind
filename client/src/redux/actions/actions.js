@@ -19,73 +19,6 @@ export const registerUser = (userData, history) => dispatch => {
       })
     );
 };
-
-export const updateUser = (userData, history) => dispatch => {
-  axios
-    .post(`/api/users/edit/${userData.id}`, userData)
-    .then(res => history.push("/profile/" + res.data._id)) // re-direct to login on successful register
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
-};
-
-export const getPosts = (userId) => {
-  return (
-    axios.get(`http://localhost:4000/api/posts/` + userId)
-      .then(response => {
-        return response.data
-      })
-  )
-}
-
-export const addPost = (postData, history) => dispatch => {
-  axios
-    .post("/api/posts/new/" + postData.userId, postData)
-    .then(res => {
-      history.push("/profile/" + res.data.userId)
-      window.location.reload();
-    })
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
-}
-
-export const updatePost = (updateData, history) => dispatch => {
-  axios
-    .post(`/api/posts/update/${updateData.userId}/${updateData.postId}`, updateData)
-    .then(res => {
-      history.push("/profile/" + res.data.userId)
-      window.location.reload();
-    })
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
-}
-
-export const deletePostReq = (id) => dispatch => {
-  axios.delete("/api/posts/" + id)
-    .then(res => {
-      console.log(res.data)
-      dispatch(deletePost(res.data._id))
-    })
-}
-
-export const deletePost = (id) => {
-  return ({
-    type: DELETE_POST,
-    id: id
-  })
-}
-
 // Login - get user token
 export const loginUser = userData => dispatch => {
   axios
@@ -122,8 +55,17 @@ export const setUserLoading = () => {
     type: USER_LOADING
   };
 };
-
-
+export const updateUser = (userData, history) => dispatch => {
+  axios
+    .post(`/api/users/edit/${userData.id}`, userData)
+    .then(res => history.push("/profile/" + res.data._id)) // re-direct to login on successful register
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
 // Log user out
 export const logoutUser = () => dispatch => {
   // Remove token from local storage
@@ -135,6 +77,66 @@ export const logoutUser = () => dispatch => {
 };
 
 
+
+
+
+// POSTS //////////////////////////////////////////////////////////////////////////////////////// 
+export const getPosts = (userId) => {
+  return (
+    axios.get(`http://localhost:4000/api/posts/` + userId)
+      .then(response => {
+        return response.data
+      })
+  )
+}
+
+export const addPost = (postData, history) => dispatch => {
+  axios
+    .post("/api/posts/new/" + postData.userId, postData)
+    .then(res => {
+      history.push("/profile/" + res.data.userId)
+      // window.location.reload();
+    })
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+}
+export const updatePost = (updateData, history) => dispatch => {
+  axios
+    .post(`/api/posts/update/${updateData.userId}/${updateData.postId}`, updateData)
+    .then(res => {
+      history.push("/profile/" + res.data.userId)
+      // window.location.reload();
+    })
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+}
+export const deletePostReq = (id) => dispatch => {
+  axios.delete("/api/posts/" + id)
+    .then(res => {
+      console.log(res.data)
+      dispatch(deletePost(res.data._id))
+    })
+}
+export const deletePost = (id) => {
+  return ({
+    type: DELETE_POST,
+    id: id
+  })
+}
+
+
+
+
+
+// USERS //////////////////////////////////////////////////////////////////////////////////////// 
 export const usersAPI = {
   getUsers(currentPage, pageSize) {
     return (
@@ -147,6 +149,10 @@ export const usersAPI = {
 }
 
 
+
+
+
+// PROFILE //////////////////////////////////////////////////////////////////////////////////////// 
 export const profileAPI = {
   getProfile(userId) {
     return (

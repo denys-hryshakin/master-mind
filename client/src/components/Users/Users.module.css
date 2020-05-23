@@ -34,8 +34,8 @@
 }
 
 .userInfoBlock{
+    cursor: default;
     padding: 7px 0 0 20px;
-    cursor: pointer;
 }
 .userInfoBlock a{
     cursor: pointer;

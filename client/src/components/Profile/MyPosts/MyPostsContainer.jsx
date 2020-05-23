@@ -15,7 +15,6 @@ class MyPostsContainer extends React.Component {
   componentDidMount() {
     this.refreshPosts()
   }
-  
 
   onClick = (e, id) => {
     e.preventDefault();
