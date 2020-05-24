@@ -1,0 +1,46 @@
+/* MAP */
+.map > div{
+    width: 800px !important;
+    height: 500px !important;
+}
+.map {
+    width: 800px;
+    height: 550px;
+}
+
+
+
+
+/* GEOLOCATION */
+.geoIntro{
+    padding: 0 40px;
+}
+.geoBlock{
+    padding: 20px;
+}
+.geoInfo{
+    padding: 10px 40px;
+}
+.geoInfo h1{
+    margin: 10px 0 5px 0;
+}
+.getLocation{
+    cursor: pointer;
+    color: aliceblue;
+    background-color: #056dce;
+    border: 1px solid #007cf0;
+    box-shadow: 0 0 8px #056dce;
+    border-radius: 5px;
+    font-weight: 600;
+    height: 40px;
+    width: 280px;
+    margin: 5px 0px;
+}
+.getLocation:hover{
+    background-color: #002c8a;
+    transition: all .2s ease-in-out;
+    box-shadow: 0 0 5px #002c8a;
+}
+.getLocation:focus{
+    outline: none;
+}

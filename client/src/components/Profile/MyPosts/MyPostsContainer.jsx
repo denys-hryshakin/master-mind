@@ -16,6 +16,12 @@ class MyPostsContainer extends React.Component {
     this.refreshPosts()
   }
 
+  componentDidUpdate(prevProps) {
+    if(this.props.userId !== prevProps.userId) {
+      this.refreshPosts()
+    }
+  }
+
   onClick = (e, id) => {
     e.preventDefault();
     this.props.deletePostReq(id)

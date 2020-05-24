@@ -11,6 +11,7 @@ class ProfileName extends React.Component {
         name: "",
         editMode: false
     }
+
     LightTooltip = withStyles((theme) => ({
         tooltip: {
             backgroundColor: 'white',
@@ -86,7 +87,7 @@ class ProfileName extends React.Component {
 }
 
 let mapStateToProps = state => ({
-
+    login: state.login
 })
 
 export default connect(mapStateToProps, { profileAPI })(ProfileName);
