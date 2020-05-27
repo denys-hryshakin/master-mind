@@ -62,7 +62,7 @@ const App = () => {
               <PrivateRoute path="/portals" component={PortalsContainer} />
               <PrivateRoute path="/users" component={UsersContainer} />
               <PrivateRoute path="/friends" component={FriendListContainer} />
-              <PrivateRoute path="/news/local/" component={LocalNews} />
+              <PrivateRoute path="/geolocation" component={LocalNews} />
             </Switch>
             <Route path="/news" render={() => <div />} />
             <Route path="/music" render={() => <div />} />

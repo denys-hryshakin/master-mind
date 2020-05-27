@@ -8,6 +8,7 @@ class Geolocation extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            showButton: true,
             latitude: null,
             longitude: null,
             city: null,
@@ -22,21 +23,27 @@ class Geolocation extends React.Component {
     getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(this.getCoordinates, this.handleLocationError);
+            this.setState({
+                showButton: false
+            })
         } else {
             alert('Geolocation is not supported by this browser!')
+            this.setState({
+                showButton: true
+            })
         }
     };
     getCoordinates(position) {
-        const locationData = {
-            latitude: this.state.latitude,
-            longitude: this.state.longitude
-        }
-        const userId = this.props.login.user.id
         this.setState({
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
         })
-        profileAPI.setLatLng(userId, locationData)
+        const latlng = {
+            latitude: this.state.latitude,
+            longitude: this.state.longitude
+        }
+        const userId = this.props.login.user.id
+        profileAPI.setLatLng(userId, latlng)
         this.getAddress()
     };
     getFirstWord(str) {
@@ -49,7 +56,7 @@ class Geolocation extends React.Component {
             .then(data => {
                 this.setState({
                     city: this.getFirstWord(data.results[6].formatted_address),
-                    area:  this.getFirstWord(data.results[4].formatted_address),
+                    area: this.getFirstWord(data.results[4].formatted_address),
                     state: this.getFirstWord(data.results[8].formatted_address),
                     address: data.results[0].formatted_address
                 })
@@ -86,25 +93,31 @@ class Geolocation extends React.Component {
     render() {
         return (
             <div className="geoBlock">
-                <div className="geoIntro">
-                    <h2>Здесь вы можете определить свои координаты и найти новости.</h2>
-                    <button className="getLocation" onClick={this.getLocation}>Определить координаты</button>
-                </div>
-                {
-                    this.state.latitude && this.state.longitude
-                        ?
-                        <div className="geoInfo">
-                            <Map
-                                lat={this.state.latitude}
-                                lng={this.state.longitude}
-                                google={this.props.google}
-                                height='500px'
-                                width='650px'
-                                boxShadow='0 0 10px rgba(29, 17, 17, 0.603)'
-                                border='1px solid rgba(29, 17, 17, 0.603)'
-                                zoom={15} />
-                        </div>
-                        : null
+                {this.state.showButton &&
+                    <div className="geoIntro">
+                        <h2>Здесь вы можете определить свои координаты и найти новости.</h2>
+                        <button className="getLocation" onClick={this.getLocation}>Определить координаты</button>
+                    </div>
+                }
+                {!this.state.showButton &&
+                    <div>
+                        {
+                            this.state.latitude && this.state.longitude
+                                ?
+                                <div className="geoInfo">
+                                    <Map
+                                        lat={this.state.latitude}
+                                        lng={this.state.longitude}
+                                        google={this.props.google}
+                                        height='400px'
+                                        width='1090px'
+                                        boxShadow='0 0 10px rgba(29, 17, 17, 0.603)'
+                                        border='1px solid rgba(29, 17, 17, 0.603)'
+                                        zoom={15} />
+                                </div>
+                                : null
+                        }
+                    </div>
                 }
             </div>
         )

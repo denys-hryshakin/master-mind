@@ -198,8 +198,8 @@ router.put('/geolocation/latlng/:userId', async (req, res) => {
       },
       {
         latlng: {
-          lat: req.body.lat,
-          lng: req.body.lng
+          latitude: req.body.latitude,
+          longitude: req.body.longitude
         }
       },
       {

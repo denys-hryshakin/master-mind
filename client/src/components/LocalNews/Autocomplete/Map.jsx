@@ -248,40 +248,37 @@ class Map extends Component {
                 <div>
                     <h1>Координаты</h1>
                     <div className="form-group">
-                        <label htmlFor="">Город</label>
-                    </div>
-                    <div className="form-group">
-                        <input type="text" readOnly="readOnly" value={this.state.city} />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="">Район</label>
-                    </div>
-                    <div className="form-group">
-                        <input type="text" readOnly="readOnly" value={this.state.area} />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="">Область</label>
-                    </div>
-                    <div className="form-group">
-                        <input type="text" readOnly="readOnly" value={this.state.state} />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="">Адрес</label>
-                    </div>
-                    <div className="form-group">
-                        <input type="text" readOnly="readOnly" value={this.state.address} />
-                    </div>
-                    <div className="form-group">
-                        <label>Широта</label>
-                    </div>
-                    <div className="form-group">
-                        <input type="text" readOnly="readOnly" value={this.state.mapPosition.lat} />
-                    </div>
-                    <div className="form-group">
-                        <label>Долгота</label>
-                    </div>
-                    <div className="form-group">
-                        <input type="text" readOnly="readOnly" value={this.state.mapPosition.lng} />
+                        <div>
+                            <div>
+                                <label htmlFor="">Город</label>
+                                <input type="text" readOnly="readOnly" value={this.state.city} />
+                            </div>
+
+                            <div>
+                                <label htmlFor="">Область</label>
+                                <input type="text" readOnly="readOnly" value={this.state.state} />
+                            </div>
+
+                            <div>
+                                <label>Широта</label>
+                                <input type="text" readOnly="readOnly" value={this.state.mapPosition.lat} />
+                            </div>
+
+                        </div>
+                        <div>
+                            <div>
+                                <label htmlFor="">Район</label>
+                                <input type="text" readOnly="readOnly" value={this.state.area} />
+                            </div>
+                            <div>
+                                <label htmlFor="">Адрес</label>
+                                <input type="text" readOnly="readOnly" value={this.state.address} />
+                            </div>
+                            <div>
+                                <label>Долгота</label>
+                                <input type="text" readOnly="readOnly" value={this.state.mapPosition.lng} />
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -292,7 +289,7 @@ class Map extends Component {
                             <div style={{ height: `100%` }} />
                         }
                         containerElement={
-                            <div style={{ marginTop: '15px', marginBottom: '40px', height: this.props.height, width: this.props.width, border: this.props.border, boxShadow: this.props.boxShadow }} />
+                            <div style={{ marginTop: '15px', marginBottom: '230px', height: this.props.height, width: this.props.width, border: this.props.border, boxShadow: this.props.boxShadow }} />
                         }
                         mapElement={
                             <div style={{ height: `100%` }} />

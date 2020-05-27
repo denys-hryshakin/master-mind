@@ -19,6 +19,7 @@
 .userBlock{
     display: flex;
     padding: 15px 10px;
+    align-items: center;
 
 }
 
@@ -35,7 +36,7 @@
 
 .userInfoBlock{
     cursor: default;
-    padding: 7px 0 0 20px;
+    padding-left: 20px;
 }
 .userInfoBlock a{
     cursor: pointer;

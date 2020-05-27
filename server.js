@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Route Imports
 const usersRoutes = require('./routes/users')
 const postsRoutes = require('./routes/posts')
+const newsRoutes = require('./routes/news')
 
 // Passport middleware
 app.use(passport.initialize());
@@ -23,6 +24,7 @@ app.get('/api', (req, res) => {
 })
 app.use('/api/users', usersRoutes)
 app.use('/api/posts', postsRoutes)
+app.use('/api/news', newsRoutes)
 
 // DB Config
 const db = require("./config/keys").mongoURI;
