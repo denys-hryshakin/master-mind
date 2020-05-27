@@ -35,12 +35,14 @@ mongoose.connect(db, {
     useFindAndModify: false
 })
     .then(() => {
+        console.log("")
         console.log("=======================================")
         console.log("MongoDB successfully connected")
-        console.log("=======================================")
         app.listen(4000, () => {
             console.log('Hello! Server is listening on port 4000');
             console.log("=======================================")
+            console.log("")
+
         });
     })
     .catch(err => console.log(err));

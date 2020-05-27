@@ -217,4 +217,26 @@ export const profileAPI = {
         })
     )
   },
+  setLatLng(userId, latlng) {
+    return (
+      axios.put('/api/users/geolocation/latlng/' + userId, latlng)
+        .then(response => {
+          console.log(response.data)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    )
+  },
+  setAddress(userId, locationData) {
+    return (
+      axios.put('/api/users/geolocation/address/' + userId, locationData)
+        .then(response => {
+          console.log(response.data)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    )
+  },
 }

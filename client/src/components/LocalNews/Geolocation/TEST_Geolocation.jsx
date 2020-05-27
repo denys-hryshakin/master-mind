@@ -1,8 +1,6 @@
 import React from 'react';
+import GoogleMap from './GoogleMap';
 import './../LocalNews.css'
-import Map from '../Autocomplete/Map';
-import { profileAPI } from '../../../redux/actions/actions';
-import { connect } from 'react-redux'
 
 class Geolocation extends React.Component {
     constructor(props) {
@@ -10,10 +8,7 @@ class Geolocation extends React.Component {
         this.state = {
             latitude: null,
             longitude: null,
-            city: null,
-            area: null,
-            state: null,
-            address: null
+            userAddress: null
         }
         this.getLocation = this.getLocation.bind(this)
         this.getCoordinates = this.getCoordinates.bind(this)
@@ -27,19 +22,13 @@ class Geolocation extends React.Component {
         }
     };
     getCoordinates(position) {
-        const locationData = {
-            latitude: this.state.latitude,
-            longitude: this.state.longitude
-        }
-        const userId = this.props.login.user.id
         this.setState({
             latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
+            longitude: position.coords.longitude
         })
-        profileAPI.setLatLng(userId, locationData)
         this.getAddress()
     };
-    getFirstWord(str) {
+     getFirstWord(str) {
         let spaceIndex = str.indexOf(',');
         return spaceIndex === -1 ? str : str.substr(0, spaceIndex);
     };
@@ -47,22 +36,12 @@ class Geolocation extends React.Component {
         fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.latitude},${this.state.longitude}&key=AIzaSyDysfnjCeC7j9QnDRmPgXt7EZCCm_PmUZU`)
             .then(response => response.json({}))
             .then(data => {
+                console.log(data)
                 this.setState({
-                    city: this.getFirstWord(data.results[6].formatted_address),
-                    area:  this.getFirstWord(data.results[4].formatted_address),
-                    state: this.getFirstWord(data.results[8].formatted_address),
-                    address: data.results[0].formatted_address
+                    userAddress: this.getFirstWord(data.results[6].formatted_address)
                 })
-                const locationData = {
-                    city: this.state.city,
-                    area: this.state.area,
-                    state: this.state.state,
-                    address: this.state.address,
-                }
-                const userId = this.props.login.user.id
-                profileAPI.setAddress(userId, locationData)
             })
-            .catch(error => alert('An error: ' + error))
+            .catch (error => alert('An error: ' + error))
     };
     handleLocationError(error) {
         switch (error.code) {
@@ -94,15 +73,11 @@ class Geolocation extends React.Component {
                     this.state.latitude && this.state.longitude
                         ?
                         <div className="geoInfo">
-                            <Map
-                                lat={this.state.latitude}
-                                lng={this.state.longitude}
-                                google={this.props.google}
-                                height='500px'
-                                width='650px'
-                                boxShadow='0 0 10px rgba(29, 17, 17, 0.603)'
-                                border='1px solid rgba(29, 17, 17, 0.603)'
-                                zoom={15} />
+                            <h1>Координаты</h1>
+                            <div>Широта: {this.state.latitude}</div>
+                            <div>Долгота: {this.state.longitude}</div>
+                            <div>Город: {this.state.userAddress}</div>
+                            <GoogleMap lat={this.state.latitude} lng={this.state.longitude} />
                         </div>
                         : null
                 }
@@ -111,8 +86,4 @@ class Geolocation extends React.Component {
     }
 }
 
-let mapStateToProps = (state) => ({
-    login: state.login
-})
-
-export default connect(mapStateToProps, {})(Geolocation);
+export default Geolocation;

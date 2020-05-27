@@ -60,6 +60,34 @@ const UserSchema = mongoose.Schema({
         type: String,
         default: null
     },
+    latlng: {
+        lat: {
+            type: String,
+            default: null
+        },
+        lng: {
+            type: String,
+            default: null
+        },
+    },
+    geoData: {
+        address: {
+            type: String,
+            default: null
+        },
+        city: {
+            type: String,
+            default: null
+        },
+        state: {
+            type: String,
+            default: null
+        },
+        area: {
+            type: String,
+            default: null
+        },
+    },
 })
 
 

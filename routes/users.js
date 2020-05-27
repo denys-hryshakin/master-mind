@@ -145,7 +145,7 @@ router.put('/profile/status/:userId', async (req, res) => {
     let status = await User.findByIdAndUpdate({ _id: req.params.userId }, { status: req.body.status }, { new: true })
     res.status(200).json({
       status: status.status
-    })  
+    })
   } catch (error) {
     res.status(500).json(error)
   }
@@ -155,7 +155,7 @@ router.put('/profile/name/:userId', async (req, res) => {
     let name = await User.findByIdAndUpdate({ _id: req.params.userId }, { name: req.body.name }, { new: true })
     res.status(200).json({
       name: name.name
-    })  
+    })
   } catch (error) {
     res.status(500).json(error)
   }
@@ -165,7 +165,7 @@ router.put('/profile/surname/:userId', async (req, res) => {
     let surname = await User.findByIdAndUpdate({ _id: req.params.userId }, { surname: req.body.surname }, { new: true })
     res.status(200).json({
       surname: surname.surname
-    })  
+    })
   } catch (error) {
     res.status(500).json(error)
   }
@@ -175,7 +175,7 @@ router.put('/profile/city/:userId', async (req, res) => {
     let city = await User.findByIdAndUpdate({ _id: req.params.userId }, { city: req.body.city }, { new: true })
     res.status(200).json({
       city: city.city
-    })  
+    })
   } catch (error) {
     res.status(500).json(error)
   }
@@ -185,7 +185,55 @@ router.put('/profile/country/:userId', async (req, res) => {
     let country = await User.findByIdAndUpdate({ _id: req.params.userId }, { country: req.body.country }, { new: true })
     res.status(200).json({
       country: country.country
-    })  
+    })
+  } catch (error) {
+    res.status(500).json(error)
+  }
+})
+router.put('/geolocation/latlng/:userId', async (req, res) => {
+  try {
+    let latlng = await User.findByIdAndUpdate(
+      {
+        _id: req.params.userId
+      },
+      {
+        latlng: {
+          lat: req.body.lat,
+          lng: req.body.lng
+        }
+      },
+      {
+        new: true
+      }
+    )
+    res.status(200).json({
+      latlng: latlng.latlng
+    })
+  } catch (error) {
+    res.status(500).json(error)
+  }
+})
+router.put('/geolocation/address/:userId', async (req, res) => {
+  try {
+    let geoData = await User.findByIdAndUpdate(
+      {
+        _id: req.params.userId
+      },
+      {
+        geoData: {
+          address: req.body.address,
+          city: req.body.city,
+          area: req.body.area,
+          state: req.body.state,
+        }
+      },
+      {
+        new: true
+      }
+    )
+    res.status(200).json({
+      geoData: geoData.geoData
+    })
   } catch (error) {
     res.status(500).json(error)
   }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Map, GoogleApiWrapper, Marker  } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker, InfoWindow  } from 'google-maps-react';
 import './../LocalNews.css'
 
 const mapStyles = {
@@ -10,30 +10,53 @@ const mapStyles = {
 };
 
 class GoogleMap extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: "React"
-    };
-  }
+
+  state = {
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {},
+  };
+
+  onMarkerClick = (props, marker, e) =>
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+
+  onMapClicked = (props) => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      })
+    }
+  };
 
   render() {
     return (
       <div className="map">
-        <h1>Map</h1>
+        <h1>Карта</h1>
         <Map
           google={this.props.google}
-          zoom={16}
+          zoom={14}
           style={mapStyles}
           initialCenter={{
             lat: this.props.lat,
             lng: this.props.lng
           }}
+          onClick={this.onMapClicked}
         >
-         <Marker
-          onClick={this.onMarkerClick}
-          name={'This is test name'}
-        />
+        <Marker onClick={this.onMarkerClick}
+                name={'Current location'} />
+
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}>
+            <div>
+              <h1>{this.state.selectedPlace.name}</h1>
+            </div>
+        </InfoWindow>
         </Map>
       </div>
     );
@@ -41,5 +64,6 @@ class GoogleMap extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyDysfnjCeC7j9QnDRmPgXt7EZCCm_PmUZU"
+  apiKey: "AIzaSyDysfnjCeC7j9QnDRmPgXt7EZCCm_PmUZU",
+  language: 'ua'
 })(GoogleMap);
