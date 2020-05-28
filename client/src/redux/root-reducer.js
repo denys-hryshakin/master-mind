@@ -8,6 +8,7 @@ import profileReducer from "./reducers/profile-reducer";
 import usersReducer from "./reducers/users-reducer";
 import loginReducer from "./reducers/login-reducer";
 import errorsReducer from "./reducers/errors-reducer";
+import newsReducer from "./reducers/news-reducer";
 
 export default combineReducers({
     profilePage: profileReducer,
@@ -18,6 +19,7 @@ export default combineReducers({
     portalsPage: portalsReducer,
     auth: authReducer,
     login: loginReducer,
-    errors: errorsReducer
+    errors: errorsReducer,
+    newsPage: newsReducer,
 
 });

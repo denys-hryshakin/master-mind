@@ -4,11 +4,9 @@ import { NavLink } from 'react-router-dom';
 // import FriendsBar from './FriendsBar/FriendsBar';
 
 const Navbar = (props) => {
-
     // let state = props.sidebar;
     // let friendsBarElements = state.friendsbar.map(f => <FriendsBar name={f.name} key={f.id} id={f.id} />);
     let userId = props.login.user.id;
-
     return (
         <nav className={styles.nav}>
             <div className={styles.container}>
@@ -22,7 +20,7 @@ const Navbar = (props) => {
                     <NavLink to="/geolocation" activeClassName={styles.active}>Geolocation</NavLink>
                 </div>
                 <div className={styles.item}>
-                    <NavLink to="/news/local" activeClassName={styles.active}>Local News</NavLink>
+                    <NavLink to={`/news/local`} activeClassName={styles.active}>Local News</NavLink>
                 </div>
                 <div className={styles.item}>
                     <NavLink to="/categories" activeClassName={styles.active}>Categories</NavLink>

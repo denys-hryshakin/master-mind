@@ -41,7 +41,7 @@ const UserSchema = mongoose.Schema({
     status: {
         type: String,
         required: true,
-        default: "This is your status!"
+        default: "Double click to update status!"
     },
     date: {
         type: Date,
@@ -54,11 +54,11 @@ const UserSchema = mongoose.Schema({
     },
     country: {
         type: String,
-        default: null
+        default: "Double click to update country!"
     },
     city: {
         type: String,
-        default: null
+        default: "Double click to update city!"
     },
     geoData: {
         address: {

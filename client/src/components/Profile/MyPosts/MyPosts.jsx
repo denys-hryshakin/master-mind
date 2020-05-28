@@ -1,5 +1,5 @@
 import React from 'react';
-import  './MyPosts.css';
+import './MyPosts.css';
 import Post from './Post/Post';
 import { NavLink } from 'react-router-dom';
 
