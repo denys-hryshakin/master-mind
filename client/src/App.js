@@ -20,7 +20,8 @@ import UsersContainer from './components/Users/UsersContainer';
 import { logoutUser, setCurrentUser } from "./redux/actions/actions";
 import store from './redux/redux-store';
 import setAuthToken from "./utils/setAuthToken";
-import LocalNews from "./components/LocalNews/LocalNews";
+import LocalNewsContainer from "./components/LocalNews/LocalNewsContainer";
+import Geolocation from "./components/LocalNews/Geolocation/Geolocation";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -62,7 +63,8 @@ const App = () => {
               <PrivateRoute path="/portals" component={PortalsContainer} />
               <PrivateRoute path="/users" component={UsersContainer} />
               <PrivateRoute path="/friends" component={FriendListContainer} />
-              <PrivateRoute path="/geolocation" component={LocalNews} />
+              <PrivateRoute path="/geolocation" component={Geolocation} />
+              <PrivateRoute path="/news/local/" component={LocalNewsContainer} />
             </Switch>
             <Route path="/news" render={() => <div />} />
             <Route path="/music" render={() => <div />} />

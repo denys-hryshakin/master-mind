@@ -1,8 +1,7 @@
 import React from 'react';
-import './../LocalNews.css'
-import Map from '../Autocomplete/Map';
-import { profileAPI } from '../../../redux/actions/actions';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import Map from '../Geolocation/Map/Map';
+import './Geolocation.css';
 
 class Geolocation extends React.Component {
     constructor(props) {
@@ -20,11 +19,12 @@ class Geolocation extends React.Component {
         this.getCoordinates = this.getCoordinates.bind(this)
         this.getAddress = this.getAddress.bind(this)
     };
+
     getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(this.getCoordinates, this.handleLocationError);
             this.setState({
-                showButton: false
+                showButton: true
             })
         } else {
             alert('Geolocation is not supported by this browser!')
@@ -38,12 +38,12 @@ class Geolocation extends React.Component {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
         })
-        const latlng = {
-            latitude: this.state.latitude,
-            longitude: this.state.longitude
-        }
-        const userId = this.props.login.user.id
-        profileAPI.setLatLng(userId, latlng)
+        // const latlng = {
+        //     latitude: this.state.latitude,
+        //     longitude: this.state.longitude
+        // }
+        // const userId = this.props.login.user.id
+        // profileAPI.setLatLng(userId, latlng)
         this.getAddress()
     };
     getFirstWord(str) {
@@ -60,14 +60,14 @@ class Geolocation extends React.Component {
                     state: this.getFirstWord(data.results[8].formatted_address),
                     address: data.results[0].formatted_address
                 })
-                const locationData = {
-                    city: this.state.city,
-                    area: this.state.area,
-                    state: this.state.state,
-                    address: this.state.address,
-                }
-                const userId = this.props.login.user.id
-                profileAPI.setAddress(userId, locationData)
+                // const locationData = {
+                //     city: this.state.city,
+                //     area: this.state.area,
+                //     state: this.state.state,
+                //     address: this.state.address,
+                // }
+                // const userId = this.props.login.user.id
+                // profileAPI.setAddress(userId, locationData)
             })
             .catch(error => alert('An error: ' + error))
     };
@@ -92,33 +92,35 @@ class Geolocation extends React.Component {
 
     render() {
         return (
-            <div className="geoBlock">
-                {this.state.showButton &&
-                    <div className="geoIntro">
-                        <h2>Здесь вы можете определить свои координаты и найти новости.</h2>
-                        <button className="getLocation" onClick={this.getLocation}>Определить координаты</button>
-                    </div>
-                }
-                {!this.state.showButton &&
-                    <div>
-                        {
-                            this.state.latitude && this.state.longitude
-                                ?
-                                <div className="geoInfo">
-                                    <Map
-                                        lat={this.state.latitude}
-                                        lng={this.state.longitude}
-                                        google={this.props.google}
-                                        height='400px'
-                                        width='1090px'
-                                        boxShadow='0 0 10px rgba(29, 17, 17, 0.603)'
-                                        border='1px solid rgba(29, 17, 17, 0.603)'
-                                        zoom={15} />
-                                </div>
-                                : null
-                        }
-                    </div>
-                }
+            <div className="container-block">
+                <div className="geoBlock">
+                    {this.state.showButton &&
+                        <div className="geoIntro">
+                            <h2>Здесь вы можете определить свои координаты и найти новости.</h2>
+                            <button className="getLocation" onClick={this.getLocation}>Определить координаты</button>
+                        </div>
+                    }
+                    {this.state.showButton &&
+                        <div>
+                            {
+                                this.state.latitude && this.state.longitude
+                                    ?
+                                    <div className="geoInfo">
+                                        <Map
+                                            lat={this.state.latitude}
+                                            lng={this.state.longitude}
+                                            google={this.props.google}
+                                            height='400px'
+                                            width='1090px'
+                                            boxShadow='0 0 10px rgba(29, 17, 17, 0.603)'
+                                            border='1px solid rgba(29, 17, 17, 0.603)'
+                                            zoom={13} />
+                                    </div>
+                                    : null
+                            }
+                        </div>
+                    }
+                </div>
             </div>
         )
     }

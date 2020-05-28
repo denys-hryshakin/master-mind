@@ -47,7 +47,7 @@ const ProfileInfo = (props) => {
           </div>
         </div>
       </div>
-      <div className="fullInfo">
+      {/*<div className="fullInfo">
         <h2>Full Description</h2>
         {!props.profile.city
           ? <span>User hasn't set information yet.</span>
@@ -56,7 +56,7 @@ const ProfileInfo = (props) => {
             <div>{props.profile.facebook}</div>
             <div>{props.profile.instagram}</div>
           </div>}
-      </div>
+        </div>*/}
     </div>
   );
 }

@@ -217,9 +217,20 @@ export const profileAPI = {
         })
     )
   },
-  setLatLng(userId, latlng) {
+  // setLatLng(userId, latlng) {
+  //   return (
+  //     axios.put('/api/users/geolocation/latlng/' + userId, latlng)
+  //       .then(response => {
+  //         console.log(response.data)
+  //       })
+  //       .catch(error => {
+  //         console.log(error)
+  //       })
+  //   )
+  // },
+  setAddress(userId, locationData) {
     return (
-      axios.put('/api/users/geolocation/latlng/' + userId, latlng)
+      axios.put('/api/users/geolocation/address/' + userId, locationData)
         .then(response => {
           console.log(response.data)
         })
@@ -228,11 +239,11 @@ export const profileAPI = {
         })
     )
   },
-  setAddress(userId, locationData) {
+  getAddress(userId) {
     return (
-      axios.put('/api/users/geolocation/address/' + userId, locationData)
+      axios.get('/api/users/geolocation/address/' + userId)
         .then(response => {
-          console.log(response.data)
+          return response.data
         })
         .catch(error => {
           console.log(error)

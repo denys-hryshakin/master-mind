@@ -60,16 +60,6 @@ const UserSchema = mongoose.Schema({
         type: String,
         default: null
     },
-    latlng: {
-        latitude: {
-            type: String,
-            default: null
-        },
-        longitude: {
-            type: String,
-            default: null
-        },
-    },
     geoData: {
         address: {
             type: String,
@@ -84,6 +74,14 @@ const UserSchema = mongoose.Schema({
             default: null
         },
         area: {
+            type: String,
+            default: null
+        },
+        lat: {
+            type: String,
+            default: null
+        },
+        lng: {
             type: String,
             default: null
         },

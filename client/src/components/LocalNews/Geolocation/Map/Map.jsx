@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
 import Geocode from "react-geocode";
 import Autocomplete from 'react-google-autocomplete';
+import { profileAPI } from '../../../../redux/actions/actions';
+import { connect } from 'react-redux'
+
 Geocode.setApiKey("AIzaSyB3kPBRNJoMpVxk1LO3OrmgQCvWJX-7Q94");
 Geocode.enableDebug();
-Geocode.setLanguage('ua')
+Geocode.setLanguage('en')
 
 class Map extends Component {
 
@@ -36,15 +39,23 @@ class Map extends Component {
                     city = this.getCity(addressArray),
                     area = this.getArea(addressArray),
                     state = this.getState(addressArray);
-
-                console.log('Location: ', city, area, state);
-
                 this.setState({
                     address: (address) ? address : '',
                     area: (area) ? area : '',
                     city: (city) ? city : '',
                     state: (state) ? state : '',
                 })
+                const locationData = {
+                    city: this.state.city,
+                    area: this.state.area,
+                    state: this.state.state,
+                    address: this.state.address,
+                    lat: this.state.markerPosition.lat,
+                    lng: this.state.markerPosition.lng
+                };
+                const userId = this.props.login.user.id;
+                console.log('Location:', city + ',', area + ',', state + ',', address)
+                profileAPI.setAddress(userId, locationData)
             },
             error => {
                 console.error(error);
@@ -170,6 +181,17 @@ class Map extends Component {
                         lng: newLng
                     },
                 })
+                const locationData = {
+                    city: this.state.city,
+                    area: this.state.area,
+                    state: this.state.state,
+                    address: this.state.address,
+                    lat: this.state.markerPosition.lat,
+                    lng: this.state.markerPosition.lng
+                };
+                const userId = this.props.login.user.id;
+                console.log('Location:', city + ',', area + ',', state + ',', address)
+                profileAPI.setAddress(userId, locationData)
             },
             error => {
                 console.error(error);
@@ -303,4 +325,10 @@ class Map extends Component {
         return (map)
     }
 }
-export default Map
+
+
+let mapStateToProps = (state) => ({
+    login: state.login
+})
+
+export default connect(mapStateToProps, {})(Map);

@@ -14,7 +14,6 @@ const MyPosts = (props) => {
           <NavLink to={'/new-post'}>Create a new post</NavLink>
         </div>
         <div className="posts">
-          <h2>Posts</h2>
           {postsElements}
         </div>
       </div>
