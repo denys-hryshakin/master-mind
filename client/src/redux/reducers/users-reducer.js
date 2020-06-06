@@ -9,7 +9,7 @@ const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 
 let initialState = {
     users: [],
-    pageSize: 10,
+    pageSize: 4,
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: false
@@ -65,6 +65,7 @@ export const getUsers = (currentPage, pageSize) => {
                 dispatch(toggleIsFetching(false))
                 dispatch(setUsers(data.items))
                 dispatch(setTotalUsersCount(data.totalCount))
+                dispatch(setCurrentPage(currentPage))
             });
     }
 }

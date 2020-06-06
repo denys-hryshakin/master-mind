@@ -97,15 +97,15 @@ class Login extends Component {
                         <p>Don't have an account? <NavLink to="/register">Sign up</NavLink></p>
                     </div>
                     <div className="benefitsBlock">
-                        <h1>Benefits of using MasterMind</h1>
-                        <h3>Personalized Recommendations</h3>
-                        <p>Discover shows you'll love.</p>
-                        <h3>Your Watchlist</h3>
-                        <p>Track everything you want to watch and receive e-mail when movies open in theaters.</p>
-                        <h3>Your Ratings</h3>
-                        <p>Rate and remember everything you've seen.</p>
-                        <h3>Contribute to IMDb</h3>
-                        <p>Add data that will be seen by millions of people and get cool badges.</p>
+                        <h1>Переваги використання Mastermind</h1>
+                        <h3>Персоналізований профіль</h3>
+                        <p>Додавайте інформацію на свій смак.</p>
+                        <h3>Локальні новини</h3>
+                        <p>Читайте новини вашого регіону, використовуючи геолокацію.</p>
+                        <h3>Особисті публікації</h3>
+                        <p>Створюйте публікації на будь-яку тему та діліться із іншими.</p>
+                        <h3>Спілкуйтесь</h3>
+                        <p>Ствоерюйте коментарі та надсилайте повідомлення.</p>
                     </div>
                 </div>
             </div>

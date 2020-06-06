@@ -109,9 +109,9 @@ router.get('/', async (req, res) => {
     const startIndex = (page - 1) * count;
     const endIndex = page * count;
     const resultsUsers = users.slice(startIndex, endIndex);
-    res.json({ items: resultsUsers, totalCount: users.length })
+    res.status(200).json({ items: resultsUsers, totalCount: users.length })
   } catch (err) {
-    res.json({ message: err })
+    res.status(500).json({ message: err })
   }
 })
 

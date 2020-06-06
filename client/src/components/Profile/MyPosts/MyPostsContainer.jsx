@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deletePostReq, getPosts } from '../../../redux/actions/actions';
+import { deleteAPI, getPosts } from '../../../redux/actions/actions';
 import { setPosts } from '../../../redux/reducers/profile-reducer';
 import MyPosts from './MyPosts';
 
@@ -24,7 +24,7 @@ class MyPostsContainer extends React.Component {
 
   onClick = (e, id) => {
     e.preventDefault();
-    this.props.deletePostReq(id)
+    deleteAPI.deletePostReq(id)
     window.location.reload();
   }
 
@@ -48,4 +48,4 @@ let mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setPosts, deletePostReq })(MyPostsContainer);
+export default connect(mapStateToProps, { setPosts })(MyPostsContainer);

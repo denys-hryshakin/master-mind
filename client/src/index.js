@@ -5,10 +5,7 @@ import App from './App';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 
 // rerenderEntireTree(store.getState());
 

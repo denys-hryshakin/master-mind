@@ -95,7 +95,6 @@ export const addPost = (postData, history) => dispatch => {
     .post("/api/posts/new/" + postData.userId, postData)
     .then(res => {
       history.push("/profile/" + res.data.userId)
-      // window.location.reload();
     })
     .catch(err =>
       dispatch({
@@ -118,18 +117,15 @@ export const updatePost = (updateData, history) => dispatch => {
       })
     );
 }
-export const deletePostReq = (id) => dispatch => {
-  axios.delete("/api/posts/" + id)
-    .then(res => {
-      console.log(res.data)
-      dispatch(deletePost(res.data._id))
-    })
-}
-export const deletePost = (id) => {
-  return ({
-    type: DELETE_POST,
-    id: id
-  })
+export const deleteAPI = {
+  deletePostReq(id) {
+    return (
+      axios.delete("/api/posts/" + id)
+        .then(res => {
+          return res.data
+        })
+    );
+  }
 }
 
 

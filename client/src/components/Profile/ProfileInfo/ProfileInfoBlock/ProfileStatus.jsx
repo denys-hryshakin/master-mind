@@ -8,7 +8,7 @@ import Zoom from '@material-ui/core/Zoom'
 
 class ProfileStatus extends React.Component {
     state = {
-        status: "",
+        status: this.props.status,
         editMode: false
     }
     LightTooltip = withStyles((theme) => ({

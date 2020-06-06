@@ -9,26 +9,26 @@ module.exports = function validateRegisterInput(data) {
     data.login = !isEmpty(data.login) ? data.login : "";
     data.password = !isEmpty(data.password) ? data.password : "";
     data.password2 = !isEmpty(data.password2) ? data.password2 : "";
-    // Name checks
+    // Name validation
     if (Validator.isEmpty(data.name)) {
         errors.name = "• First name is required!";
     } 
     if (Validator.isEmpty(data.surname)) {
         errors.surname = "• Surname is required!";
     } 
-    // Login checks
+    // Login validation
     if (Validator.isEmpty(data.login)) {
         errors.login = "• Login is required!";
     } else if (!Validator.isLength(data.login, { max: 15 })) {
         errors.login = "• Login must not contain more than 15 characters!";
     }
-    // Email checks
+    // Email validation
     if (Validator.isEmpty(data.email)) {
         errors.email = "• Email is required!";
     } else if (!Validator.isEmail(data.email)) {
         errors.email = "• Email is invalid!";
     }
-    // Password checks
+    // Password validation
     if (Validator.isEmpty(data.password)) {
         errors.password = "• Password is required!";
     }

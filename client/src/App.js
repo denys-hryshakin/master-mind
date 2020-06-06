@@ -22,6 +22,7 @@ import store from './redux/redux-store';
 import setAuthToken from "./utils/setAuthToken";
 import LocalNewsContainer from "./components/LocalNews/LocalNewsContainer";
 import Geolocation from "./components/LocalNews/Geolocation/Geolocation";
+import ProfileStatus from "./components/Profile/ProfileInfo/ProfileInfoBlock/ProfileStatus";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -46,8 +47,9 @@ if (localStorage.jwtToken) {
 const App = () => {
   return (
     <BrowserRouter>
-    <ScrollToTop />
+      <ScrollToTop />
       <Provider store={store}>
+        <ProfileStatus />
         <div className="app-wrapper">
           <HeaderContainer />
           <PrivateRoute component={NavbarContainer} />

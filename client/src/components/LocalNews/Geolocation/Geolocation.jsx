@@ -24,7 +24,7 @@ class Geolocation extends React.Component {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(this.getCoordinates, this.handleLocationError);
             this.setState({
-                showButton: true
+                showButton: false
             })
         } else {
             alert('Geolocation is not supported by this browser!')
@@ -100,7 +100,7 @@ class Geolocation extends React.Component {
                             <button className="getLocation" onClick={this.getLocation}>Определить координаты</button>
                         </div>
                     }
-                    {this.state.showButton &&
+                    {!this.state.showButton &&
                         <div>
                             {
                                 this.state.latitude && this.state.longitude
