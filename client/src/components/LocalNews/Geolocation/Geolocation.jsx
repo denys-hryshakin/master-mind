@@ -57,7 +57,7 @@ class Geolocation extends React.Component {
                 this.setState({
                     city: this.getFirstWord(data.results[6].formatted_address),
                     area: this.getFirstWord(data.results[4].formatted_address),
-                    state: this.getFirstWord(data.results[8].formatted_address),
+                    state: this.getFirstWord(data.results[5].formatted_address),
                     address: data.results[0].formatted_address
                 })
                 // const locationData = {
@@ -69,7 +69,7 @@ class Geolocation extends React.Component {
                 // const userId = this.props.login.user.id
                 // profileAPI.setAddress(userId, locationData)
             })
-            .catch(error => alert('An error: ' + error))
+            .catch(error => console.warn(error));
     };
     handleLocationError(error) {
         switch (error.code) {

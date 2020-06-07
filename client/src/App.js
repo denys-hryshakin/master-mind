@@ -23,6 +23,7 @@ import setAuthToken from "./utils/setAuthToken";
 import LocalNewsContainer from "./components/LocalNews/LocalNewsContainer";
 import Geolocation from "./components/LocalNews/Geolocation/Geolocation";
 import ProfileStatus from "./components/Profile/ProfileInfo/ProfileInfoBlock/ProfileStatus";
+import Footer from "./components/Footer/Footer";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -71,6 +72,7 @@ const App = () => {
             <Route path="/news" render={() => <div />} />
             <Route path="/music" render={() => <div />} />
           </div>
+          <PrivateRoute component={Footer} />
         </div>
       </Provider>
     </BrowserRouter>

@@ -1,0 +1,15 @@
+.footer-container{
+    width: 1240px;
+    margin: 0 auto;
+}
+.footer-main {
+    grid-area: footer;
+    display: flex;
+    background-color: #0e1220ce;
+    color: aliceblue;
+    padding: 15px 0 20px 0;
+}
+.footer-main img{
+    width: 200px;
+    padding: 10px;
+}

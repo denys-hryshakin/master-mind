@@ -15,7 +15,8 @@ body{
   grid-template-areas: 
   "header"
   "nav"
-  "content";
+  "content"
+  "footer";
   grid-template-rows: auto;
   grid-template-columns: auto;
   /* grid-gap: 10px; */

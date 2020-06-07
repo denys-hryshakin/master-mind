@@ -5,7 +5,6 @@ import jwt_decode from "jwt-decode";
 const USER_LOADING = "USER_LOADING";
 const SET_CURRENT_USER = "SET_CURRENT_USER";
 const GET_ERRORS = "GET_ERRORS";
-const DELETE_POST = "DELETE-POST";
 
 // Register User
 export const registerUser = (userData, history) => dispatch => {
@@ -238,7 +237,7 @@ export const profileAPI = {
     return (
       axios.put('/api/users/geolocation/address/' + userId, locationData)
         .then(response => {
-          console.log(response.data)
+          
         })
         .catch(error => {
           console.log(error)

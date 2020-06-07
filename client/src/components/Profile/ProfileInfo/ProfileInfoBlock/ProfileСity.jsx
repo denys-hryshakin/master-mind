@@ -1,24 +1,12 @@
 import React from 'react';
-import { profileAPI } from '../../../../redux/actions/actions'
-import './ProfileInfoBlock.css'
-import Tooltip from '@material-ui/core/Tooltip';
-import { withStyles } from '@material-ui/core/styles';
-import Zoom from '@material-ui/core/Zoom'
+import { profileAPI } from '../../../../redux/actions/actions';
+import './ProfileInfoBlock.css';
 
 class ProfileCity extends React.Component {
     state = {
         city: "",
         editMode: false
     }
-    LightTooltip = withStyles((theme) => ({
-        tooltip: {
-            backgroundColor: 'white',
-            color: 'black',
-            boxShadow: theme.shadows[1],
-            fontSize: 13,
-            padding: 7,
-        },
-    }))(Tooltip);
 
     activateEditMode = () => {
         if (this.props.login.user.id !== this.props.userId) {
@@ -56,13 +44,7 @@ class ProfileCity extends React.Component {
             <div>
                 {
                     !this.state.editMode &&
-                    <this.LightTooltip
-                        title="Double click for update"
-                        TransitionComponent={Zoom}
-                        TransitionProps={{ timeout: 300 }}
-                    >
-                        <div onDoubleClick={this.activateEditMode}>{this.props.city}</div>
-                    </this.LightTooltip>
+                    <div onDoubleClick={this.activateEditMode}>{this.props.city}</div>
                 }
                 {
                     this.state.editMode &&

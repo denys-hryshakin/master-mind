@@ -4,6 +4,7 @@ import avatar from '../../../assets/images/avatar.jpg'
 
 const NewsItem = props => {
     const [isLocal, setLocal] = useState(false)
+    // eslint-disable-next-line
     useEffect(() => {
         if (props.profile.geoData.city === props.news.city) {
             setLocal(true)
