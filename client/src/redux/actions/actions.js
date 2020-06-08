@@ -88,6 +88,22 @@ export const getPosts = (userId) => {
       })
   )
 }
+export const getComments = (postId) => {
+  return (
+    axios.get(`http://localhost:4000/api/comments/` + postId)
+      .then(response => {
+        return response.data
+      })
+  );
+}
+export const getPost = (postId) => {
+  return (
+    axios.get(`http://localhost:4000/api/posts/userpost/` + postId)
+      .then(response => {
+        return response.data
+      })
+  )
+}
 
 export const addPost = (postData, history) => dispatch => {
   axios
@@ -167,6 +183,18 @@ export const profileAPI = {
         })
     );
   },
+  sendComment(newComment) {
+    return (
+      axios
+        .post(`/api/comments/new/${newComment.userId}/${newComment.postId}`, newComment)
+        .then(res => {
+          console.log(res.data)
+        })
+        .catch(error => {
+          console.warn(error);
+        })
+    );
+  },
   updateStatus(userId, status) {
     return (
       axios.put('/api/users/profile/status/' + userId, status)
@@ -237,7 +265,7 @@ export const profileAPI = {
     return (
       axios.put('/api/users/geolocation/address/' + userId, locationData)
         .then(response => {
-          
+
         })
         .catch(error => {
           console.log(error)

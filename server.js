@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 const usersRoutes = require('./routes/users')
 const postsRoutes = require('./routes/posts')
 const newsRoutes = require('./routes/news')
+const commentsRoutes = require('./routes/comments')
 
 // Passport middleware
 app.use(passport.initialize());
@@ -25,6 +26,7 @@ app.get('/api', (req, res) => {
 app.use('/api/users', usersRoutes)
 app.use('/api/posts', postsRoutes)
 app.use('/api/news', newsRoutes)
+app.use('/api/comments', commentsRoutes)
 
 // DB Config
 const db = require("./config/keys").mongoURI;

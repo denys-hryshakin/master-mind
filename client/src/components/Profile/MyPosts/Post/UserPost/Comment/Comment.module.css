@@ -1,0 +1,37 @@
+.container{
+    display: flex;
+}
+.main{
+    display: flex;
+    padding: 10px 5px;
+    width: 760px;
+}
+.img img{
+    width: 40px;
+    border-radius: 50%;
+}
+.alert{
+    display: flex;
+    justify-content: center;
+    float: right;
+}
+.alert img{
+    width: 30px;
+}
+.info{
+    padding-left: 15px;
+}
+.name{
+    font-weight: 700;
+}
+.user{
+    display: flex;
+}
+.user div{
+    padding-right: 5px;
+}
+.date{
+    font-size: 11px;
+    color: gray;
+    padding-top: 5px;
+}

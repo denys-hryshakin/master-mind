@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 const MyPosts = (props) => {
   let postsElements = props.profile.posts.map(p => <Post deletePost={props.onClick}
-    key={p.id} post={p} user={p.userId} />);
+    key={p.id} post={p} user={p.userId} login={props.login.user.id} />);
 
   return (
     <div className="container-block">

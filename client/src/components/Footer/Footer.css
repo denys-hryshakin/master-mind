@@ -5,6 +5,7 @@
 .footer-main {
     grid-area: footer;
     display: flex;
+
     background-color: #0e1220ce;
     color: aliceblue;
     padding: 15px 0 20px 0;

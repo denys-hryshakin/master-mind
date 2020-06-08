@@ -5,13 +5,17 @@ const SET_POSTS = 'SET-POSTS';
 const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
 const UPDATE_POST_TITLE = 'UPDATE-POST-TITLE';
 const DELETE_POST = 'DELETE-POST';
+const SET_USER_POST = 'SET-USER-POST';
+const SET_COMMENTS = 'SET-COMMENTS';
 
 let initialState = {
     posts: [],
     title: "",
     text: "",
     userId: "",
-    profile: []
+    profile: [],
+    post: [],
+    comments: [],
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -26,10 +30,14 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 text: action.text
             };
+        case SET_USER_POST:
+            return { ...state, post: action.post };
         case SET_USER_PROFILE:
             return { ...state, profile: action.profile };
         case SET_POSTS:
             return { ...state, posts: action.posts }
+        case SET_COMMENTS:
+            return { ...state, comments: action.comments }
         case DELETE_POST:
             return {
                 ...state,
@@ -41,7 +49,9 @@ const profileReducer = (state = initialState, action) => {
 }
 
 
+export const setUserPost = (post) => ({ type: SET_USER_POST, post });
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
+export const setComments = (comments) => ({ type: SET_COMMENTS, comments });
 export const setPosts = (posts) => ({ type: SET_POSTS, posts });
 export const updatePostTitle = (title) => ({ type: UPDATE_POST_TITLE, title: title });
 export const updatePostText = (text) => ({ type: UPDATE_POST_TEXT, text: text });

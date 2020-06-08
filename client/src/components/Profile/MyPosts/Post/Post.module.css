@@ -30,6 +30,7 @@
 
 /* AVATAR */
 .avatar {
+  padding-top: 7px;
   width: 50px;
   height: 50px;
   border-radius: 50%; 
@@ -40,7 +41,7 @@
 
 /* POST INFO */
 .postInfo{
-  padding-left: 20px;
+  padding-left: 15px;
   display: inline-block;
 }
 .postInfo div:last-child{
@@ -48,9 +49,14 @@
 }
 
 .title{
+  color: #000000;
+  text-decoration: none;
   padding: 3px;
   font-size: 19px;
   font-weight: bold;
+}
+.title:hover{
+  text-decoration: underline;
 }
 .text{
   padding: 3px;
@@ -72,6 +78,7 @@
 .btnBlock{
   display: flex;
 }
+
 
 .btnDeletePost{
   cursor: pointer;
@@ -95,8 +102,12 @@
   outline: none;
 }
 
+.display-none {
+  display: none;
+}
 
 .NavLink{
+  display: block;
   margin-top: 13px;
 }
 .NavLink a{

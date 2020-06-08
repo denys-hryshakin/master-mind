@@ -86,11 +86,19 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
-router.get('/userpost/:id', async (req, res) => {
+router.get('/userpost/:postId', async (req, res) => {
     try {
-        const post = await Post.findById({ _id: req.params.id })
+        const post = await Post.findById({ _id: req.params.postId })
+            .populate('userId', 'name surname login')
         res.json({
-            post: post
+            postId: post._id,
+            title: post.title,
+            text: post.text,
+            date: post.date,
+            userId: post.userId._id,
+            userName: post.userId.name,
+            userSurname: post.userId.surname,
+            userLogin: post.userId.login
         })
     } catch (error) {
         res.status(500).json(error)

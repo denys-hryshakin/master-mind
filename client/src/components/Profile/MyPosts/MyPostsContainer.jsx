@@ -17,7 +17,7 @@ class MyPostsContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.userId !== prevProps.userId) {
+    if (this.props.userId !== prevProps.userId) {
       this.refreshPosts()
     }
   }
