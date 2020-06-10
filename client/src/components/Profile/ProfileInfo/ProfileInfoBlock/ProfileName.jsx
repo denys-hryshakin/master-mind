@@ -40,6 +40,14 @@ class ProfileName extends React.Component {
         this.setState({ [e.target.id]: e.target.value });
     };
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.name !== this.props.name) {
+            this.setState({
+                name: this.props.name
+            })
+        }
+    }
+
     render() {
         return (
             <div>

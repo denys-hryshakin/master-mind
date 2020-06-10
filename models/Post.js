@@ -18,6 +18,14 @@ const PostSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    imageName: {
+        type: String,
+        default: "none"
+    },
+    imageData: {
+        type: String,
+        default: "none"
+    }
     
 })
 

@@ -16,6 +16,10 @@ class MyPostsContainer extends React.Component {
     this.refreshPosts()
   }
 
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    
+  }
+  
   componentDidUpdate(prevProps) {
     if (this.props.userId !== prevProps.userId) {
       this.refreshPosts()
@@ -25,7 +29,7 @@ class MyPostsContainer extends React.Component {
   onClick = (e, id) => {
     e.preventDefault();
     deleteAPI.deletePostReq(id)
-    window.location.reload();
+    // window.location.reload();
   }
 
   render() {

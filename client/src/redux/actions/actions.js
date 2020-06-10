@@ -104,7 +104,15 @@ export const getPost = (postId) => {
       })
   )
 }
-
+export const uploadPhoto = (photoData) => {
+  axios.post("/api/posts/upload", photoData)
+    .then(res=>{
+      console.warn(res.data)
+    })
+    .catch(error=>{
+      console.warn(error)
+    })
+}
 export const addPost = (postData, history) => dispatch => {
   axios
     .post("/api/posts/new/" + postData.userId, postData)

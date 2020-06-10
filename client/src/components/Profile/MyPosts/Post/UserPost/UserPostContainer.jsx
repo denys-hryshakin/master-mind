@@ -25,13 +25,13 @@ class UserPostContainer extends React.Component {
     componentDidMount() {
         this.refreshPage()
     }
-    componentDidUpdate(prevProps, prevState) {
-        console.log(prevProps)
-        console.log(this.props)
-        if(prevProps.comments !== this.props.comments){
-            this.refreshPage()
-        }
-    }
+    // componentDidUpdate(prevProps, prevState) {
+    //     console.log(prevProps)
+    //     console.log(this.props)
+    //     if(prevProps.comments !== this.props.comments){
+    //         this.refreshPage()
+    //     }
+    // }
 
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value });

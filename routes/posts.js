@@ -3,8 +3,48 @@ const router = express()
 const Post = require('../models/Post')
 const User = require('../models/User')
 const cors = require('cors')
+const multer = require('multer')
 const mongoose = require('mongoose')
 router.use(cors())
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + file.originalname);
+    }
+});
+
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+        cb(null, true);
+    } else {
+        // rejects storing a file
+        cb(null, false);
+    }
+}
+
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1024 * 1024 * 5
+    },
+    fileFilter: fileFilter
+});
+
+
+router.route('/upload')
+    .post(upload.single('imageData'), (req, res) => {
+        const newImage = new Post({
+            imageData: req.file.path
+        });
+        newImage.save()
+            .then((result) => {
+                res.status(200).json(result)
+            })
+
+    })
 
 // Load input validation
 const validatePostInput = require("../validation/post");

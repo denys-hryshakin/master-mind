@@ -29,7 +29,6 @@ class ProfileSurname extends React.Component {
         this.setState({
             editMode: false
         })
-        window.location.reload();
     }
     deactivateEditMode = () => {
         this.setState({
@@ -40,7 +39,7 @@ class ProfileSurname extends React.Component {
         this.setState({ [e.target.id]: e.target.value });
     };
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         if (prevProps.surname !== this.props.surname) {
             this.setState({
                 surname: this.props.surname

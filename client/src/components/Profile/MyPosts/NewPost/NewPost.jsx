@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import styles from './NewPost.module.css'
 import { connect } from 'react-redux';
-import { addPost } from '../../../../redux/actions/actions'
+import { addPost, uploadPhoto } from '../../../../redux/actions/actions'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom';
 
@@ -13,7 +13,8 @@ class NewPost extends React.Component {
             title: "",
             text: "",
             userId: "",
-            errors: {}
+            errors: {},
+            selectedFile: null
         };
     }
     UNSAFE_componentWillReceiveProps(nextProps) {
@@ -33,8 +34,16 @@ class NewPost extends React.Component {
             userId: this.props.login.user.id,
             text: this.state.text,
         };
+        const data = new FormData();
+        data.append('file', this.state.selectedFile);
         this.props.addPost(newPost, this.props.history);
     };
+    onChangeHandler = e => {
+        this.setState({
+            selectedFile: e.target.files[0],
+            loaded: 0,
+        })
+    }
 
     render() {
         const { errors } = this.state;
@@ -70,6 +79,9 @@ class NewPost extends React.Component {
                             <div className='errorMessage'>{errors.text}</div>
                         </div>
                         <div>
+                            <input type="file" id="file" name="file" onChange={this.onChangeHandler} />
+                        </div>
+                        <div>
                             <button className={styles.btnAddPost} type="submit">Add Post</button>
                         </div>
                     </form>
@@ -91,4 +103,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { addPost })(withRouter(NewPost));
+export default connect(mapStateToProps, { addPost, uploadPhoto })(withRouter(NewPost));

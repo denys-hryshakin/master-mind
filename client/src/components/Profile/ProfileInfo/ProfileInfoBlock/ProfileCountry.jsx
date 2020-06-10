@@ -40,6 +40,14 @@ class ProfileCountry extends React.Component {
         this.setState({ [e.target.id]: e.target.value });
     };
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.country !== this.props.country) {
+            this.setState({
+                country: this.props.country
+            })
+        }
+    }
+
     render() {
         return (
             <div>

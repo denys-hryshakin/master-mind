@@ -39,6 +39,14 @@ class ProfileCity extends React.Component {
         this.setState({ [e.target.id]: e.target.value });
     };
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.city !== this.props.city) {
+            this.setState({
+                city: this.props.city
+            })
+        }
+    }
+
     render() {
         return (
             <div>

@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="footer-main">
             <div className="footer-container">
                 <div><img src={logo} alt="footer-logo" /></div>
-                <div>Copyright &copy; {year} {companyName}</div>
+                <div className="copyright">Copyright &copy; {year} {companyName}</div>
             </div>
         </div>
     );
