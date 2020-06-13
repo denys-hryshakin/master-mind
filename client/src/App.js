@@ -20,7 +20,6 @@ import NewPost from "./components/Profile/MyPosts/NewPost/NewPost";
 import UserPostContainer from "./components/Profile/MyPosts/Post/UserPost/UserPostContainer";
 import UpdatePost from "./components/Profile/MyPosts/UpdatePost/UpdatePost";
 import ProfileContainer from './components/Profile/ProfileContainer';
-import ProfileStatus from "./components/Profile/ProfileInfo/ProfileInfoBlock/ProfileStatus";
 import UsersContainer from './components/Users/UsersContainer';
 import { logoutUser, setCurrentUser } from "./redux/actions/actions";
 import store from './redux/redux-store';
@@ -51,7 +50,6 @@ const App = () => {
     <BrowserRouter>
       <ScrollToTop />
       <Provider store={store}>
-        <ProfileStatus />
         <div className="app-wrapper">
           <HeaderContainer />
           <PrivateRoute component={NavbarContainer} />

@@ -10,6 +10,7 @@ router.use(cors())
 // Load input validation
 const validateRegisterInput = require("../validation/register");
 const validateLoginInput = require("../validation/login");
+const { route } = require('./posts');
 
 // @route POST api/users/register
 // @desc Register user
@@ -101,7 +102,7 @@ router.post("/login", (req, res) => {
 });
 
 // GET ALL THE USERS
-router.get('/', async (req, res) => {
+router.get('/pagination', async (req, res) => {
   try {
     const users = await User.find()
     const page = req.query.page;
@@ -112,6 +113,15 @@ router.get('/', async (req, res) => {
     res.status(200).json({ items: resultsUsers, totalCount: users.length })
   } catch (err) {
     res.status(500).json({ message: err })
+  }
+})
+
+router.get('/', async (req, res) => {
+  try {
+    const users = await User.find()
+    res.status(200).json({items: users, totalCount: users.length});
+  } catch (error) {
+    res.status(500).json(error);
   }
 })
 
@@ -139,7 +149,17 @@ router.put('/profile/:userId/image', async (req, res) => {
   }
 })
 
-// Profile settings
+// Profile settings ///////////////////////////////////////////////////////////////////////////////
+
+// STATUS /////////////////////////////////////////////////////////////////////////////////////////
+router.get('/profile/status/:id', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    res.json({resultCode: 0,message: "Success", status: user.status});
+  } catch (error) {
+    res.json({resultCode: 1, message: error});
+  }
+})
 router.put('/profile/status/:userId', async (req, res) => {
   try {
     let status = await User.findByIdAndUpdate({ _id: req.params.userId }, { status: req.body.status }, { new: true })
@@ -150,6 +170,8 @@ router.put('/profile/status/:userId', async (req, res) => {
     res.status(500).json(error)
   }
 })
+
+// NAME ///////////////////////////////////////////////////////////////////////////////////////////
 router.put('/profile/name/:userId', async (req, res) => {
   try {
     let name = await User.findByIdAndUpdate({ _id: req.params.userId }, { name: req.body.name }, { new: true })
@@ -160,6 +182,8 @@ router.put('/profile/name/:userId', async (req, res) => {
     res.status(500).json(error)
   }
 })
+
+// SURNAME ////////////////////////////////////////////////////////////////////////////////////////
 router.put('/profile/surname/:userId', async (req, res) => {
   try {
     let surname = await User.findByIdAndUpdate({ _id: req.params.userId }, { surname: req.body.surname }, { new: true })
@@ -222,9 +246,9 @@ router.put('/geolocation/address/:userId', async (req, res) => {
 router.get('/geolocation/address/:userId', async (req, res) => {
   try {
     const address = await User.findById(req.params.userId, 'geoData')
-      res.status(200).json({
-        data: address
-      })
+    res.status(200).json({
+      data: address
+    })
   } catch (error) {
     res.status(500).json(error)
   }

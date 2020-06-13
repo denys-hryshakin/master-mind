@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { profileAPI } from '../../../../redux/actions/actions';
 import './ProfileInfoBlock.css';
 
 class ProfileStatus extends React.Component {
@@ -21,12 +19,10 @@ class ProfileStatus extends React.Component {
         }
     }
     onSubmit = (e) => {
-        e.preventDefault()
-        let userId = this.props.userId
-        const status = {
-            status: this.state.status
-        }
-        profileAPI.updateStatus(userId, status)
+        e.preventDefault();
+        let userId = this.props.userId;
+        const status = { status: this.state.status };
+        this.props.updateStatus(userId, status)
         this.setState({
             editMode: false
         })
@@ -40,6 +36,14 @@ class ProfileStatus extends React.Component {
         this.setState({ [e.target.id]: e.target.value });
     };
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status
+            })
+        }
+    }
+
     render() {
         return (
             <div>
@@ -52,8 +56,8 @@ class ProfileStatus extends React.Component {
                     <div>
                         <form className="profileInfoForm" onSubmit={this.onSubmit}>
                             <input
-                                autoFocus
-                                required
+                                autoFocus={true}
+                                required={true}
                                 onChange={this.onChange}
                                 onBlur={this.deactivateEditMode}
                                 id="status"
@@ -68,8 +72,4 @@ class ProfileStatus extends React.Component {
     }
 }
 
-let mapStateToProps = state => ({
-
-})
-
-export default connect(mapStateToProps, { profileAPI })(ProfileStatus);
+export default ProfileStatus;

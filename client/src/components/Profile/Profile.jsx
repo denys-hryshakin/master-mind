@@ -6,8 +6,16 @@ import MyPostsContainer from './MyPosts/MyPostsContainer';
 const Profile = (props) => {
   return (
     <div className={styles.container}>
-      <ProfileInfo profile={props.profile} userId={props.match.params.userId} login={props.login} avatar={props.avatar} surname={props.surname} />
-      <MyPostsContainer profile={props.profile} userId={props.match.params.userId} />
+      <ProfileInfo
+        profile={props.profile}
+        userId={props.match.params.userId}
+        login={props.login}
+        status={props.status}
+        updateStatus={props.updateStatus} />
+
+      <MyPostsContainer
+        profile={props.profile}
+        userId={props.match.params.userId} />
     </div>
   );
 }

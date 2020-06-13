@@ -41,7 +41,7 @@ const UserSchema = mongoose.Schema({
     status: {
         type: String,
         required: true,
-        default: "Double click to update status!"
+        default: "---"
     },
     date: {
         type: Date,

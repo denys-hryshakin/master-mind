@@ -1,13 +1,13 @@
 import { usersAPI } from './../actions/actions'
 
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
-const SET_USERS = 'SET-USERS';
-const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
-const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
-const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
+export const FOLLOW = 'FOLLOW';
+export const UNFOLLOW = 'UNFOLLOW';
+export const SET_USERS = 'SET-USERS';
+export const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
+export const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
+export const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 
-let initialState = {
+export const initialState = {
     users: [],
     pageSize: 20,
     totalUsersCount: 0,

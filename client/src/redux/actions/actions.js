@@ -106,10 +106,10 @@ export const getPost = (postId) => {
 }
 export const uploadPhoto = (photoData) => {
   axios.post("/api/posts/upload", photoData)
-    .then(res=>{
+    .then(res => {
       console.warn(res.data)
     })
-    .catch(error=>{
+    .catch(error => {
       console.warn(error)
     })
 }
@@ -159,7 +159,7 @@ export const deleteAPI = {
 export const usersAPI = {
   getUsers(currentPage, pageSize) {
     return (
-      axios.get(`/api/users?page=${currentPage}&count=${pageSize}`)
+      axios.get(`/api/users/pagination/?page=${currentPage}&count=${pageSize}`)
         .then(response => {
           return response.data
         })
@@ -185,7 +185,7 @@ export const newsAPI = {
 export const profileAPI = {
   getProfile(userId) {
     return (
-      axios.get(`/api/users/profile/` + userId)
+      axios.get(`http://localhost:4000/api/users/profile/` + userId)
         .then(response => {
           return response.data
         })
@@ -203,27 +203,14 @@ export const profileAPI = {
         })
     );
   },
+  getStatus(userId) {
+    return axios.get('http://localhost:4000/api/users/profile/status/' + userId)
+  },
   updateStatus(userId, status) {
-    return (
-      axios.put('/api/users/profile/status/' + userId, status)
-        .then(response => {
-          console.log(response.data)
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    )
+    return axios.put('/api/users/profile/status/' + userId, status)
   },
   updateName(userId, name) {
-    return (
-      axios.put('/api/users/profile/name/' + userId, name)
-        .then(response => {
-          console.log(response.data)
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    )
+    return axios.put('/api/users/profile/name/' + userId, name)
   },
   updateSurname(userId, surname) {
     return (

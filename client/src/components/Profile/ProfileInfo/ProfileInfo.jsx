@@ -37,7 +37,7 @@ const ProfileInfo = (props) => {
             </div>
           </div>
           <div className="profileInfo">
-            <ProfileStatus status={props.profile.status} login={props.login} userId={props.userId} />
+            <ProfileStatus status={props.status} login={props.login} userId={props.userId} updateStatus={props.updateStatus} />
           </div>
           <div className="profileInfo">
             <div className="infoBlock">
