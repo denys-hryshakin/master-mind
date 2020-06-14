@@ -1,13 +1,11 @@
 import React from 'react';
-import { profileAPI } from '../../../../redux/actions/actions';
 import './ProfileInfoBlock.css';
 
 class ProfileCity extends React.Component {
     state = {
-        city: "",
+        city: this.props.city,
         editMode: false
     }
-
     activateEditMode = () => {
         if (this.props.login.user.id !== this.props.userId) {
             this.setState({
@@ -27,19 +25,16 @@ class ProfileCity extends React.Component {
     onSubmit = (e) => {
         e.preventDefault()
         let userId = this.props.userId
-        const city = {
-            city: this.state.city
-        }
-        profileAPI.updateCity(userId, city)
+        const city = {city: this.state.city}
+        this.props.updateCity(userId, city)
         this.setState({
             editMode: false
         })
     }
     onChange = (e) => {
-        this.setState({ [e.target.id]: e.target.value });
+        this.setState({ city: e.currentTarget.value });
     };
-
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps, prevState) {
         if (prevProps.city !== this.props.city) {
             this.setState({
                 city: this.props.city
@@ -59,7 +54,8 @@ class ProfileCity extends React.Component {
                     <div>
                         <form className="profileInfoForm" onSubmit={this.onSubmit}>
                             <input
-                                autoFocus
+                                autoFocus={true}
+                                required={true}
                                 onChange={this.onChange}
                                 onBlur={this.deactivateEditMode}
                                 id="city"

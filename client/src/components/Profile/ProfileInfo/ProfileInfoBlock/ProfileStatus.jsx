@@ -19,7 +19,6 @@ class ProfileStatus extends React.Component {
         }
     }
     onSubmit = (e) => {
-        e.preventDefault();
         let userId = this.props.userId;
         const status = { status: this.state.status };
         this.props.updateStatus(userId, status)
@@ -33,7 +32,7 @@ class ProfileStatus extends React.Component {
         })
     }
     onChange = (e) => {
-        this.setState({ [e.target.id]: e.target.value });
+        this.setState({status: e.currentTarget.value});
     };
 
     componentDidUpdate(prevProps, prevState) {
@@ -45,6 +44,7 @@ class ProfileStatus extends React.Component {
     }
 
     render() {
+        
         return (
             <div>
                 {

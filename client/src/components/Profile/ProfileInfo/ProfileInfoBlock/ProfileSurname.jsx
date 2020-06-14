@@ -25,7 +25,7 @@ class ProfileSurname extends React.Component {
         const surname = {
             surname: this.state.surname
         }
-        profileAPI.updateSurname(userId, surname)
+        this.props.updateSurname(userId, surname)
         this.setState({
             editMode: false
         })

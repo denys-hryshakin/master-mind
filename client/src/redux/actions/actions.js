@@ -128,7 +128,7 @@ export const addPost = (postData, history) => dispatch => {
 }
 export const updatePost = (updateData, history) => dispatch => {
   axios
-    .post(`/api/posts/update/${updateData.userId}/${updateData.postId}`, updateData)
+    .put(`/api/posts/update/${updateData.userId}/${updateData.postId}`, updateData)
     .then(res => {
       history.push("/profile/" + res.data.userId)
       // window.location.reload();
@@ -192,90 +192,43 @@ export const profileAPI = {
     );
   },
   sendComment(newComment) {
-    return (
-      axios
-        .post(`/api/comments/new/${newComment.userId}/${newComment.postId}`, newComment)
-        .then(res => {
-          console.log(res.data)
-        })
-        .catch(error => {
-          console.warn(error);
-        })
-    );
+    return axios.post(`http://localhost:4000/api/comments/new/${newComment.userId}/${newComment.postId}`, newComment)
   },
   getStatus(userId) {
     return axios.get('http://localhost:4000/api/users/profile/status/' + userId)
   },
   updateStatus(userId, status) {
-    return axios.put('/api/users/profile/status/' + userId, status)
+    return axios.put('http://localhost:4000/api/users/profile/status/' + userId, status)
+  },
+  getName(userId) {
+    return axios.get('http://localhost:4000/api/users/profile/name/' + userId)
   },
   updateName(userId, name) {
     return axios.put('/api/users/profile/name/' + userId, name)
   },
+  getSurname(userId) {
+    return axios.get('http://localhost:4000/api/users/profile/surname/' + userId)
+  },
   updateSurname(userId, surname) {
-    return (
-      axios.put('/api/users/profile/surname/' + userId, surname)
-        .then(response => {
-          console.log(response.data)
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    )
+    return axios.put('/api/users/profile/surname/' + userId, surname)
+  },
+  getCountry(userId) {
+    return axios.get('http://localhost:4000/api/users/profile/country/' + userId)
   },
   updateCountry(userId, country) {
-    return (
-      axios.put('/api/users/profile/country/' + userId, country)
-        .then(response => {
-          console.log(response.data)
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    )
+    return axios.put('/api/users/profile/country/' + userId, country)
+  },
+  getCity(userId) {
+    return axios.get('http://localhost:4000/api/users/profile/city/' + userId)
   },
   updateCity(userId, city) {
-    return (
-      axios.put('/api/users/profile/city/' + userId, city)
-        .then(response => {
-          console.log(response.data)
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    )
+    return axios.put('/api/users/profile/city/' + userId, city)
   },
-  // setLatLng(userId, latlng) {
-  //   return (
-  //     axios.put('/api/users/geolocation/latlng/' + userId, latlng)
-  //       .then(response => {
-  //         console.log(response.data)
-  //       })
-  //       .catch(error => {
-  //         console.log(error)
-  //       })
-  //   )
-  // },
-  setAddress(userId, locationData) {
-    return (
-      axios.put('/api/users/geolocation/address/' + userId, locationData)
-        .then(response => {
 
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    )
+  setAddress(userId, locationData) {
+    return axios.put('/api/users/geolocation/address/' + userId, locationData)
   },
   getAddress(userId) {
-    return (
-      axios.get('/api/users/geolocation/address/' + userId)
-        .then(response => {
-          return response.data
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    )
+    return axios.get('/api/users/geolocation/address/' + userId)
   },
 }

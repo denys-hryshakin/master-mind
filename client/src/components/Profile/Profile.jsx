@@ -11,11 +11,21 @@ const Profile = (props) => {
         userId={props.match.params.userId}
         login={props.login}
         status={props.status}
-        updateStatus={props.updateStatus} />
+        name={props.name}
+        surname={props.surname}
+        city={props.city}
+        country={props.country}
+        updateStatus={props.updateStatus}
+        updateName={props.updateName}
+        updateSurname={props.updateSurname}
+        updateCity={props.updateCity}
+        updateCountry={props.updateCountry}
+      />
 
       <MyPostsContainer
         profile={props.profile}
-        userId={props.match.params.userId} />
+        userId={props.match.params.userId}
+      />
     </div>
   );
 }

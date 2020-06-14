@@ -1,11 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { profileAPI } from '../../../../redux/actions/actions';
 import './ProfileInfoBlock.css';
 
 class ProfileName extends React.Component {
     state = {
-        name: "",
+        name: this.props.name,
         editMode: false
     }
 
@@ -26,7 +24,7 @@ class ProfileName extends React.Component {
         const name = {
             name: this.state.name
         }
-        profileAPI.updateName(userId, name)
+        this.props.updateName(userId, name)
         this.setState({
             editMode: false
         })
@@ -37,7 +35,7 @@ class ProfileName extends React.Component {
         })
     }
     onChange = (e) => {
-        this.setState({ [e.target.id]: e.target.value });
+        this.setState({ name: e.currentTarget.value });
     };
 
     componentDidUpdate(prevProps) {
@@ -76,8 +74,4 @@ class ProfileName extends React.Component {
     }
 }
 
-let mapStateToProps = state => ({
-    login: state.login
-})
-
-export default connect(mapStateToProps, { profileAPI })(ProfileName);
+export default ProfileName;

@@ -32,8 +32,8 @@ const ProfileInfo = (props) => {
         <div className="shortInfo">
           <div className="profileInfo">
             <div className="infoBlock">
-              <ProfileName name={props.profile.name} login={props.login} userId={props.userId} />
-              <ProfileSurname surname={props.profile.surname} login={props.login} userId={props.userId} />
+              <ProfileName name={props.name} login={props.login} userId={props.userId} updateName={props.updateName} />
+              <ProfileSurname surname={props.surname} login={props.login} userId={props.userId} updateSurname={props.updateSurname} />
             </div>
           </div>
           <div className="profileInfo">
@@ -41,8 +41,8 @@ const ProfileInfo = (props) => {
           </div>
           <div className="profileInfo">
             <div className="infoBlock">
-              <ProfileCity city={props.profile.city} login={props.login} userId={props.userId} />
-              <ProfileCountry country={props.profile.country} login={props.login} userId={props.userId} />
+              <ProfileCity city={props.city} login={props.login} userId={props.userId} updateCity={props.updateCity} />
+              <ProfileCountry country={props.country} login={props.login} userId={props.userId} updateCountry={props.updateCountry} />
             </div>
           </div>
         </div>

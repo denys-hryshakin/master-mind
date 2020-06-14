@@ -119,7 +119,7 @@ router.get('/pagination', async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const users = await User.find()
-    res.status(200).json({items: users, totalCount: users.length});
+    res.status(200).json({ items: users, totalCount: users.length });
   } catch (error) {
     res.status(500).json(error);
   }
@@ -149,78 +149,110 @@ router.put('/profile/:userId/image', async (req, res) => {
   }
 })
 
+
+
+
 // Profile settings ///////////////////////////////////////////////////////////////////////////////
+
 
 // STATUS /////////////////////////////////////////////////////////////////////////////////////////
 router.get('/profile/status/:id', async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
-    res.json({resultCode: 0,message: "Success", status: user.status});
+    res.json({ resultCode: 0, message: "OK", status: user.status });
   } catch (error) {
-    res.json({resultCode: 1, message: error});
+    res.json({ resultCode: 1, message: "ERROR", error });
   }
 })
 router.put('/profile/status/:userId', async (req, res) => {
   try {
     let status = await User.findByIdAndUpdate({ _id: req.params.userId }, { status: req.body.status }, { new: true })
-    res.status(200).json({
-      status: status.status
-    })
+    res.status(200).json({ resultCode: 0, message: "OK", status: status.status })
   } catch (error) {
-    res.status(500).json(error)
+    res.status(500).json({ resultCode: 1, message: "ERROR", error })
   }
 })
+
 
 // NAME ///////////////////////////////////////////////////////////////////////////////////////////
+router.get('/profile/name/:id', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    res.json({ resultCode: 0, message: "OK", name: user.name });
+  } catch (error) {
+    res.json({ resultCode: 1, message: "ERROR", error });
+  }
+})
 router.put('/profile/name/:userId', async (req, res) => {
   try {
-    let name = await User.findByIdAndUpdate({ _id: req.params.userId }, { name: req.body.name }, { new: true })
-    res.status(200).json({
-      name: name.name
-    })
+    const user = await User.findByIdAndUpdate({ _id: req.params.userId }, { name: req.body.name }, { new: true })
+    res.status(200).json({ resultCode: 0, message: "OK", name: user.name })
   } catch (error) {
-    res.status(500).json(error)
+    res.status(500).json({ resultCode: 1, message: "ERROR", error })
   }
 })
 
+
 // SURNAME ////////////////////////////////////////////////////////////////////////////////////////
+router.get('/profile/surname/:id', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    res.json({ resultCode: 0, message: "OK", surname: user.surname });
+  } catch (error) {
+    res.json({ resultCode: 1, message: "ERROR", error });
+  }
+})
 router.put('/profile/surname/:userId', async (req, res) => {
   try {
-    let surname = await User.findByIdAndUpdate({ _id: req.params.userId }, { surname: req.body.surname }, { new: true })
-    res.status(200).json({
-      surname: surname.surname
-    })
+    const user = await User.findByIdAndUpdate({ _id: req.params.userId }, { surname: req.body.surname }, { new: true })
+    res.status(200).json({ resultCode: 0, message: "OK", surname: user.surname })
   } catch (error) {
-    res.status(500).json(error)
+    res.status(500).json({ resultCode: 1, message: "ERROR", error })
+  }
+})
+
+
+// CITY ////////////////////////////////////////////////////////////////////////////////////////
+router.get('/profile/city/:id', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    res.json({ resultCode: 0, message: "OK", city: user.city });
+  } catch (error) {
+    res.json({ resultCode: 1, message: "ERROR", error });
   }
 })
 router.put('/profile/city/:userId', async (req, res) => {
   try {
-    let city = await User.findByIdAndUpdate({ _id: req.params.userId }, { city: req.body.city }, { new: true })
-    res.status(200).json({
-      city: city.city
-    })
+    const user = await User.findByIdAndUpdate({ _id: req.params.userId }, { city: req.body.city }, { new: true })
+    res.status(200).json({ resultCode: 0, message: "OK", city: user.city })
   } catch (error) {
-    res.status(500).json(error)
+    res.status(500).json({ resultCode: 1, message: "ERROR", error })
+  }
+})
+
+
+// COUNTRY ////////////////////////////////////////////////////////////////////////////////////////
+router.get('/profile/country/:id', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    res.json({ resultCode: 0, message: "OK", country: user.country });
+  } catch (error) {
+    res.json({ resultCode: 1, message: "ERROR", error });
   }
 })
 router.put('/profile/country/:userId', async (req, res) => {
   try {
-    let country = await User.findByIdAndUpdate({ _id: req.params.userId }, { country: req.body.country }, { new: true })
-    res.status(200).json({
-      country: country.country
-    })
+    const user = await User.findByIdAndUpdate({ _id: req.params.userId }, { country: req.body.country }, { new: true })
+    res.status(200).json({ resultCode: 0, message: "OK", country: user.country })
   } catch (error) {
-    res.status(500).json(error)
+    res.status(500).json({ resultCode: 1, message: "ERROR", error })
   }
 })
 
+// GEOLOCATION ////////////////////////////////////////////////////////////////////////////////////////
 router.put('/geolocation/address/:userId', async (req, res) => {
   try {
-    let geoData = await User.findByIdAndUpdate(
-      {
-        _id: req.params.userId
-      },
+    const geoData = await User.findByIdAndUpdate({ _id: req.params.userId },
       {
         geoData: {
           address: req.body.address,
@@ -231,26 +263,22 @@ router.put('/geolocation/address/:userId', async (req, res) => {
           lng: req.body.lng
         }
       },
-      {
-        new: true
-      }
+      { new: true }
     )
-    res.status(200).json({
-      geoData: geoData.geoData
-    })
+    res.status(200).json({ resultCode: 0, message: "OK", geoData: geoData.geoData })
   } catch (error) {
-    res.status(500).json(error)
+    res.status(500).json({ resultCode: 1, message: "ERROR", error })
   }
 })
 
+
+// ADDRESS ////////////////////////////////////////////////////////////////////////////////////////
 router.get('/geolocation/address/:userId', async (req, res) => {
   try {
     const address = await User.findById(req.params.userId, 'geoData')
-    res.status(200).json({
-      data: address
-    })
+    res.status(200).json({ resultCode: 0, message: "OK", data: address })
   } catch (error) {
-    res.status(500).json(error)
+    res.status(500).json({ resultCode: 1, message: "ERROR", error })
   }
 })
 

@@ -5,7 +5,7 @@ import './ProfileInfoBlock.css';
 
 class ProfileCountry extends React.Component {
     state = {
-        country: "",
+        country: this.props.country,
         editMode: false
     }
 
@@ -26,7 +26,7 @@ class ProfileCountry extends React.Component {
         const country = {
             country: this.state.country
         }
-        profileAPI.updateCountry(userId, country)
+        this.props.updateCountry(userId, country)
         this.setState({
             editMode: false
         })
@@ -37,7 +37,7 @@ class ProfileCountry extends React.Component {
         })
     }
     onChange = (e) => {
-        this.setState({ [e.target.id]: e.target.value });
+        this.setState({ country: e.currentTarget.value });
     };
 
     componentDidUpdate(prevProps) {

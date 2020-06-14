@@ -21,23 +21,20 @@ router.get("/:postId", async (req, res) => {
     }
 });
 
-router.post("/new/:userId/:postId", (req, res)=> {
-    Comment.findOne()
-        .then(comment => {
-            const newComment = new Comment({
-                text: req.body.text,
-                userId: req.params.userId,
-                postId: req.params.postId
-            });
-            newComment
-                .save()
-                .then(comment => {
-                    res.status(200).json(comment);
-                })
-                .catch(err => {
-                    res.status(500).json(err)
-                })
-        })
+router.post("/new/:userId/:postId", async (req, res) => {
+    try {
+        let comments = await Comment.find({ postId: req.params.postId })
+        const newComment = new Comment({
+            text: req.body.text,
+            userId: req.params.userId,
+            postId: req.params.postId
+        });
+        newComment
+            .save()
+        res.status(200).json({ result: 0, message: "OK", comment: comments });
+    } catch (error) {
+        res.status(500).json({ result: 1, message: "Error", error })
+    }
 })
 
 module.exports = router;

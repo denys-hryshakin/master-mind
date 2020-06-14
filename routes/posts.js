@@ -91,38 +91,34 @@ router.get('/:userId', async (req, res) => {
         })
     }
 })
-router.post("/update/:userId/:id", (req, res) => {
-    // Form validation
-    const { errors, isValid } = validatePostInput(req.body);
-    // Check validation
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
-    Post.findByIdAndRemove(req.params.id)
-        .then(post => {
-            const updatePost = new Post({
+router.put("/update/:userId/:id", async (req, res) => {
+    try {
+        // Form validation
+        const { errors, isValid } = validatePostInput(req.body);
+        // Check validation
+        if (!isValid) {
+            return res.status(400).json(errors);
+        }
+        const updatePost = await Post.findByIdAndUpdate({ _id: req.params.id },
+            {
                 title: req.body.title,
                 userId: req.params.userId,
                 text: req.body.text,
-            });
-            updatePost
-                .save()
-                .then(post => {
-                    res.status(201).json(post);
-                })
-                .catch(err => {
-                    res.status(500).json({
-                        error: err
-                    });
-                });
-        });
+
+            },
+            { new: true }
+        )
+        res.status(200).json({ resultCode: 0, message: "OK", title: updatePost.title, text: updatePost.text, userId: updatePost.userId })
+    } catch (error) {
+        res.status(500).json({ resultCode: 1, message: "ERROR", error })
+    }
 });
 router.delete('/:id', async (req, res) => {
     try {
         await Post.findByIdAndDelete(req.params.id)
-        res.json({ message: "Post deleted!" })
+        res.status(200).json({ resultCode: 0, message: "Post deleted!" })
     } catch (error) {
-        res.status(500).json(error)
+        res.status(500).json({ resultCode: 1, message: "Error", error })
     }
 })
 
