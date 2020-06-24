@@ -29,7 +29,7 @@ class MyPostsContainer extends React.Component {
   onClick = (e, id) => {
     e.preventDefault();
     deleteAPI.deletePostReq(id)
-    // window.location.reload();
+    window.location.reload();
   }
 
   render() {

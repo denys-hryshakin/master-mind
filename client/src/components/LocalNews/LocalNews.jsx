@@ -7,7 +7,10 @@ const LocalNews = (props) => {
     return (
         <div className="container-block">
             <div className="newsBlock">
-                {newsElements}
+                <h1>Local News</h1>
+                <div className="newsElements">
+                    {newsElements}
+                </div>
             </div>
         </div>
     );

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styles from './NewsItem.module.css'
-import avatar from '../../../assets/images/avatar.jpg'
+import avatar from '../../../assets/images/bbc-logo.jpg'
 
 const NewsItem = props => {
     const [isLocal, setLocal] = useState(false)

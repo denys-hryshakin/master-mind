@@ -24,6 +24,7 @@ router.get("/:postId", async (req, res) => {
 router.post("/new/:userId/:postId", async (req, res) => {
     try {
         let comments = await Comment.find({ postId: req.params.postId })
+        .sort('-data')
         const newComment = new Comment({
             text: req.body.text,
             userId: req.params.userId,
@@ -31,6 +32,7 @@ router.post("/new/:userId/:postId", async (req, res) => {
         });
         newComment
             .save()
+            comments.unshift(newComment);
         res.status(200).json({ result: 0, message: "OK", comment: comments });
     } catch (error) {
         res.status(500).json({ result: 1, message: "Error", error })

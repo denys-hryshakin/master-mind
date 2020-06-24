@@ -6,7 +6,6 @@ class ProfileStatus extends React.Component {
         status: this.props.status,
         editMode: false
     }
-
     activateEditMode = () => {
         if (this.props.login.user.id !== this.props.userId) {
             this.setState({
@@ -34,7 +33,6 @@ class ProfileStatus extends React.Component {
     onChange = (e) => {
         this.setState({status: e.currentTarget.value});
     };
-
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.status !== this.props.status) {
             this.setState({
@@ -42,9 +40,7 @@ class ProfileStatus extends React.Component {
             })
         }
     }
-
     render() {
-        
         return (
             <div>
                 {

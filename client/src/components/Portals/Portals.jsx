@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Portals.module.css';
-import avatar from './../../assets/images/news.jpg'
+import avatar from './../../assets/images/bbc-logo.jpg'
 
 let Portals = (props) => {
     return (

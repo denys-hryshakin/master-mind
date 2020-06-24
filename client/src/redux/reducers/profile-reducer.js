@@ -64,6 +64,15 @@ export const deletePostReq = (id) => {
     }
 }
 
+
+
+// POSTS /////////////////////////////////////////////////////////////////////////////////////////
+export const sendComment = (newComment) => (dispatch) => {
+    profileAPI.sendComment(newComment)
+}
+
+
+
 // PROFILE /////////////////////////////////////////////////////////////////////////////////////////
 export const getUserProfile = (userId) => (dispatch) => {
     profileAPI.getProfile(userId)

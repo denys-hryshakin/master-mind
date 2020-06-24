@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './UserPost.module.css';
 import { connect } from 'react-redux';
-import { setUserPost, setComments } from '../../../../../redux/reducers/profile-reducer'
-import { getPost, getComments, profileAPI } from '../../../../../redux/actions/actions';
+import { getComments, getPost } from '../../../../../redux/actions/actions';
+import { sendComment, setComments, setUserPost } from '../../../../../redux/reducers/profile-reducer';
 import UserPost from './UserPost';
+import styles from './UserPost.module.css';
 
 class UserPostContainer extends React.Component {
     state = {
@@ -43,10 +43,11 @@ class UserPostContainer extends React.Component {
             userId: this.props.login.user.id,
             text: this.state.text,
         };
-        profileAPI.sendComment(newComment);
+        this.props.sendComment(newComment);
         this.setState({
             text: '',
         })
+        window.location.reload();
     };
 
     render() {
@@ -72,5 +73,5 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { setUserPost, setComments, profileAPI })(UserPostContainer);
+export default connect(mapStateToProps, { setUserPost, setComments, sendComment })(UserPostContainer);
 
