@@ -1,91 +1,24 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose');
 
 const UserSchema = mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    surname: {
-        type: String,
-        required: true
-    },
-    login: {    
-        type: String,
-        required: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true
-    },
-    // following: [
-    //     {
-    //         user: {
-    //             type: Schema.ObjectId,
-    //             ref: 'User'
-    //         }
-    //     }
-    // ],
-    // followers: [
-    //     {
-    //         user: {
-    //             type: Schema.ObjectId,
-    //             ref: 'User'
-    //         }
-    //     }
-    // ],
-    status: {
-        type: String,
-        required: true,
-        default: "---"
-    },
-    date: {
-        type: Date,
-        default: Date.now
-    },
-    userImg: {
-        type: String,
-        default: "none"
-    },
-    country: {
-        type: String,
-        default: "Double click to update country!"
-    },
-    city: {
-        type: String,
-        default: "Double click to update city!"
-    },
+    name: { type: String, required: true },
+    surname: { type: String, required: true },
+    login: { type: String, required: true },
+    password: { type: String, required: true },
+    email: { type: String, required: true },
+    status: { type: String, required: true, default: "---" },
+    date: { type: Date, default: Date.now },
+    userImg: { type: String, default: "---" },
+    country: { type: String, default: "---" },
+    city: { type: String, default: "---" },
     geoData: {
-        address: {
-            type: String,
-            default: null
-        },
-        city: {
-            type: String,
-            default: null
-        },
-        state: {
-            type: String,
-            default: null
-        },
-        area: {
-            type: String,
-            default: null
-        },
-        lat: {
-            type: String,
-            default: null
-        },
-        lng: {
-            type: String,
-            default: null
-        },
+        address: { type: String, default: null },
+        city: { type: String, default: null },
+        state: { type: String, default: null },
+        area: { type: String, default: null },
+        lat: { type: String, default: null },
+        lng: { type: String, default: null },
     },
-})
+});
 
-
-module.exports = mongoose.model('User', UserSchema)
+module.exports = mongoose.model('User', UserSchema);
