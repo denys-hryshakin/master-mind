@@ -6,7 +6,6 @@ import './App.css';
 import ScrollToTop from './components/common/ScrollToTop/ScrollToTop';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import Footer from "./components/Footer/Footer";
-import FriendListContainer from './components/FriendList/FriendListContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Header/Login/Login';
 import Register from './components/Header/Register/Register';
@@ -15,7 +14,7 @@ import Geolocation from "./components/LocalNews/Geolocation/Geolocation";
 import LocalNewsContainer from "./components/LocalNews/LocalNewsContainer";
 import NavbarContainer from './components/Navbar/NavbarContainer';
 import PortalsContainer from './components/Portals/PortalsContainer';
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import PrivateRoute from "./components/common/PrivateRoute/PrivateRoute";
 import NewPost from "./components/Profile/MyPosts/NewPost/NewPost";
 import UserPostContainer from "./components/Profile/MyPosts/Post/UserPost/UserPostContainer";
 import UpdatePost from "./components/Profile/MyPosts/UpdatePost/UpdatePost";
@@ -65,7 +64,6 @@ const App = () => {
               <PrivateRoute path="/dialogs" component={DialogsContainer} />
               <PrivateRoute path="/portals" component={PortalsContainer} />
               <PrivateRoute path="/users" component={UsersContainer} />
-              <PrivateRoute path="/friends" component={FriendListContainer} />
               <PrivateRoute path="/geolocation" component={Geolocation} />
               <PrivateRoute path="/news/local/" component={LocalNewsContainer} />
             </Switch>

@@ -3,7 +3,6 @@ import './Footer.css';
 import logo from '../../assets/images/logo-1.png'
 
 const Footer = () => {
-
     const companyName = "Mastermind.Inc";
     const today = new Date();
     const year = today.getFullYear();
